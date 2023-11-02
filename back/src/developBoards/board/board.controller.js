@@ -16,7 +16,7 @@ exports.getView = async (req, res, next) => {
     const { id } = req.query;
     const result = await boardService.getFindOne(id);
     console.log(result);
-    res.render("boards/view.html", {
+    res.render("views/view.html", {
       data: result,
     });
   } catch (e) {
