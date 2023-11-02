@@ -2,7 +2,7 @@ module.exports = (sequelize, DataTypes) => {
     sequelize.define("IdeaBoards", {
         id: {
             type: DataTypes.INTEGER,
-            primarykey: true,
+            primaryKey: true,
             autoIncrement: true,
         },
         title: {
