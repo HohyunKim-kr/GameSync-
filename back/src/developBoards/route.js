@@ -1,7 +1,8 @@
 const express = require("express");
 const router = express.Router();
-const boardRouter = require("./board/boardRoot");
+const bodyParser = require("body-parser");
 
-router.use("/boards", boardRouter);
+router.use(bodyParser.urlencoded({ extended: false }));
+// router.get
 
 module.exports = router;
