@@ -1,15 +1,15 @@
 const express = require("express");
 const app = express();
-// const mysql = require("mysql");
-const bodyParser = require("body-parser");
 
-app.use(express.static("./public"));
-app.use(bodyParser.urlencoded({ extended: false }));
+const cors = require("cors");
+const router = require("./src/route");
 
-const developBoardsRouter = require("./src/developBoards/board/dev.route");
-const ideaBoardsRouter = require("./src/ideaBoards/idea.route");
+app.use(cors());
+app.use(express.json());
+app.use(router);
+app.use((error, req, res, next) => {
+    res.status(500).send(error.message);
+});
 
-app.use(developBoardsRouter);
-app.use(ideaBoardsRouter);
 
 module.exports = app;

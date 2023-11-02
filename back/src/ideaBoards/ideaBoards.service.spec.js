@@ -1,5 +1,5 @@
 const {describe} = require("node:test");
-const IdeaService = require("./idea.service");
+const IdeaService = require("./ideaBoards.service");
 
 describe("board service", () => {
     let ideaService = null;
@@ -12,6 +12,8 @@ describe("board service", () => {
     });
 
     describe("createBoard", () => {
-        it("성공", async);
+        it("성공", async () => {
+            IdeaBoards.create.mock;
+        });
     });
 });

@@ -10,7 +10,7 @@ const sequelize = new Sequelize(database, username, password, db);
 // developBoards entity
 
 // ideaBoards entity
-require("./ideaBoards/idea.entity")(sequelize, Sequelize.DataTypes);
+require("./ideaBoards/ideaBoards.entity")(sequelize, Sequelize.DataTypes);
 
 const {IdeaBoards} = sequelize.models;
 
