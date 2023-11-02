@@ -6,10 +6,10 @@ const bodyParser = require("body-parser");
 app.use(express.static("./public"));
 app.use(bodyParser.urlencoded({ extended: false }));
 
-const developBoardsRouter = require("./src/developBoards/route");
-// const ideaBoardsRouter = require("./src/ideaBoards/route.js");
+const developBoardsRouter = require("./src/developBoards/board/dev.route");
+const ideaBoardsRouter = require("./src/ideaBoards/idea.route");
 
 app.use(developBoardsRouter);
-// app.use(ideaBoardsRouter);
+app.use(ideaBoardsRouter);
 
 module.exports = app;
