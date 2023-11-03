@@ -1,6 +1,6 @@
 const express = require("express");
 const router = express.Router();
-const noticeController = require("./notice");
+const noticeController = require("./noticeBoard.controller");
 
 // notice list R
 router.get("/", noticeController.findAll);
@@ -13,4 +13,5 @@ router.put("/:id", noticeController.update);
 
 // notice delete d
 router.delete("/:id", noticeController.delete);
+
 module.exports = router;
