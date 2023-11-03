@@ -17,6 +17,6 @@ require("./ideaBoards/ideaBoard.entity")(sequelize, Sequelize.DataTypes);
 const { IdeaBoards } = sequelize.models;
 
 module.exports = {
-  sequelize,
-  IdeaBoards,
+    sequelize,
+    IdeaBoards,
 };
