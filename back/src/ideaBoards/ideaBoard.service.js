@@ -2,7 +2,10 @@
 //     constructor(IdeaBoards) {
 //         this.IdeaBoards = IdeaBoards;
 //     }
-//     async createBoard() {}
+//     async createBoard(dto) {
+//         const responseBody = await this.IdeaBoards.create(dto);
+//         return responseBody;
+//     }
 // }
 
 // module.exports = IdeaService;

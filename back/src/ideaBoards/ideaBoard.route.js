@@ -1,6 +1,6 @@
 const express = require("express");
 const router = express.Router();
-const ideaController = require("./ideaBoards.controller");
+const ideaController = require("./ideaBoard.controller");
 
 // list;
 router.get("/", ideaController.findAll);
