@@ -1,24 +1,23 @@
-const IdeaService = require("./ideaBoard.service");
+const ideaService = require("./ideaBoard.service");
+const IdeaBoards = require("./ideaBoard.entity");
 
 describe("board service", () => {
-    let ideaService = null;
-    let IdeaBoards = {
-        create: jest.fn(),
-    };
-
-    beforeEach(() => {
-        ideaService = new IdeaService(IdeaBoards);
-    });
-
     describe("createBoard", () => {
         it("성공", async () => {
-            IdeaBoards.create.mockResolvedValue({ id: "test", title: "test" });
+            // IdeaBoards.create.mockResolvedValue({ id: "test", title: "test" });
 
-            const dto = { id: "test", title: "test" };
+            const mockReturnValue = {
+                id: "test",
+                title: "test",
+                author: "boram",
+            };
+            // jest.spyOn(IdeaBoards, "create").mockResolvedValue(mockReturnValue);
+
+            const dto = { id: "test", title: "test", author: "boram" };
             const responseBody = await ideaService.createBoard(dto);
 
             expect(IdeaBoards.create).toBeCalledWith(dto);
-            expect(responseBody).toStrictEqual({ id: "test", title: "test" });
+            expect(responseBody).toEqual(mockReturnValue);
         });
 
         it("실패", async () => {});
