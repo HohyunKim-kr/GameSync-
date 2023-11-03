@@ -10,7 +10,13 @@
 
 // module.exports = IdeaService;
 
-exports.createBoard = async () => {};
+const { IdeaBoards } = require("../entity");
+
+exports.createBoard = async (dto) => {
+    const responseBody = await IdeaBoards.create(dto);
+    console.log(responseBody);
+    // return responseBody;
+};
 exports.findAllBoard = async () => {};
 exports.findOneBoard = async () => {};
 exports.updateBoard = async () => {};
