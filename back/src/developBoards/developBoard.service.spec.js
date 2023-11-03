@@ -1,5 +1,5 @@
 const { describe } = require("node:test");
-const DevService = require("./developBoard.service");
+const DevelopService = require("./developBoard.service");
 
 describe("board service", () => {
   let devService = null;
@@ -8,7 +8,7 @@ describe("board service", () => {
   };
 
   beforeEach(() => {
-    devService = new DevService(DevService);
+    devService = new DevelopService(DevService);
   });
 
   describe("createBoard", () => {

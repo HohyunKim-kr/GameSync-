@@ -1,4 +1,4 @@
-// class DevController {
+// class DevelopController {
 //   constructor(service) {
 //     this.service = service;
 //   }
@@ -11,7 +11,7 @@
 //   }
 // }
 
-// module.exports = DevController;
+// module.exports = DevelopController;
 
 exports.create = async (req, res, next) => {};
 exports.findAll = async (req, res, next) => {};
