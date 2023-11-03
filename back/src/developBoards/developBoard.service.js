@@ -1,8 +1,8 @@
-class DevService {
+class DevelopService {
   constructor(devBoards) {
     this.devBoards = devBoards;
   }
   async createBoard() {}
 }
 
-module.exports = DevService;
+module.exports = DevelopService;
