@@ -1,8 +1,8 @@
-const DevService = require("./idea.service");
-const DevController = require("./idea.controller");
-// const { devBoards } = require("../entity");
+const DevService = require("./devBoards.service");
+const DevController = require("./devBoards.controller");
+const { DevBoards } = require("../board/devBoards.entity");
 
-const devService = new DevService(IdeaBoards);
+const devService = new DevService(DevBoards);
 const devController = new DevController(devService);
 
 module.exports = {
