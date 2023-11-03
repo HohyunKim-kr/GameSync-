@@ -1,20 +1,22 @@
-const {db} = require("../lib/db");
+const { db } = require("../lib/db");
 const Sequelize = require("sequelize");
 
-const {database, username, password} = db;
+const { database, username, password } = db;
 
 const sequelize = new Sequelize(database, username, password, db);
 
-// notice entity
+// noticeBoards entity
+require("./noticeBoards/noticeBoard.entity")(sequelize, Sequelize.DataTypes);
 
 // developBoards entity
+require("./developBoards/developBoard.entity")(sequelize, Sequelize.DataTypes);
 
 // ideaBoards entity
-require("./ideaBoards/ideaBoards.entity")(sequelize, Sequelize.DataTypes);
+require("./ideaBoards/ideaBoard.entity")(sequelize, Sequelize.DataTypes);
 
-const {IdeaBoards} = sequelize.models;
+const { IdeaBoards } = sequelize.models;
 
 module.exports = {
-    sequelize,
-    IdeaBoards,
+  sequelize,
+  IdeaBoards,
 };
