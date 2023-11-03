@@ -1,5 +1,5 @@
 const { describe } = require("node:test");
-const DevService = require("./devBoards.service");
+const DevService = require("./developBoard.service");
 
 describe("board service", () => {
   let devService = null;
