@@ -10,6 +10,7 @@ exports.create = async (req, res, next) => {
         const response = await ideaBoardService.createBoard(
             ideaBoardsRequestDTO
         );
+        // console.log(`response controller :`,response);
         res.status(201).json(response);
     } catch (e) {
         next(e);
@@ -17,32 +18,48 @@ exports.create = async (req, res, next) => {
 };
 exports.findAll = async (req, res, next) => {
     try {
-        const response = await ideaBoardService.findAllBoard();
-        res.send("find all!!!!!!");
+        const ideaBoardsRequestDTO = new IdeaBoardsRequestDTO(req.body);
+        const response = await ideaBoardService.findAllBoard(
+            ideaBoardsRequestDTO
+        );
+        res.status(201).json(response);
+        // res.send("find all!!!!!!");
     } catch (e) {
         next(e);
     }
 };
 exports.findOne = async (req, res, next) => {
     try {
-        const response = await ideaBoardService.findOneBoard();
-        res.send("find one!");
+        const ideaBoardId = req.params.id;
+        console.log(ideaBoardId);
+
+        const response = await ideaBoardService.findOneBoard(ideaBoardId);
+        res.status(201).json(response);
+        // res.send("find one!");
     } catch (e) {
         next(e);
     }
 };
 exports.update = async (req, res, next) => {
     try {
-        const response = await ideaBoardService.updateBoard();
-        res.send("update");
+        const ideaBoardId = req.params.id;
+        const ideaBoardsRequestDTO = new IdeaBoardsRequestDTO(req.body);
+        const response = await ideaBoardService.updateBoard(
+            ideaBoardId,
+            ideaBoardsRequestDTO
+        );
+        res.status(201).json(response);
+        // res.send("update");
     } catch (e) {
         next(e);
     }
 };
 exports.delete = async (req, res, next) => {
     try {
-        const response = await ideaBoardService.deleteBoard();
-        res.send("delete");
+        const ideaBoardId = req.params.id;
+        const response = await ideaBoardService.deleteBoard(ideaBoardId);
+        res.status(201).json(response);
+        // res.send("delete");
     } catch (e) {
         next(e);
     }
