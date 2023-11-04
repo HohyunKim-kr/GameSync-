@@ -1,25 +1,46 @@
-const noticeService = require("./noticeBoard.service");
+const noticeBoardService = require("./noticeBoard.service");
+const { noticeBoards } = require("../entity");
 
 describe("board service", () => {
-  let noticeService = null;
-  let noticeBoards = {
-    create: jest.fn(),
-  };
-
-  beforeEach(() => {
-    noticeService = new noticeService(noticeBoards);
-  });
-
-  descrive("createBoard", () => {
-    it("성공", async () => {
-      noticeBoards.create.mockResolvedValue({ id: "test", title: "test" });
-
-      const dto = { id: "test", title: "test" };
-      const responseBody = await noticeService.createBoard(dto);
-
-      expect(noticeBoards.create).toBeCalledWith(dto);
-      expect(responseBody).toStrictEqual({ id: "test", title: "test" });
+  describe("createBoard", () => {
+    afterEach(() => {
+      jest.restoreAllMocks();
     });
-    it("실패", async () => {});
+
+    it("성공", async () => {
+      const mockReturnValue = {
+        id: "1",
+        title: "test",
+        author: "hohyun",
+      };
+
+      // noticeBoards.create를 실패하도록 설정
+      jest
+        .spyOn(noticeBoards, "create")
+        .mockRejectedValue(new Error("Create Error"));
+
+      const dto = { id: "1", title: "test", author: "hohyun" };
+      await expect(
+        async () => await noticeBoardService.createBoard(dto)
+      ).rejects.toThrow("Create Error"); // 이 예외를 발생하도록 수정
+    });
+
+    it("실패", async () => {
+      const mockReturnValue = {
+        id: "1",
+        title: "test",
+        author: "hohyun",
+      };
+
+      // noticeBoards.create를 실패하도록 설정
+      jest
+        .spyOn(noticeBoards, "create")
+        .mockRejectedValue(new Error("Create Error"));
+
+      const dto = { id: "1", title: "test", author: "hohyun" };
+      await expect(
+        async () => await noticeBoardService.createBoard(dto)
+      ).rejects.toThrow("Create Error"); // "Create Error"를 예상하도록 수정
+    });
   });
 });

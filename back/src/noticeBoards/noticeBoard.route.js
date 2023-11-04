@@ -8,6 +8,9 @@ router.get("/", noticeController.findAll);
 // notice write C
 router.post("/", noticeController.create);
 
+//notice read R
+router.get("/:id", noticeController.findOne);
+
 // notice update U
 router.put("/:id", noticeController.update);
 
