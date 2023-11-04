@@ -6,34 +6,35 @@ module.exports = (sequelize, DataTypes) => {
             autoIncrement: true,
         },
         title: {
-            type: DataTypes.STRING(255),
+            type: DataTypes.STRING,
             allowNull: false,
         },
         author: {
-            type: DataTypes.STRING(255),
+            type: DataTypes.STRING,
             allowNull: false,
         },
         content: {
             type: DataTypes.TEXT,
+            allowNull: false,
         },
         date: {
             type: DataTypes.DATE,
-            defaultVaule: DataTypes.NOW,
+            defaultValue: DataTypes.NOW,
         },
         hit: {
             type: DataTypes.INTEGER,
-            defaultVaule: 0,
+            defaultValue: 0,
         },
         category: {
             type: DataTypes.INTEGER,
-            defaultVaule: 1,
+            defaultValue: 1,
         },
         img: {
-            type: DataTypes.STRING(255),
+            type: DataTypes.STRING,
         },
-        like: {
+        likeCount: {
             type: DataTypes.INTEGER,
-            defaultVaule: 0,
+            defaultValue: 0,
         },
     });
 };
