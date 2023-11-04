@@ -1,20 +1,79 @@
-// class DevelopController {
-//   constructor(service) {
-//     this.service = service;
-//   }
+const { DevelopBoardsRequestDTO } = require("./developBoard.dto");
+const DevelopBoardService = require("./developBoard.service");
 
-//   async create(req, res, next) {
-//     try {
-//     } catch (e) {
-//       next(e);
-//     }
-//   }
-// }
+exports.create = async (req, res, next) => {
+  try {
+    if (!(req.body instanceof DevelopBoardsRequestDTO)) {
+      throw new Error("req.body는 DevelopBoardsRequestDTO 타입이 아닙니다.");
+    }
 
-// module.exports = DevelopController;
+    const developBoard = await DevelopBoardService.createBoard(req.body);
+    res.status(201).json(developBoard);
+  } catch (e) {
+    next(e);
+  }
+};
 
-exports.create = async (req, res, next) => {};
-exports.findAll = async (req, res, next) => {};
-exports.findOne = async (req, res, next) => {};
-exports.update = async (req, res, next) => {};
-exports.delete = async (req, res, next) => {};
+exports.findAll = async (req, res, next) => {
+  try {
+    const developBoard = await DevelopBoardService.findAllBoard();
+
+    res.json(developBoard);
+  } catch (e) {
+    next(e);
+  }
+};
+
+exports.findOne = async (req, res, next) => {
+  try {
+    const developBoard = await DevelopBoardService.findOneBoard(req.params.id);
+
+    if (!developBoard) {
+      res.status(404).send("게시판을 찾을 수 없습니다.");
+      return;
+    }
+
+    // 게시판 정보를 응답
+    res.json(developBoard);
+  } catch (e) {
+    next(e);
+  }
+};
+
+exports.update = async (req, res, next) => {
+  try {
+    const developBoard = await DevelopBoardService.findOneBoard(req.params.id);
+
+    if (!developBoard) {
+      res.status(404).send("게시판을 찾을 수 없습니다.");
+      return;
+    }
+
+    developBoard.title = req.body.title;
+    developBoard.content = req.body.content;
+    developBoard.writer = req.body.writer;
+
+    await developBoard.save();
+
+    res.json(developBoard);
+  } catch (e) {
+    next(e);
+  }
+};
+
+exports.delete = async (req, res, next) => {
+  try {
+    const developBoard = await DevelopBoardService.findOneBoard(req.params.id);
+
+    if (!developBoard) {
+      res.status(404).send("게시판을 찾을 수 없습니다.");
+      return;
+    }
+
+    await developBoard.destroy();
+
+    res.status(204).send();
+  } catch (e) {
+    next(e);
+  }
+};
