@@ -17,7 +17,7 @@ a {
   left: 0;
   top: 0;
   width: 100%;
-  height: 50px;
+  height: 80px;
   display: flex;
   justify-content: space-between;
   padding: 5px 30px;
@@ -27,9 +27,23 @@ a {
 
 #pageTitle {
   width: 100%;
-  height: 150px;
-  padding: 20px;
-  text-align: center;
+  max-width: 1920px;
+  height: 200px;
+  overflow: hidden;
+  position: relative;
+}
+#pageTitle > h2 {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: #fff;
+  z-index: 99;
+}
+
+#pageTitle > img {
+  width: 100%;
+  opacity: 0.5;
 }
 
 .writeBTn {
@@ -40,9 +54,7 @@ a {
 }
 
 #developBody .userWork {
-  width: 1200px;
-  background-image: url(../images/KakaoTalk_20231106_130647640.jpg);
-  height: 500px;
+  width: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -51,4 +63,8 @@ a {
 .userWork ul {
   display: flex;
   flex-direction: column;
+}
+
+li img {
+  width: 100px;
 }

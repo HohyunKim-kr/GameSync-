@@ -12,7 +12,7 @@
         <div>
           <p>GameSync</p>
         </div>
-        <div>
+        <div class="header-icon">
           <a href="/">
             <img src="/images/my.png" alt="" />
           </a>
@@ -26,11 +26,19 @@
         <div class="writeBTn"><button>write</button></div>
         <div class="userWork">
           <ul>
-            <li><img src="/images/game2.jpg" alt="" />이미지</li>
+            <li><img src="/images/game2.jpg" alt="" /></li>
             <li><a href="/">이름</a></li>
             <li><span>날짜</span></li>
             <li><span>👍별</span></li>
           </ul>
+          {{developBoards.map((developBoard)=>(
+          <ul>
+            <li><img src="/images/game2.jpg" alt="" /></li>
+            <li><a href="/">{developBoard.id}</a></li>
+            <li><span>날짜</span></li>
+            <li><span>👍별</span></li>
+          </ul>
+          ))}}
         </div>
       </div>
     </div>
