@@ -15,17 +15,6 @@ exports.getWrite = (req, res, next) => {
     res.render("ideaBoards/write.html");
 };
 
-exports.postWrite = async (req, res, next) => {
-    try {
-        const ideaBoardsRequestDTO = new IdeaBoardsRequestDTO(req.body);
-        const result = await ideaBoardService.write(ideaBoardsRequestDTO);
-        console.log(`result postWrite :`, result);
-        // res.redirect(`ideaBoards/view`);
-    } catch (e) {
-        next(e);
-    }
-};
-
 exports.view = async (req, res, next) => {
     try {
         res.render("ideaBoards/view.html");

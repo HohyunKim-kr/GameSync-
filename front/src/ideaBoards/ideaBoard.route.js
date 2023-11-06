@@ -5,7 +5,6 @@ const ideaboardController = require("./ideaBoard.controller");
 router.get("/ideaBoards/", ideaboardController.list);
 
 router.get("/ideaBoards/write", ideaboardController.getWrite);
-router.post("/ideaBoards/write", ideaboardController.postWrite);
 
 router.get("/ideaBoards/view", ideaboardController.view);
 
