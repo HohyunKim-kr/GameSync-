@@ -14,6 +14,7 @@ const {
   NoticeBoardResponseDTO,
 } = require("./noticeBoard.dto");
 const { noticeBoards } = require("../entity");
+const { where } = require("sequelize");
 
 exports.createBoard = async (noticeBoardRequestDTO) => {
   try {
@@ -43,19 +44,59 @@ exports.createBoard = async (noticeBoardRequestDTO) => {
     throw new Error(`Service createBoard err: ${e.message}`);
   }
 };
-// exports.findAllBoard = async () => {
-//   try {
-//   } catch (e) {}
-// };
-// exports.findOneBoard = async () => {
-//   try {
-//   } catch (e) {}
-// };
-// exports.updateBoard = async () => {
-//   try {
-//   } catch (e) {}
-// };
-// exports.dleteBoard = async () => {
-//   try {
-//   } catch (e) {}
-// };
+exports.findAllBoard = async () => {
+  try {
+    const result = await noticeBoards.findAll();
+    console.log("findAll result :", result);
+    return result;
+  } catch (e) {
+    throw new Error(`SERVICE findAllBoard ERROR: ${e.message}`);
+  }
+};
+exports.findOneBoard = async (noticeBoardId) => {
+  try {
+    const result = await noticeBoards.findOne({
+      raw: true,
+      where: {
+        id: noticeBoardId,
+      },
+    });
+    console.log("findOne result :", result);
+    return result;
+  } catch (e) {
+    throw new Error(`SERVICE findOneBoard ERROR: ${e.message}`);
+  }
+};
+exports.updateBoard = async (noticeBoardId, noticeBoardRequestDTO) => {
+  try {
+    const result = await noticeBoards.update(
+      {
+        title: noticeBoardRequestDTO.title,
+        content: noticeBoardRequestDTO.content,
+        category: noticeBoardRequestDTO.category,
+        img: noticeBoardRequestDTO.img,
+      },
+      {
+        where: {
+          id: noticeBoardId,
+        },
+      }
+    );
+    console.log(`updateBoard result:`, result);
+  } catch (e) {
+    throw new Error(`SERVICE updateBoard ERROR: ${e.message}`);
+  }
+};
+exports.deleteBoard = async (noticeBoardId) => {
+  try {
+    const result = await noticeBoards.destroy({
+      where: {
+        id: noticeBoardId,
+      },
+    });
+    console.log(`deleteBoard result :`, result);
+    return result;
+  } catch (e) {
+    throw new Error(`SERVICE deleteBoard ERROR: ${e.message}`);
+  }
+};
