@@ -1,4 +1,15 @@
-// const app = require("../../app");
+const express = require("express");
+const app = express();
+const nunjucks = require("nunjucks");
+
+app.set("view engine", "html");
+nunjucks.configure("views", {
+    express: app,
+});
+app.use(express.json());
+
+app.use(express.urlencoded({ extended: true }));
+app.use(express.static("public"));
 
 // app.get("/ideaBoards/", (req, res) => {
 //     res.render("ideaBoards/ideaBoard.list.html");
@@ -15,3 +26,5 @@
 // app.get("/ideaBoards/modify", (req, res) => {
 //     res.render("ideaBoards/ideaBoard.modify.html");
 // });
+
+module.exports = app;
