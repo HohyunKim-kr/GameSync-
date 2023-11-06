@@ -1,0 +1,54 @@
+* {
+  padding: 0;
+  margin: 0;
+}
+
+ul,
+li {
+  list-style: none;
+}
+
+a {
+  text-decoration-line: none;
+}
+
+#developBoard header {
+  position: sticky;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 50px;
+  display: flex;
+  justify-content: space-between;
+  padding: 5px 30px;
+  z-index: 99;
+  background-color: #344770;
+}
+
+#pageTitle {
+  width: 100%;
+  height: 150px;
+  padding: 20px;
+  text-align: center;
+}
+
+.writeBTn {
+  display: flex;
+  align-items: end;
+  justify-content: end;
+  padding: 10px;
+}
+
+#developBody .userWork {
+  width: 1200px;
+  background-image: url(../images/KakaoTalk_20231106_130647640.jpg);
+  height: 500px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.userWork ul {
+  display: flex;
+  flex-direction: column;
+}
