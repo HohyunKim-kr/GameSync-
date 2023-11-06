@@ -119,3 +119,9 @@ ul {
 .box-hit {
     font-size: 20px;
 }
+
+#ideaBoardForm {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
