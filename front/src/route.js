@@ -1,22 +1,15 @@
-// const app = require("../app");
-
 const express = require("express");
 const router = express.Router();
+// const developBoardsRouter = require("./developBoards/developBoard.route");
+const ideaBoardsRouter = require("./ideaBoards/ideaBoard.route");
+// const noticesRouter = require("./notices/noticeBoard.route");
 
-router.get("/ideaBoards/", (req, res) => {
-  res.render("ideaBoards/ideaBoard.list.html");
+router.get("/", (req, res) => {
+  res.render("index.html");
 });
 
-router.get("/ideaBoards/write", (req, res) => {
-  res.render("ideaBoards/ideaBoard.write.html");
-});
-
-router.get("/ideaBoards/view", (req, res) => {
-  res.render("ideaBoards/ideaBoard.view.html");
-});
-
-router.get("/ideaBoards/modify", (req, res) => {
-  res.render("ideaBoards/ideaBoard.modify.html");
-});
+// router.use("/develop", developBoardsRouter);
+router.use("/idea", ideaBoardsRouter);
+// router.use("/notice", noticesRouter);
 
 module.exports = router;
