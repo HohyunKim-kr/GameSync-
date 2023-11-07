@@ -9,18 +9,16 @@ exports.createBoard = async (ideaBoardsRequestDTO) => {
         if (!(ideaBoardsRequestDTO instanceof IdeaBoardsRequestDTO)) {
             throw new Error("이상한거 넣지말래");
         }
-        const { id, title, author, content, hit, category, img, likeCount } =
+        const { title, author, content, category, image, original_filename } =
             ideaBoardsRequestDTO;
 
         const ideaBoard = IdeaBoards.build({
-            id,
             title,
             author,
             content,
-            hit,
             category,
-            img,
-            likeCount,
+            image: `http://localhost:3000/uploads/` + image,
+            original_filename,
         });
 
         const response = await ideaBoard.save();

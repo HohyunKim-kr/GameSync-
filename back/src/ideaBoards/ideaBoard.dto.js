@@ -1,27 +1,21 @@
 const BaseDTO = require("../dto");
 
 class IdeaBoardsRequestDTO extends BaseDTO {
-    id;
     title;
     author;
     content;
-
-    hit;
     category;
-    img;
-    likeCount;
+    image;
+    original_filename;
 
     constructor(body) {
         super();
-        this.id = body.id;
         this.title = body.title;
         this.author = body.author;
         this.content = body.content;
-
-        this.hit = body.hit;
         this.category = body.category;
-        this.img = body.img;
-        this.likeCount = body.likeCount;
+        this.image = body.image;
+        this.original_filename = body.original_filename;
         this.validate(this);
     }
 }
@@ -33,8 +27,9 @@ class IdeaBoardsResponseDTO extends BaseDTO {
     created_at;
     hit;
     category;
-    img;
-    likeCount;
+    image;
+    original_filename;
+    like;
 
     constructor(response) {
         super();
@@ -45,8 +40,9 @@ class IdeaBoardsResponseDTO extends BaseDTO {
         this.created_at = this.toDate(response.createdAt);
         this.hit = response.hit;
         this.category = response.category;
-        this.img = response.img;
-        this.likeCount = response.likeCount;
+        this.image = response.image;
+        this.original_filename = response.original_filename;
+        this.like = response.like;
         this.validate(this);
     }
 }
