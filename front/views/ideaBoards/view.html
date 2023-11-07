@@ -1,53 +1,53 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>ideaBoard_View</title>
-        <link type="text/css" rel="stylesheet" href="/css/ideaBoard.css" />
-        <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-    </head>
-    <body>
-        <div id="wrap">
-            <div id="header">
-                <div class="header-logo">
-                    <!-- <img src="" alt="" /> -->
-                    GAME SYNC
-                </div>
-                <div class="header-icon">
-                    <a href="/">
-                        <img src="/images/my.png" alt="" />
-                    </a>
-                </div>
-            </div>
-            <div id="container">
-                <div class="ideaBoard-img">
-                    <h2 class="ideaBoard-text">{{data.title}}</h2>
-                    <img src="/images/ideaBoard.jpg" alt="" />
-                </div>
-                <div class="view-wrap">
-                    <div>{{data.author}}</div>
-                    <div>{{data.content}}</div>
-                    <div>{{data.hit}}</div>
-                    <div>{{data.category}}</div>
-                    <div>{{data.like}}</div>
-                    <div>{{data.createdAt}}</div>
-                    <div class="dataimg">
-                        <img src="/uploads/{{data.image}}" alt="" />
-                    </div>
-                </div>
-            </div>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ideaBoard_View</title>
+    <link type="text/css" rel="stylesheet" href="/css/ideaBoard.css" />
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+  </head>
+  <body>
+    <div id="wrap">
+      <div id="header">
+        <div class="header-logo">
+          <!-- <img src="" alt="" /> -->
+          GAME SYNC
         </div>
-        <div id="footer">
-            <a href="https://github.com/HohyunKim-kr/GameSync-" target="_blank">
-                <img src="/images/git.png" alt="" />
-            </a>
-            <a
-                href="https://www.notion.so/6e7c5fa81141402d857da70dd2c867f1?v=e68659f259a04af98ace30ca01acede4"
-                target="_blank"
-            >
-                <img src="/images/notion.png" alt="" />
-            </a>
+        <div class="header-icon">
+          <a href="/">
+            <img src="/images/my.png" alt="" />
+          </a>
         </div>
-    </body>
+      </div>
+      <div id="container">
+        <div class="ideaBoard-img">
+          <h2 class="ideaBoard-text">{{data.title}}</h2>
+          <img src="/images/ideaBoard.jpg" alt="" />
+        </div>
+        <div class="view-wrap">
+          <div>{{data.author}}</div>
+          <div>{{data.content}}</div>
+          <div>{{data.hit}}</div>
+          <div>{{data.category}}</div>
+          <div>{{data.like}}</div>
+          <div>{{data.createdAt}}</div>
+          <div class="dataimg">
+            <img src="/{{data.image}}" />
+          </div>
+        </div>
+      </div>
+    </div>
+    <div id="footer">
+      <a href="https://github.com/HohyunKim-kr/GameSync-" target="_blank">
+        <img src="/images/git.png" alt="" />
+      </a>
+      <a
+        href="https://www.notion.so/6e7c5fa81141402d857da70dd2c867f1?v=e68659f259a04af98ace30ca01acede4"
+        target="_blank"
+      >
+        <img src="/images/notion.png" alt="" />
+      </a>
+    </div>
+  </body>
 </html>
