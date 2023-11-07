@@ -260,3 +260,13 @@ ul {
     color: white;
     cursor: pointer;
 }
+
+/* view */
+
+.dataimg {
+    width: 300px;
+}
+
+.dataimg img {
+    width: 100%;
+}

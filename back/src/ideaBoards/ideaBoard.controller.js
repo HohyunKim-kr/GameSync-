@@ -4,7 +4,10 @@ const ideaBoardService = require("./ideaBoard.service");
 exports.create = async (req, res, next) => {
     try {
         // console.log(req.body);
-        const ideaBoardsRequestDTO = new IdeaBoardsRequestDTO(req.body);
+        const ideaBoardsRequestDTO = new IdeaBoardsRequestDTO(
+            req.body,
+            req.flie
+        );
         // res.send("create");
 
         const response = await ideaBoardService.createBoard(

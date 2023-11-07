@@ -27,6 +27,7 @@
                 </div>
                 <form
                     method="post"
+                    action="/idea/ideaBoards/write"
                     id="ideaBoardForm"
                     enctype="multipart/form-data"
                 >
@@ -58,7 +59,10 @@
                         <label for="file">
                             <div class="uploadbtn">파일 선택하기</div>
                         </label>
-                        <input type="file" name="file" id="file" />
+                        <input type="file" name="upload" id="file" />
+                        <div>
+                            <img id="dataimg" src="" alt="" />
+                        </div>
                     </div>
                     <div class="btnbox">
                         <div class="tolist">
@@ -80,6 +84,6 @@
                 <img src="/images/notion.png" alt="" />
             </a>
         </div>
-        <script src="/js/ideaBoard.js"></script>
+        <!-- <script src="/js/ideaBoard.js"></script> -->
     </body>
 </html>
