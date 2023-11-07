@@ -30,16 +30,23 @@ router.get("/notices/write", (req, res) => {
   res.render("notices/write.html");
 });
 
+// router.post(
+//   "/notices/write",
+//   upload.single("upload"),
+//   noticeBoardController.write
+// );
+
 router.post(
   "/notices/write",
   upload.single("upload"),
   noticeBoardController.write
 );
 
-router.get("/notices/view", (req, res) => {
-  res.render("notices/view.html");
-});
-
+// router.get("/notices/view", (req, res) => {
+//   res.render("notices/view.html");
+// });
+// res.render("notices/view.html");
+router.get("/notices/view", noticeBoardController.view);
 router.get("/notices/modify", (req, res) => {
   res.render("notices/modify.html");
 });

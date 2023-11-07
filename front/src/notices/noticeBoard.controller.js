@@ -16,8 +16,21 @@ exports.write = async (req, res, next) => {
     tmp["like"] = 1;
     tmp["createdAt"] = Date.now();
     tmp["updatedAt"] = Date.now();
-    const response = await noticeboardService.postWrite(tmp);
-    console.log(response);
+    const { data } = await noticeboardService.postWrite(tmp);
+    // console.log(response);
+    res.redirect(`./view?id=${data.id}`);
+  } catch (e) {
+    next(e);
+  }
+};
+
+exports.view = async (req, res, next) => {
+  try {
+    const { id } = req.query;
+    // console.log(id);
+    const { data } = await noticeboardService.getView(id);
+    console.log(data);
+    res.render("notices/view.html", { data: data });
   } catch (e) {
     next(e);
   }
