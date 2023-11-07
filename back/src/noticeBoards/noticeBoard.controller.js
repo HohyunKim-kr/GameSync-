@@ -3,10 +3,12 @@ const noticeBoardService = require("./noticeBoard.service");
 
 exports.create = async (req, res, next) => {
   try {
+    console.log(req.body);
     const requestDTO = new NoticeBoardRequestDTO(req.body);
     const response = await noticeBoardService.createBoard(requestDTO);
     res.status(201).json(response); // 상태 코드를 201로 설정
   } catch (e) {
+    console.log(e);
     next(e);
   }
 };

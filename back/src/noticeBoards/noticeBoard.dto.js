@@ -1,7 +1,7 @@
 const BaseDTO = require("../dto");
 
 class NoticeBoardRequestDTO extends BaseDTO {
-  id;
+  // id;
   title;
   author;
   content;
@@ -9,11 +9,11 @@ class NoticeBoardRequestDTO extends BaseDTO {
   hit;
   category;
   img;
-  likeCount;
+  like;
 
   constructor(body) {
     super();
-    this.id = body.id;
+    // this.id = body.id;
     this.title = body.title;
     this.author = body.author;
     this.content = body.content;
@@ -21,7 +21,7 @@ class NoticeBoardRequestDTO extends BaseDTO {
     this.hit = body.hit;
     this.category = body.category;
     this.img = body.img;
-    this.likeCount = body.likeCount;
+    this.like = body.like;
     this.validate(this);
   }
 }
@@ -35,7 +35,7 @@ class NoticeBoardResponseDTO extends BaseDTO {
   hit;
   category;
   img;
-  likeCount;
+  like;
 
   constructor(response) {
     super();
@@ -47,7 +47,7 @@ class NoticeBoardResponseDTO extends BaseDTO {
     this.hit = response.hit;
     this.category = response.category;
     this.img = response.img;
-    this.likeCount = response.likeCount;
+    this.like = response.like;
     this.validate(this);
   }
 }

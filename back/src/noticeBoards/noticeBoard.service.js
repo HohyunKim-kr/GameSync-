@@ -21,7 +21,7 @@ exports.createBoard = async (noticeBoardRequestDTO) => {
     if (!(noticeBoardRequestDTO instanceof NoticeBoardRequestDTO)) {
       throw new Error("Create Error");
     }
-    const { id, title, author, content, hit, category, img, likeCount } =
+    const { id, title, author, content, hit, category, img, like } =
       noticeBoardRequestDTO;
 
     const noticeBoard = await noticeBoards.build({
@@ -32,7 +32,7 @@ exports.createBoard = async (noticeBoardRequestDTO) => {
       hit,
       category,
       img,
-      likeCount,
+      like,
     });
 
     const response = await noticeBoard.save();
@@ -41,6 +41,7 @@ exports.createBoard = async (noticeBoardRequestDTO) => {
     console.log(`result : service`, result);
     return result;
   } catch (e) {
+    console.log(e);
     throw new Error(`Service createBoard err: ${e.message}`);
   }
 };
