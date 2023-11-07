@@ -1,34 +1,36 @@
-// const axios = require("axios");
+const axios = require("axios");
 
-// class DevelopBoardService {
-//   constructor() {
-//     this.baseUrl = "http://localhost:4000/developBoards";
-//   }
+class DevelopBoardsService {
+  constructor(baseUrl) {
+    this.baseUrl = baseUrl;
+  }
 
-//   async findAll() {
-//     const response = await axios.get(this.baseUrl);
-//     return response.data;
-//   }
+  async getList() {
+    try {
+      const result = await axios.get(this.baseUrl);
+      return result.data;
+    } catch (e) {
+      throw new Error(`DevelopSERVICE getList ERROR: ${e.message}`);
+    }
+  }
 
-//   async create(developBoard) {
-//     const response = await axios.post(this.baseUrl, developBoard);
-//     return response.data;
-//   }
+  async postWrite(boardData) {
+    try {
+      const result = await axios.post(this.baseUrl, boardData);
+      return result.data;
+    } catch (e) {
+      throw new Error(`DevelopSERVICE postWrite ERROR: ${e.message}`);
+    }
+  }
 
-//   async findOne(id) {
-//     const response = await axios.get(this.baseUrl + "/" + id);
-//     return response.data;
-//   }
+  async getView(id) {
+    try {
+      const result = await axios.get(`${this.baseUrl}/${id}`);
+      return result.data;
+    } catch (e) {
+      throw new Error(`DevelopSERVICE getView ERROR: ${e.message}`);
+    }
+  }
+}
 
-//   async update(id, developBoard) {
-//     const response = await axios.put(this.baseUrl + "/" + id, developBoard);
-//     return response.data;
-//   }
-
-//   async remove(id) {
-//     const response = await axios.delete(this.baseUrl + "/" + id);
-//     return response.data;
-//   }
-// }
-
-// module.exports = DevelopBoardService;
+module.exports = DevelopBoardsService;
