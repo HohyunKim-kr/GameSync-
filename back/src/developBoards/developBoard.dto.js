@@ -1,27 +1,21 @@
 const BaseDTO = require("../dto");
 
 class DevelopBoardsRequestDTO extends BaseDTO {
-  id;
   title;
   author;
   content;
-  date;
-  hit;
   category;
-  img;
-  likeCount;
+  image;
+  original_filename;
 
   constructor(body) {
     super();
-    this.id = body.id;
     this.title = body.title;
     this.author = body.author;
     this.content = body.content;
-    this.date = body.date;
-    this.hit = body.hit;
     this.category = body.category;
-    this.img = body.img;
-    this.likeCount = body.likeCount;
+    this.image = body.image;
+    this.original_filename = body.original_filename;
     this.validate(this);
   }
 }

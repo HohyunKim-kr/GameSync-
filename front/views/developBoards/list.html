@@ -8,40 +8,56 @@
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
   </head>
   <body>
-    <div id="developBoard">
-      <header>
-        <div>
-          <p>GameSync</p>
+    <div id="wrap">
+      <div id="header">
+        <div class="header-logo">
+          <!-- <img src="" alt="" /> -->
+          GAME SYNC
         </div>
         <div class="header-icon">
           <a href="/">
             <img src="/images/my.png" alt="" />
           </a>
         </div>
-      </header>
-      <div id="pageTitle">
-        <h2>게임 개발 게시판</h2>
-        <img src="/images/ideaBoard.jpg" alt="" />
       </div>
-      <div id="developBody">
-        <div class="writeBTn"><button>write</button></div>
-        <div class="userWork">
-          <ul>
-            <li><img src="/images/game2.jpg" alt="" /></li>
-            <li><a href="/">이름</a></li>
-            <li><span>날짜</span></li>
-            <li><span>👍별</span></li>
+      <div id="container">
+        <div class="ideaBoard-img">
+          <h2 class="ideaBoard-text">게임 기획, 아이디어 게시판</h2>
+          <img src="/images/ideaBoard.jpg" alt="" />
+        </div>
+        <div class="write-btn-wrap">
+          <div class="write-btn">
+            <a href="/develop/developBoards/write">WRITE</a>
+          </div>
+        </div>
+        <div class="ideaBoard-wrap">
+          {% for data in list %}
+          <ul class="ideaBoard-box">
+            <li class="box-img">
+              <img src="/{{data.image}}" alt="" />
+            </li>
+            <li class="box-name">
+              <a href="/develop/developBoards/view?id={{data.id}}">
+                {{data.title}}
+              </a>
+            </li>
+            <li class="box-category">{{data.category}}</li>
+            <li class="box-hit">👍 {{data.hit}}</li>
           </ul>
-          {{developBoards.map((developBoard)=>(
-          <ul>
-            <li><img src="/images/game2.jpg" alt="" /></li>
-            <li><a href="/">{developBoard.id}</a></li>
-            <li><span>날짜</span></li>
-            <li><span>👍별</span></li>
-          </ul>
-          ))}}
+          {% endfor %}
         </div>
       </div>
+    </div>
+    <div id="footer">
+      <a href="https://github.com/HohyunKim-kr/GameSync-" target="_blank">
+        <img src="/images/git.png" alt="" />
+      </a>
+      <a
+        href="https://www.notion.so/6e7c5fa81141402d857da70dd2c867f1?v=e68659f259a04af98ace30ca01acede4"
+        target="_blank"
+      >
+        <img src="/images/notion.png" alt="" />
+      </a>
     </div>
   </body>
 </html>

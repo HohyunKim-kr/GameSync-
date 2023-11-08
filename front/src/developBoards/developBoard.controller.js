@@ -1,9 +1,10 @@
 const developBoardService = require("./developBoard.service");
 
-exports.getList = async (req, res, next) => {
+exports.list = async (req, res, next) => {
   try {
-    const developBoards = await developBoardService.getList();
-    res.json(developBoards);
+    const { data } = await developBoardService.getList();
+    console.log(`list controller result:`, data);
+    res.render("developBoards/list.html", { list: data });
   } catch (e) {
     next(e, "developBoard 목록 조회에 실패했습니다.");
   }
@@ -12,56 +13,100 @@ exports.getList = async (req, res, next) => {
 exports.findOne = async (req, res, next) => {
   try {
     const developBoardId = req.params.id;
-    const developBoard = await developBoardService.findOne(developBoardId);
-    res.json(developBoard);
+    console.log(developBoardId);
+    const response = await developBoardService.findOneBoard(developBoardId);
+    res.status(201).json(response);
   } catch (e) {
     next(e);
   }
 };
 
+exports.getWrite = (req, res, next) => {
+  res.render("developBoards/write.html");
+};
+
 exports.postWrite = async (req, res, next) => {
   try {
+    const data = req.body;
+    const file = req.file;
     const boardData = {
-      title: req.body.title,
-      author: req.body.author,
-      content: req.body.content,
-      image: req.file.filename,
+      title: data.title,
+      author: data.author,
+      content: data.content,
+      category: data.category,
+      image: file.filename,
+      origina_filename: file.originalname,
     };
 
     console.log(req.file); // 객체 출력
-    const developBoard = await developBoardService.postWrite(boardData);
-    res.json(developBoard);
+    const result = await developBoardService.postWrite(boardData);
+    console.log(`postWite controller result:`, result);
+    const { id } = result.data;
+    res.redirect(`./view?id=${id}`);
   } catch (e) {
     next(e, "developBoard 작성에 실패했습니다.");
   }
 };
 
-exports.putUpdate = async (req, res, next) => {
+exports.view = async (req, res, next) => {
   try {
-    const developBoardId = req.params.id;
-    const boardData = {
-      title: req.body.title,
-      author: req.body.author,
-      content: req.body.content,
-      image: req.file.filename,
-    };
-
-    const developBoard = await developBoardService.putUpdate(
-      developBoardId,
-      boardData
-    );
-    res.json(developBoard);
+    const { id } = req.query;
+    const { data } = await developBoardService.getView(id);
+    console.log(data.image);
+    console.log(data);
+    res.render("developBoards/view.html", { data: data });
   } catch (e) {
-    next(e, "developBoard 수정에 실패했습니다.");
+    next(e);
   }
 };
 
-exports.delete = async (req, res, next) => {
+exports.getModify = async (req, res, next) => {
   try {
-    const developBoardId = req.params.id;
-    await developBoardService.delete(developBoardId);
-    res.sendStatus(204);
+    const { id } = req.query;
+    const { data } = await developBoardService.getModify(id);
+
+    res.render("developBoards/modify.html", { data: data, id });
   } catch (e) {
-    next(e, "developBoard 삭제에 실패했습니다.");
+    next(e);
+  }
+};
+
+exports.postModify = async (req, res, next) => {
+  try {
+    const { id } = req.query;
+    console.log(id);
+
+    const data = req.body;
+
+    console.log(req.file);
+    const file = req.file;
+
+    const boardData = {
+      title: data.title,
+      author: data.author,
+      content: data.content,
+      category: data.category,
+      image: file.filename,
+      original_filename: file.originalname,
+    };
+
+    console.log(`front modify`, boardData, id);
+    const { result } = await developBoardService.putModify(id, boardData);
+    console.log(`postWrite controller result :`, result);
+
+    res.redirect(`./view?id=${id}`);
+  } catch (e) {
+    next(e);
+  }
+};
+
+exports.postDelete = async (req, res, next) => {
+  try {
+    const { id } = req.query;
+    const { data } = await developBoardService.postDelete(id);
+    console.log(`postDelete controller result :`, data);
+    res.redirect(`./`);
+  } catch (e) {
+    next(e);
   }
 };

@@ -1,23 +1,28 @@
 * {
-  padding: 0;
   margin: 0;
-}
-
-ul,
-li {
-  list-style: none;
+  padding: 0;
+  box-sizing: border-box;
 }
 
 a {
-  text-decoration-line: none;
+  text-decoration: none;
+  color: #333;
+}
+ul {
+  list-style: none;
 }
 
-#developBoard header {
+#wrap {
+  width: 100%;
+  position: relative;
+}
+
+#header {
   position: sticky;
   left: 0;
   top: 0;
   width: 100%;
-  height: 80px;
+  height: 50px;
   display: flex;
   justify-content: space-between;
   padding: 5px 30px;
@@ -25,14 +30,29 @@ a {
   background-color: #344770;
 }
 
-#pageTitle {
+.header-icon {
+  width: 35px;
+}
+
+.header-icon img {
+  width: 100%;
+}
+
+#container {
+  width: 100%;
+  background-color: #344770;
+  position: relative;
+}
+
+.ideaBoard-img {
   width: 100%;
   max-width: 1920px;
   height: 200px;
   overflow: hidden;
   position: relative;
 }
-#pageTitle > h2 {
+
+.ideaBoard-text {
   position: absolute;
   top: 50%;
   left: 50%;
@@ -41,30 +61,89 @@ a {
   z-index: 99;
 }
 
-#pageTitle > img {
+.ideaBoard-img img {
   width: 100%;
   opacity: 0.5;
 }
 
-.writeBTn {
-  display: flex;
-  align-items: end;
-  justify-content: end;
-  padding: 10px;
-}
-
-#developBody .userWork {
+#footer {
   width: 100%;
+  height: 150px;
+  background-color: #344770;
   display: flex;
-  align-items: center;
   justify-content: center;
+  align-items: center;
+  gap: 30px;
 }
 
-.userWork ul {
+#footer a {
+  width: 40px;
+}
+
+#footer a img {
+  width: 100%;
+}
+
+/* list  */
+
+.write-btn-wrap {
+  width: 60%;
+  margin: 30px auto;
+  display: flex;
+  justify-content: end;
+}
+
+.write-btn {
+  background-color: #ff9b2f;
+  border-radius: 20px;
+  width: 100px;
+  height: 35px;
+  text-align: center;
+  font-size: 20px;
+}
+
+.write-btn a {
+  color: #fff;
+}
+
+.ideaBoard-wrap {
+  width: 70%;
+  display: flex;
+  flex-wrap: wrap;
+  margin: 0 auto;
+  gap: 10px;
+  /* border: 1px solid floralwhite; */
+}
+
+.ideaBoard-box {
+  width: 28%;
+  color: #fff;
+  /* border: 1px solid floralwhite; */
   display: flex;
   flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  margin: 20px auto;
+  /* padding: 50px 0; */
 }
 
-li img {
-  width: 100px;
+.box-img {
+  width: 300px;
+  height: 300px;
+}
+
+.box-img img {
+  width: 100%;
+  height: 100%;
+  border-radius: 25px;
+}
+
+.box-name,
+.box-hit {
+  font-size: 20px;
+}
+
+.box-name a {
+  color: #fff;
 }

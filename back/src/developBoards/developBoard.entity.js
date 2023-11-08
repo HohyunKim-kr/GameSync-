@@ -1,9 +1,4 @@
-// const sequelize = new Sequelize(db.database, db.username, db.password, {
-//   dialect: "mysql",
-//   host: db.host,
-// });
-
-module.exports = (sequelize, DataTypes) =>
+module.exports = (sequelize, DataTypes) => {
   sequelize.define(
     "DevelopBoards",
     {
@@ -24,32 +19,25 @@ module.exports = (sequelize, DataTypes) =>
         type: DataTypes.TEXT,
         allowNull: false,
       },
-      date: {
-        type: DataTypes.DATE,
-        allowNull: false,
-        defaultValue: DataTypes.NOW,
-      },
       hit: {
         type: DataTypes.INTEGER,
-        allowNull: false,
         defaultValue: 0,
       },
       category: {
         type: DataTypes.INTEGER,
-        allowNull: false,
         defaultValue: 1,
       },
-      img: {
+      image: {
         type: DataTypes.STRING,
-        allowNull: true,
+      },
+      original_filename: {
+        type: DataTypes.STRING,
       },
       like: {
         type: DataTypes.INTEGER,
-        allowNull: false,
         defaultValue: 0,
       },
     },
-    {
-      timestamps: true,
-    }
+    { freezeTableName: true }
   );
+};

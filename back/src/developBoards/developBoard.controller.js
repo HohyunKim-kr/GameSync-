@@ -1,24 +1,30 @@
 const { DevelopBoardsRequestDTO } = require("./developBoard.dto");
-const DevelopBoardService = require("./developBoard.service");
+const developBoardService = require("./developBoard.service");
 
 exports.create = async (req, res, next) => {
   try {
-    if (!(req.body instanceof DevelopBoardsRequestDTO)) {
-      throw new Error("req.body는 DevelopBoardsRequestDTO 타입이 아닙니다.");
-    }
-
-    const developBoard = await DevelopBoardService.createBoard(req.body);
-    res.status(201).json(developBoard);
+    console.log(req.body);
+    const develoBoardsrequestDTO = new DevelopBoardsRequestDTO(
+      req.body,
+      req.file
+    );
+    const response = await developBoardService.createBoard(
+      develoBoardsrequestDTO
+    );
+    res.status(201).json(response);
   } catch (e) {
+    console.log(e);
     next(e);
   }
 };
 
 exports.findAll = async (req, res, next) => {
   try {
-    const developBoard = await DevelopBoardService.findAllBoard();
-
-    res.json(developBoard);
+    const developBoardsRequestDTO = new DevelopBoardsRequestDTO(req.body);
+    const response = await developBoardService.findAllBoard(
+      developBoardsRequestDTO
+    );
+    res.status(201).json(response);
   } catch (e) {
     next(e);
   }
@@ -26,15 +32,11 @@ exports.findAll = async (req, res, next) => {
 
 exports.findOne = async (req, res, next) => {
   try {
-    const developBoard = await DevelopBoardService.findOneBoard(req.params.id);
+    const developBoardId = req.params.id;
+    console.log(developBoardId);
 
-    if (!developBoard) {
-      res.status(404).send("게시판을 찾을 수 없습니다.");
-      return;
-    }
-
-    // 게시판 정보를 응답
-    res.json(developBoard);
+    const response = await developBoardService.findOneBoard(developBoardId);
+    res.status(201).json(response);
   } catch (e) {
     next(e);
   }
@@ -42,20 +44,19 @@ exports.findOne = async (req, res, next) => {
 
 exports.update = async (req, res, next) => {
   try {
-    const developBoard = await DevelopBoardService.findOneBoard(req.params.id);
+    const developBoardId = req.params.id;
+    console.log(`back update boardId:`, developBoardId);
+    const developBoardRequestDTO = new DevelopBoardsRequestDTO(
+      req.body,
+      req.file
+    );
+    const response = await developBoardService.updateBoard(
+      developBoardId,
+      developBoardRequestDTO
+    );
 
-    if (!developBoard) {
-      res.status(404).send("게시판을 찾을 수 없습니다.");
-      return;
-    }
-
-    developBoard.title = req.body.title;
-    developBoard.content = req.body.content;
-    developBoard.writer = req.body.writer;
-
-    await developBoard.save();
-
-    res.json(developBoard);
+    console.log(`back update response:`, response);
+    res.status(201).json(response);
   } catch (e) {
     next(e);
   }
@@ -63,16 +64,9 @@ exports.update = async (req, res, next) => {
 
 exports.delete = async (req, res, next) => {
   try {
-    const developBoard = await DevelopBoardService.findOneBoard(req.params.id);
-
-    if (!developBoard) {
-      res.status(404).send("게시판을 찾을 수 없습니다.");
-      return;
-    }
-
-    await developBoard.destroy();
-
-    res.status(204).send();
+    const developBoardId = req.params.id;
+    const response = await developBoardService.deleteBoard(developBoardId);
+    res.status(201).json(response);
   } catch (e) {
     next(e);
   }

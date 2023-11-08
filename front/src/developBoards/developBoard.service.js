@@ -1,36 +1,65 @@
 const axios = require("axios");
 
-class DevelopBoardsService {
-  constructor(baseUrl) {
-    this.baseUrl = baseUrl;
+exports.getList = async () => {
+  try {
+    const result = await axios.get("http://localhost:4000/developBoards/");
+    console.log(result);
+    return result;
+  } catch (e) {
+    throw new Error(`SERVICE getList ERROR: ${e.message}`);
   }
+};
 
-  async getList() {
-    try {
-      const result = await axios.get(this.baseUrl);
-      return result.data;
-    } catch (e) {
-      throw new Error(`DevelopSERVICE getList ERROR: ${e.message}`);
-    }
+exports.postWrite = async (boardData) => {
+  try {
+    const result = await axios.post(
+      "http://localhost:4000/developBoards/",
+      boardData
+    );
+    console.log(result);
+    return result;
+  } catch (e) {
+    throw new Error(`SERVICE getList ERROR: ${e.message}`);
   }
+};
 
-  async postWrite(boardData) {
-    try {
-      const result = await axios.post(this.baseUrl, boardData);
-      return result.data;
-    } catch (e) {
-      throw new Error(`DevelopSERVICE postWrite ERROR: ${e.message}`);
-    }
+exports.getView = async (id) => {
+  try {
+    const result = await axios.get(`http://localhost:4000/developBoards/${id}`);
+    return result;
+  } catch (e) {
+    throw new Error(`SERVICE getView ERROR: ${e.message}`);
   }
+};
 
-  async getView(id) {
-    try {
-      const result = await axios.get(`${this.baseUrl}/${id}`);
-      return result.data;
-    } catch (e) {
-      throw new Error(`DevelopSERVICE getView ERROR: ${e.message}`);
-    }
+exports.getModify = async (id) => {
+  try {
+    const result = await axios.get(`http://localhost:4000/developBoards/${id}`);
+    return result;
+  } catch (e) {
+    throw new Error(`SERVICE getModify ERROR: ${e.message}`);
   }
-}
+};
 
-module.exports = DevelopBoardsService;
+exports.putModify = async (id, boardData) => {
+  try {
+    const result = await axios.put(
+      `http://localhost:4000/developBoards/${id}`,
+      boardData
+    );
+    return result;
+  } catch (e) {
+    throw new Error(`SERVICE putModify ERROR: ${e.message}`);
+  }
+};
+
+exports.postDelete = async (id) => {
+  try {
+    const result = await axios.delete(
+      `http://localhost:4000/developBoards/${id}`
+    );
+    return result;
+  } catch (e) {
+    throw new Error(`SERVICE postDelete ERROR: ${e.message}`);
+  }
+};

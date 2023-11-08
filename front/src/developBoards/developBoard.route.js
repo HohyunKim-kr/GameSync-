@@ -19,16 +19,9 @@ const upload = multer({
   }),
 });
 
-router.get("/developBoards/", async (req, res) => {
-  const developBoards = await developboardController.getList();
-  res.render("developBoards/list", {
-    developBoards,
-  });
-});
+router.get("/developBoards/", developboardController.list);
 
-router.get("/developBoards/write", async (req, res) => {
-  res.render("developBoards/write");
-});
+router.get("/developBoards/write", developboardController.getWrite);
 
 router.post(
   "/developBoards/write",
@@ -36,28 +29,15 @@ router.post(
   developboardController.postWrite
 );
 
-router.use((err, req, res, next) => {
-  if (err instanceof DevelopBoardError) {
-    res.status(err.statusCode).send(err.message);
-  } else {
-    res.status(500).send("서버 오류가 발생했습니다.");
-  }
-});
+router.get("/developBoards/view", developboardController.view);
 
-router.get("/developBoards/view/:id", async (req, res) => {
-  const developBoardId = req.params.id;
-  const developBoard = await developboardController.findOne(developBoardId);
-  res.render("developBoards/view", {
-    developBoard,
-  });
-});
+router.get("/developBoards/modify", developboardController.getModify);
+router.post(
+  "/developBoards/modify",
+  upload.single("upload"),
+  developboardController.postModify
+);
 
-router.get("/developBoards/modify/:id", async (req, res) => {
-  const developBoardId = req.params.id;
-  const developBoard = await developboardController.findOne(developBoardId);
-  res.render("developBoards/modify", {
-    developBoard,
-  });
-});
+router.post("/developBoards/delete", developboardController.postDelete);
 
 module.exports = router;
