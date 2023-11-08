@@ -46,12 +46,26 @@ exports.findOne = async (req, res, next) => {
 exports.update = async (req, res, next) => {
     try {
         const ideaBoardId = req.params.id;
-        const ideaBoardsRequestDTO = new IdeaBoardsRequestDTO(req.body);
+        console.log(`back update boardid:`, ideaBoardId);
+
+        const ideaBoardsRequestDTO = new IdeaBoardsRequestDTO(
+            req.body,
+            req.file
+        );
+        console.log(`back update ideaBoardsRequestDTO:`, ideaBoardsRequestDTO);
         const response = await ideaBoardService.updateBoard(
             ideaBoardId,
             ideaBoardsRequestDTO
         );
-        res.status(201).json(response);
+
+        console.log(`back update response :`, response);
+        if (response === 1) {
+            res.status(201).json({ message: "Updated successfully" });
+        } else {
+            res.status(404).json({ message: "No records updated" });
+        }
+
+        // res.status(201).json(response);
         // res.send("update");
     } catch (e) {
         next(e);
