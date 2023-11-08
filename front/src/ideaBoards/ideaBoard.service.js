@@ -45,7 +45,7 @@ exports.getModify = async (id) => {
     }
 };
 
-exports.putModify = async (boardData, id) => {
+exports.putModify = async (id, boardData) => {
     try {
         const result = await axios.put(
             `http://localhost:4000/ideaBoards/${id}`,

@@ -59,7 +59,7 @@ exports.getModify = async (req, res, next) => {
         const { id } = req.query;
         const { data } = await ideaBoardService.getModify(id);
 
-        res.render("ideaBoards/modify.html", { data: data });
+        res.render("ideaBoards/modify.html", { data: data, id });
     } catch (e) {
         next(e);
     }
@@ -70,8 +70,22 @@ exports.postModify = async (req, res, next) => {
         const { id } = req.query;
         console.log(id);
 
+        const data = req.body;
+
+        console.log(req.file);
+        const file = req.file;
+
+        const boardData = {
+            title: data.title,
+            author: data.author,
+            content: data.content,
+            category: data.category,
+            image: file.filename,
+            original_filename: file.originalname,
+        };
+
         console.log(`front modify`, boardData, id);
-        const { result } = await ideaBoardService.putModify(boardData, id);
+        const { result } = await ideaBoardService.putModify(id, boardData);
         console.log(`postWrite controller result :`, result);
 
         res.redirect(`./view?id=${id}`);
