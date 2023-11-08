@@ -12,20 +12,33 @@
 
     <ul>
       <li>
-        <span>제목{{data.title}}</span>
-        <span id="title"></span>
+        <span>제목</span>
+        <span id="title">{{data.title}}</span>
       </li>
       <li>
         <span>작성자</span>
-        <span id="writer"></span>
+        <span id="writer">">{{data.author}}</span>
       </li>
       <li>
-        <span id="content"></span>
+        <span id="content">{{data.content}}</span>
+      </li>
+      <li>
+        <span id="img">{{data.img}}</span>
+      </li>
+      <li>
+        <span id="content">{{data.createdAt}}</span>
       </li>
     </ul>
-
-    <a href="./noticeBoard.list.html" class="btn">목록으로</a>
-    <a href="./noticeBoard.modify.html" class="btn">글수정</a>
-    <button id="deleteBtn" class="btn">글삭제</button>
+    <div class="btnmenu">
+      <div class="tolist">
+        <a href="/idea/ideaBoards/">목록가기</a>
+      </div>
+      <div class="tomodify">
+        <a href="/notice/notices/modify?id={{data.id}}"> 수정하기 </a>
+      </div>
+      <form method="post" action="/notice/notices/delete?id={{data.id}}">
+        <button type="submit" class="todelete">글삭제</button>
+      </form>
+    </div>
   </body>
 </html>

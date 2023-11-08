@@ -3,7 +3,6 @@ const express = require("express");
 const router = express.Router();
 const noticeBoardController = require("./noticeBoard.controller");
 const multer = require("multer");
-// router.get("/notices/", noticeBoardController.list);
 // router.post("/notices/write", noticeBoardController.write);
 // router.get("/notices/view", noticeBoardController.view);
 // router.post("/notices/modify", noticeBoardController.modify);
@@ -22,9 +21,7 @@ const upload = multer({
   }),
 });
 
-router.get("/notices/", (req, res) => {
-  res.render("notices/list.html");
-});
+router.get("/notices/", noticeBoardController.list);
 
 router.get("/notices/write", (req, res) => {
   res.render("notices/write.html");
@@ -48,7 +45,12 @@ router.post(
 // res.render("notices/view.html");
 router.get("/notices/view", noticeBoardController.view);
 router.get("/notices/modify", (req, res) => {
-  res.render("notices/modify.html");
+  const { id } = req.query;
+  console.log("로긍", id);
+  res.render("notices/modify.html", { id });
 });
+router.post("/notices/modify", noticeBoardController.postModify);
+
+router.post("/notices/delete", noticeBoardController.postDelete);
 
 module.exports = router;

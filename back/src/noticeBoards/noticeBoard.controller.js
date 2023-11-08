@@ -38,11 +38,14 @@ exports.findOne = async (req, res, next) => {
 exports.update = async (req, res, next) => {
   try {
     const noticeBoardId = req.params.id;
+
     const noticeBoardRequestDTO = new NoticeBoardRequestDTO(req.body);
+
     const response = await noticeBoardService.updateBoard(
       noticeBoardId,
       noticeBoardRequestDTO
     );
+
     res.status(201).json(response);
   } catch (e) {
     next(e);

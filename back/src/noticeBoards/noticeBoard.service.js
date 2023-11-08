@@ -74,8 +74,8 @@ exports.updateBoard = async (noticeBoardId, noticeBoardRequestDTO) => {
       {
         title: noticeBoardRequestDTO.title,
         content: noticeBoardRequestDTO.content,
-        category: noticeBoardRequestDTO.category,
-        img: noticeBoardRequestDTO.img,
+        // category: noticeBoardRequestDTO.category,
+        // img: noticeBoardRequestDTO.img,
       },
       {
         where: {
@@ -83,7 +83,6 @@ exports.updateBoard = async (noticeBoardId, noticeBoardRequestDTO) => {
         },
       }
     );
-    console.log(`updateBoard result:`, result);
   } catch (e) {
     throw new Error(`SERVICE updateBoard ERROR: ${e.message}`);
   }

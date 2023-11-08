@@ -9,7 +9,7 @@
     <h1><a href="./noticeBoard.list.html">공지사항</a></h1>
 
     <h2>글수정</h2>
-    <form>
+    <form method="post" action="/notice/notices/modify?id={{id}}">
       <ul>
         <li>
           <span>제목</span>
@@ -17,14 +17,14 @@
         </li>
         <li>
           <span>작성자</span>
-          <input type="text" name="writer" value="작성자 입니다." />
+          <input type="text" name="author" value="작성자 입니다." />
         </li>
         <li>
           <textarea name="content">내용입니다.</textarea>
         </li>
       </ul>
 
-      <button type="submit">글수정</button>
+      <button type="submit" class="modify">글수정</button>
     </form>
   </body>
 </html>

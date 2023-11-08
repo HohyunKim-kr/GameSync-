@@ -5,11 +5,11 @@ class NoticeBoardRequestDTO extends BaseDTO {
   title;
   author;
   content;
-  date;
-  hit;
-  category;
-  img;
-  like;
+  // date;
+  // hit;
+  // category;
+  // img;
+  // like;
 
   constructor(body) {
     super();
@@ -17,11 +17,11 @@ class NoticeBoardRequestDTO extends BaseDTO {
     this.title = body.title;
     this.author = body.author;
     this.content = body.content;
-    this.date = body.date;
-    this.hit = body.hit;
-    this.category = body.category;
-    this.img = body.img;
-    this.like = body.like;
+    // this.date = body.date;
+    // this.hit = body.hit;
+    // this.category = body.category;
+    // this.img = body.img;
+    // this.like = body.like;
     this.validate(this);
   }
 }
