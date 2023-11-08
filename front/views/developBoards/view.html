@@ -4,8 +4,66 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
+    <link rel="stylesheet" href="/css/developBoard.view.css" />
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
   </head>
   <body>
-    <p>view.html</p>
+    <div id="wrap">
+      <div id="header">
+        <div class="header-logo">
+          <!-- <img src="" alt="" /> -->
+          GAME SYNC
+        </div>
+        <div class="header-icon">
+          <a href="/">
+            <img src="/images/my.png" alt="" />
+          </a>
+        </div>
+      </div>
+      <div id="container">
+        <div class="developBoard-img">
+          <h2 class="developBoard-text">{{data.title}}</h2>
+          <img src="/images/ideaBoard.jpg" alt="" />
+        </div>
+        <div class="view-wrap">
+          <div>{{data.author}}</div>
+          <div>{{data.content}}</div>
+          <div>{{data.hit}}</div>
+          <div>{{data.category}}</div>
+          <div>{{data.like}}</div>
+          <div>{{data.createdAt}}</div>
+          <div class="dataimg">
+            <img src="/{{data.image}}" />
+          </div>
+          <div class="btnmenu">
+            <div class="tolist">
+              <a href="/develop/developBoards/">목록가기</a>
+            </div>
+            <div class="tomodify">
+              <a href="/develop/developBoards/modify?id={{data.id}}">
+                수정하기
+              </a>
+            </div>
+            <form
+              method="post"
+              action="/develop/developBoards/delete?id={{data.id}}"
+            >
+              <button type="submit" class="todelete">삭제하기</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div id="footer">
+      <a href="https://github.com/HohyunKim-kr/GameSync-" target="_blank">
+        <img src="/images/git.png" alt="" />
+      </a>
+      <a
+        href="https://www.notion.so/6e7c5fa81141402d857da70dd2c867f1?v=e68659f259a04af98ace30ca01acede4"
+        target="_blank"
+      >
+        <img src="/images/notion.png" alt="" />
+      </a>
+    </div>
   </body>
 </html>

@@ -9,24 +9,23 @@ exports.createBoard = async (developBoardsRequestDTO) => {
     if (!(developBoardsRequestDTO instanceof DevelopBoardsRequestDTO)) {
       throw new Error("devDto 아닐때");
     }
-    const { id, title, author, content, hit, category, img, likeCount } =
+    const { title, author, content, category, image, original_filename } =
       developBoardsRequestDTO;
 
     const developBoard = DevelopBoards.build({
-      id,
       title,
       author,
       content,
-      hit,
       category,
-      img,
-      likeCount,
+      image,
+      original_filename,
     });
 
     const response = await developBoard.save();
     const result = new DevelopBoardsResponseDTO(response);
     console.log(`response server `, response);
     console.log(`result server`, result);
+    return result;
   } catch (e) {
     throw new Error(`SERVICE createBoard ERROR:`, e.message);
   }
@@ -40,12 +39,12 @@ exports.findAllBoard = async () => {
     throw new Error(`SERVICE findAllBoard ERROR: ${e.message}`);
   }
 };
-exports.findOneBoard = async (developBoardId) => {
+exports.findOneBoard = async (developBoards) => {
   try {
     const result = await DevelopBoards.findOne({
       raw: true,
       where: {
-        id: developBoardId,
+        id: developBoards,
       },
     });
 
@@ -57,12 +56,13 @@ exports.findOneBoard = async (developBoardId) => {
 };
 exports.updateBoard = async (developBoardId, developBoardsRequestDTO) => {
   try {
-    const result = await IdeaBoards.update(
+    const result = await DevelopBoards.update(
       {
         title: developBoardsRequestDTO.title,
         content: developBoardsRequestDTO.content,
         category: developBoardsRequestDTO.category,
-        img: developBoardsRequestDTO.img,
+        image: developBoardsRequestDTO.image,
+        original_filename: developBoardsRequestDTO.original_filename,
       },
       {
         where: {
