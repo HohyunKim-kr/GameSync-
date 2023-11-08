@@ -31,7 +31,11 @@ router.post(
 router.get("/ideaBoards/view", ideaboardController.view);
 
 router.get("/ideaBoards/modify", ideaboardController.getModify);
-router.post("/ideaBoards/modify", ideaboardController.postModify);
+router.post(
+    "/ideaBoards/modify",
+    upload.single("upload"),
+    ideaboardController.postModify
+);
 
 router.post("/ideaBoards/delete", ideaboardController.postDelete);
 module.exports = router;

@@ -59,13 +59,8 @@ exports.update = async (req, res, next) => {
         );
 
         console.log(`back update response :`, response);
-        if (response === 1) {
-            res.status(201).json({ message: "Updated successfully" });
-        } else {
-            res.status(404).json({ message: "No records updated" });
-        }
 
-        // res.status(201).json(response);
+        res.status(201).json(response);
         // res.send("update");
     } catch (e) {
         next(e);
