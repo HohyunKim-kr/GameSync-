@@ -319,3 +319,34 @@ ul {
     cursor: pointer;
     color: white;
 }
+
+/* 카카오 */
+.kakao {
+    width: 55px;
+    height: 55px;
+    border-radius: 50px;
+    overflow: hidden;
+}
+
+.kakao img {
+    width: 100%;
+}
+
+/* main */
+.main-img {
+    /* width: 1440px; */
+    max-width: 1920px;
+}
+
+.main-img img {
+    width: 100%;
+}
+
+.boardmenu {
+    display: flex;
+    flex-direction: column;
+}
+.boardmenu a {
+    color: #fff;
+    font-size: 25px;
+}
