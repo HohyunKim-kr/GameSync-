@@ -5,7 +5,7 @@ const router = require("./src/route");
 
 app.set("view engine", "html");
 nunjucks.configure("views", {
-    express: app,
+  express: app,
 });
 app.use(express.json());
 
