@@ -19,7 +19,7 @@ exports.postWrite = async (boardData) => {
         console.log(result);
         return result;
     } catch (e) {
-        throw new Error(`SERVICE getList ERROR: ${e.message}`);
+        throw new Error(`SERVICE postWrite ERROR: ${e.message}`);
     }
 };
 
@@ -31,5 +31,39 @@ exports.getView = async (id) => {
         return result;
     } catch (e) {
         throw new Error(`SERVICE getView ERROR: ${e.message}`);
+    }
+};
+
+exports.getModify = async (id) => {
+    try {
+        const result = await axios.get(
+            `http://localhost:4000/ideaBoards/${id}`
+        );
+        return result;
+    } catch (e) {
+        throw new Error(`SERVICE getModify ERROR: ${e.message}`);
+    }
+};
+
+exports.putModify = async (boardData, id) => {
+    try {
+        const result = await axios.put(
+            `http://localhost:4000/ideaBoards/${id}`,
+            boardData
+        );
+        return result;
+    } catch (e) {
+        throw new Error(`SERVICE putModify ERROR: ${e.message}`);
+    }
+};
+
+exports.postDelete = async (id) => {
+    try {
+        const result = await axios.delete(
+            `http://localhost:4000/ideaBoards/${id}`
+        );
+        return result;
+    } catch (e) {
+        throw new Error(`SERVICE putModify ERROR: ${e.message}`);
     }
 };

@@ -31,54 +31,20 @@
                     </div>
                 </div>
                 <div class="ideaBoard-wrap">
+                    {% for data in list %}
                     <ul class="ideaBoard-box">
                         <li class="box-img">
-                            <img src="/images/game2.jpg" alt="" />
+                            <img src="/{{data.image}}" alt="" />
                         </li>
-                        <li class="box-name">리버스:1999</li>
-                        <li class="box-category">롤플레잉</li>
-                        <li class="box-hit">👍 1000</li>
-                    </ul>
-                    <ul class="ideaBoard-box">
-                        <li class="box-img">
-                            <img src="/images/game2.jpg" alt="" />
+                        <li class="box-name">
+                            <a href="/idea/ideaBoards/view?id={{data.id}}">
+                                {{data.title}}
+                            </a>
                         </li>
-                        <li class="box-name">리버스:1999</li>
-                        <li class="box-category">롤플레잉</li>
-                        <li class="box-hit">👍 1000</li>
+                        <li class="box-category">{{data.category}}</li>
+                        <li class="box-hit">👍 {{data.hit}}</li>
                     </ul>
-                    <ul class="ideaBoard-box">
-                        <li class="box-img">
-                            <img src="/images/game2.jpg" alt="" />
-                        </li>
-                        <li class="box-name">리버스:1999</li>
-                        <li class="box-category">롤플레잉</li>
-                        <li class="box-hit">👍 1000</li>
-                    </ul>
-                    <ul class="ideaBoard-box">
-                        <li class="box-img">
-                            <img src="/images/game2.jpg" alt="" />
-                        </li>
-                        <li class="box-name">리버스:1999</li>
-                        <li class="box-category">롤플레잉</li>
-                        <li class="box-hit">👍 1000</li>
-                    </ul>
-                    <ul class="ideaBoard-box">
-                        <li class="box-img">
-                            <img src="/images/game2.jpg" alt="" />
-                        </li>
-                        <li class="box-name">리버스:1999</li>
-                        <li class="box-category">롤플레잉</li>
-                        <li class="box-hit">👍 1000</li>
-                    </ul>
-                    <ul class="ideaBoard-box">
-                        <li class="box-img">
-                            <img src="/images/game2.jpg" alt="" />
-                        </li>
-                        <li class="box-name">리버스:1999</li>
-                        <li class="box-category">롤플레잉</li>
-                        <li class="box-hit">👍 1000</li>
-                    </ul>
+                    {% endfor %}
                 </div>
             </div>
         </div>
