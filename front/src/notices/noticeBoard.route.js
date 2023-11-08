@@ -1,11 +1,9 @@
-const { default: axios } = require("axios");
 const express = require("express");
 const router = express.Router();
 const noticeBoardController = require("./noticeBoard.controller");
 const multer = require("multer");
-// router.post("/notices/write", noticeBoardController.write);
-// router.get("/notices/view", noticeBoardController.view);
-// router.post("/notices/modify", noticeBoardController.modify);
+const path = require("path");
+// multer 미들웨어 장착
 const upload = multer({
   storage: multer.diskStorage({
     destination: (req, file, done) => {
@@ -20,37 +18,25 @@ const upload = multer({
     },
   }),
 });
+// list
+router.get("/notices/", noticeBoardController.getList);
 
-router.get("/notices/", noticeBoardController.list);
-
-router.get("/notices/write", (req, res) => {
-  res.render("notices/write.html");
-});
-
-// router.post(
-//   "/notices/write",
-//   upload.single("upload"),
-//   noticeBoardController.write
-// );
-
+// write
+router.get("/notices/write", noticeBoardController.getWrite);
 router.post(
   "/notices/write",
   upload.single("upload"),
-  noticeBoardController.write
+  noticeBoardController.postWrite
 );
 
-// router.get("/notices/view", (req, res) => {
-//   res.render("notices/view.html");
-// });
-// res.render("notices/view.html");
-router.get("/notices/view", noticeBoardController.view);
-router.get("/notices/modify", (req, res) => {
-  const { id } = req.query;
-  console.log("로긍", id);
-  res.render("notices/modify.html", { id });
-});
+// view
+router.get("/notices/view", noticeBoardController.getView);
+
+// modify
+router.get("/notices/modify", noticeBoardController.getModify);
 router.post("/notices/modify", noticeBoardController.postModify);
 
+// delete
 router.post("/notices/delete", noticeBoardController.postDelete);
 
 module.exports = router;

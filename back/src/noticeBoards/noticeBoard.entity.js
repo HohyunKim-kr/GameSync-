@@ -1,39 +1,43 @@
 module.exports = (sequelize, DataTypes) => {
-  sequelize.define("noticeBoards", {
-    id: {
-      type: DataTypes.INTEGER,
-      primaryKey: true,
-      autoIncrement: true,
+  sequelize.define(
+    "noticeBoards",
+    {
+      id: {
+        type: DataTypes.INTEGER,
+        primaryKey: true,
+        autoIncrement: true,
+      },
+      title: {
+        type: DataTypes.STRING,
+        allowNull: false,
+      },
+      author: {
+        type: DataTypes.STRING,
+        allowNull: false,
+      },
+      content: {
+        type: DataTypes.TEXT,
+        allowNull: false,
+      },
+      hit: {
+        type: DataTypes.INTEGER,
+        defaultValue: 0,
+      },
+      category: {
+        type: DataTypes.INTEGER,
+        defaultValue: 1,
+      },
+      image: {
+        type: DataTypes.STRING,
+      },
+      original_filename: {
+        type: DataTypes.STRING,
+      },
+      like: {
+        type: DataTypes.INTEGER,
+        defaultValue: 0,
+      },
     },
-    title: {
-      type: DataTypes.STRING(255),
-      allowNull: false,
-    },
-    author: {
-      type: DataTypes.STRING(255),
-      allowNull: false,
-    },
-    content: {
-      type: DataTypes.TEXT,
-    },
-    date: {
-      type: DataTypes.DATE,
-      defaultVaule: DataTypes.NOW,
-    },
-    hit: {
-      type: DataTypes.INTEGER,
-      defaultVaule: 0,
-    },
-    category: {
-      type: DataTypes.INTEGER,
-      defaultVaule: 1,
-    },
-    img: {
-      type: DataTypes.STRING(255),
-    },
-    like: {
-      type: DataTypes.INTEGER,
-      defaultVaule: 0,
-    },
-  });
+    { freezeTableName: true }
+  );
 };

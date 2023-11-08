@@ -1,14 +1,3 @@
-// class IdeaService {
-//     constructor(IdeaBoards) {
-//         this.IdeaBoards = IdeaBoards;
-//     }
-//     async createBoard(dto) {
-//         const responseBody = await this.IdeaBoards.create(dto);
-//         return responseBody;
-//     }
-// }
-
-// module.exports = IdeaService;
 const {
   NoticeBoardRequestDTO,
   NoticeBoardResponseDTO,
