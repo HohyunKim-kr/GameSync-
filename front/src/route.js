@@ -8,7 +8,7 @@ const noticesRouter = require("./notices/noticeBoard.route");
 //   res.render("index.html");
 // });
 
-// router.use("/develop", developBoardsRouter);
+router.use("/develop", developBoardsRouter);
 router.use("/idea", ideaBoardsRouter);
 router.use("/notice", noticesRouter);
 
