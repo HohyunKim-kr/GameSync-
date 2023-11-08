@@ -3,10 +3,15 @@ const noticeBoardService = require("./noticeBoard.service");
 
 exports.create = async (req, res, next) => {
   try {
-    console.log(req.body);
-    const requestDTO = new NoticeBoardRequestDTO(req.body);
-    const response = await noticeBoardService.createBoard(requestDTO);
-    res.status(201).json(response); // 상태 코드를 201로 설정
+    const noticeBoardsRequestDTO = new NoticeBoardRequestDTO(
+      req.body,
+      req.flie
+    );
+
+    const response = await noticeBoardService.createBoard(
+      noticeBoardsRequestDTO
+    );
+    res.status(201).json(response);
   } catch (e) {
     console.log(e);
     next(e);
@@ -39,7 +44,7 @@ exports.update = async (req, res, next) => {
   try {
     const noticeBoardId = req.params.id;
 
-    const noticeBoardRequestDTO = new NoticeBoardRequestDTO(req.body);
+    const noticeBoardRequestDTO = new NoticeBoardRequestDTO(req.body, req.file);
 
     const response = await noticeBoardService.updateBoard(
       noticeBoardId,
