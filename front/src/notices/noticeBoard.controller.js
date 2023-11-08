@@ -1,7 +1,13 @@
-const {
-  NoticeBoardRequestDTO,
-} = require("../../../back/src/noticeBoards/noticeBoard.dto");
 const noticeboardService = require("./noticeBoard.service");
+
+exports.list = async (req, res, next) => {
+  try {
+    const { data } = await noticeboardService.getList();
+    res.render("notices/list.html", { list: data });
+  } catch (e) {
+    next(e);
+  }
+};
 
 exports.write = async (req, res, next) => {
   try {
@@ -36,6 +42,33 @@ exports.view = async (req, res, next) => {
   }
 };
 
+exports.postModify = async (req, res, next) => {
+  try {
+    const { id } = req.query;
+
+    const tmp = {};
+    tmp["title"] = req.body.title;
+    tmp["content"] = req.body.content;
+    tmp["author"] = req.body.author;
+
+    const { data } = await noticeboardService.postModify(id, tmp);
+    console.log("@@@", data);
+    res.redirect(`./view?id=${id}`);
+  } catch (e) {
+    next(e);
+  }
+};
+
+exports.postDelete = async (req, res, next) => {
+  try {
+    const { id } = req.query;
+    const { data } = await noticeboardService.postDelete(id);
+    console.log(`postDelete controller result :`, data);
+    res.redirect(`./`);
+  } catch (e) {
+    next(e);
+  }
+};
 // exports.list = async (req, res, next) => {
 //   try {
 //     // const data = req.body;
