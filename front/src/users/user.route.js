@@ -8,7 +8,7 @@ router.get("/login", userController.getLogin);
 // router.get("/logout", userController.getLogout);
 
 // sign-up
-// router.get("/signup", userController.getSignup);
+router.get("/signup", userController.getSignup);
 // router.post("/signup", userController.postSignup);
 
 // usereInfo

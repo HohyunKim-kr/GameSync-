@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="/css/signup.css" />
+  </head>
+  <body>
+    <div>
+      <div id="header">
+        <div class="header-logo">
+          <!-- <img src="" alt="" /> -->
+          GAME SYNC
+        </div>
+        <div class="header-icon">
+          <a href="/">
+            <img src="/images/my.png" alt="" />
+          </a>
+        </div>
+      </div>
+      <form
+        action="doJoin"
+        method="POST"
+        class="joinForm"
+        onsubmit="DoJoinForm__submit(this); return false;"
+      >
+        <h2>회원가입</h2>
+        <div class="textForm">
+          <input name="loginId" type="text" class="id" placeholder="아이디" />
+        </div>
+        <div class="textForm">
+          <input
+            name="loginPw"
+            type="password"
+            class="pw"
+            placeholder="비밀번호"
+          />
+        </div>
+        <div class="textForm">
+          <input
+            name="loginPwConfirm"
+            type="password"
+            class="pw"
+            placeholder="비밀번호 확인"
+          />
+        </div>
+        <div class="textForm">
+          <input name="name" type="password" class="name" placeholder="이름" />
+        </div>
+        <div class="textForm">
+          <input name="email" type="text" class="email" placeholder="이메일" />
+        </div>
+        <div class="textForm">
+          <input
+            name="nickname"
+            type="text"
+            class="nickname"
+            placeholder="닉네임"
+          />
+        </div>
+        <div class="textForm">
+          <input
+            name="userDate"
+            type="number"
+            class="userDate"
+            placeholder="생년월일"
+          />
+        </div>
+        <input type="submit" class="btn" value="J O I N" />
+      </form>
+    </div>
+  </body>
+</html>
