@@ -1,0 +1,133 @@
+.login-img {
+    width: 100%;
+    max-width: 1920px;
+    height: 200px;
+    overflow: hidden;
+    position: relative;
+}
+
+.login-img img {
+    width: 100%;
+}
+
+.login-text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: #fff;
+    z-index: 99;
+}
+
+#loginForm {
+    width: 30%;
+    /* border: 1px solid beige; */
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    margin-top: 50px;
+    gap: 20px;
+}
+.userid,
+.userpw {
+    width: 100%;
+    height: 40px;
+    padding: 7px 12px;
+    border: none;
+    outline: none;
+    border-radius: 10px;
+}
+
+.loginbtn {
+    width: 100%;
+    height: 45px;
+    background-color: #ff9b2f;
+    border: none;
+    outline: none;
+    border-radius: 10px;
+    color: #fff;
+    font-size: 17px;
+    font-weight: 600;
+    cursor: pointer;
+}
+.sns-login {
+    width: 30%;
+    /* border: 1px solid beige; */
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    margin-top: 50px;
+    gap: 30px;
+}
+.line-wrap {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.line {
+    border: 1px solid #fff;
+    margin: 0 auto;
+    color: #fff;
+    flex: 1;
+}
+
+.linetxt {
+    padding: 0 10px;
+    color: #fff;
+}
+
+.sns-wrap {
+    margin: 0 auto;
+    display: flex;
+    flex-direction: row;
+    gap: 30px;
+}
+.kakao {
+    width: 50px;
+    height: 50px;
+    border-radius: 50px;
+    overflow: hidden;
+}
+
+.kakao img {
+    width: 100%;
+}
+
+.web3auth {
+    width: 50px;
+    height: 50px;
+    border-radius: 50px;
+    overflow: hidden;
+    background-color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.web3auth img {
+    width: 100%;
+    padding: 8px;
+}
+
+.naver {
+    width: 50px;
+    height: 50px;
+    overflow: hidden;
+}
+
+.naver img {
+    width: 100%;
+}
+
+.createone {
+    width: 30%;
+    margin: 0 auto;
+    margin-top: 50px;
+    color: #fff;
+    text-align: center;
+}
+
+.createone p a {
+    color: #fff;
+}
