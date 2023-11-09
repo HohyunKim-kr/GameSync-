@@ -68,13 +68,19 @@ exports.getModify = (req, res) => {
 exports.postModify = async (req, res, next) => {
   try {
     const { id } = req.query;
+    const data1 = req.body;
+    // const tmp = {};
+    // tmp["title"] = req.body.title;
+    // tmp["content"] = req.body.content;
+    // tmp["author"] = req.body.author;
 
-    const tmp = {};
-    tmp["title"] = req.body.title;
-    tmp["content"] = req.body.content;
-    tmp["author"] = req.body.author;
+    const boardData = {
+      title: data1.title,
+      author: data1.author,
+      content: data1.content,
+    };
 
-    const { data } = await noticeboardService.postModify(id, tmp);
+    const { data } = await noticeboardService.postModify(id, boardData);
     res.redirect(`./view?id=${id}`);
   } catch (e) {
     next(e);
