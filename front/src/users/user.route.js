@@ -14,7 +14,7 @@ router.get("/signup", userController.getSignup);
 // usereInfo
 router.get("/user", userController.getUser);
 router.get("/admin", userController.getAdmin);
-// router.get("/user/modify", userController.getUsermodify);
+router.get("/user/modify", userController.getUsermodify);
 // router.post("/user/modify", userController.postUsermodify);
 // router.get("/user/delete", userController.getUserdelete);
 
