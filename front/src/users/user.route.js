@@ -12,7 +12,7 @@ router.get("/signup", userController.getSignup);
 // router.post("/signup", userController.postSignup);
 
 // usereInfo
-// router.get("/user", userController.getUser);
+router.get("/user", userController.getUser);
 // router.get("/user/modify", userController.getUsermodify);
 // router.post("/user/modify", userController.postUsermodify);
 // router.get("/user/delete", userController.getUserdelete);

@@ -1,0 +1,104 @@
+.myinfo-wrap {
+    width: 100%;
+    background-color: #fff;
+    height: 260px;
+}
+
+.wrapper {
+    width: 60%;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin: 0 auto;
+    justify-content: space-around;
+}
+
+.user-info {
+    width: 100%;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: row;
+    justify-content: start;
+    align-items: center;
+    margin: 30px auto;
+    gap: 30px;
+}
+
+.user-img {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    background-color: #7e2533;
+}
+
+.user-img img {
+    width: 100%;
+    padding: 20px;
+}
+
+.user-text-wrap {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.user-edit {
+    background-color: #7e2533;
+    width: 150px;
+    height: 40px;
+    border-radius: 50px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+.user-edit a {
+    color: #fff;
+    font-size: 16px;
+}
+
+.user-edit a img {
+    width: 20px;
+}
+
+.menu {
+    display: flex;
+    flex-direction: row;
+    width: 60%;
+    margin: 0 auto;
+}
+
+.menu a {
+    width: 25%;
+    font-size: 18px;
+    text-align: center;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.menu a:after {
+    content: "";
+    position: absolute;
+    width: 45%;
+    height: 5px;
+    bottom: -10px;
+    background-color: #7e2533;
+}
+
+.info-wrap {
+    width: 100%;
+    background-color: #5974ad;
+    padding: 50px 0;
+}
+
+.show-info {
+    width: 60%;
+    background-color: #fff;
+    margin: 0 auto;
+    padding: 7px 14px;
+    border-radius: 10px;
+}
