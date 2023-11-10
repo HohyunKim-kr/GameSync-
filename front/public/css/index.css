@@ -1,0 +1,97 @@
+@font-face {
+    font-family: "logo";
+    src: url("/fonts/ttf/KaushanScript-Regular.ttf") format("truetype");
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+a {
+    text-decoration: none;
+    color: #333;
+}
+ul {
+    list-style: none;
+}
+
+#wrap {
+    width: 100%;
+    position: relative;
+}
+
+#header {
+    position: sticky;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 50px;
+    display: flex;
+    justify-content: space-between;
+    padding: 5px 30px;
+    z-index: 99;
+    background-color: #344770;
+}
+.header-logo {
+    font-family: "logo", sans-serif;
+    font-size: 1.8rem;
+    line-height: 35px;
+    color: #fff;
+}
+
+.header-logo a {
+    color: #fff;
+}
+.header-icon {
+    width: 35px;
+}
+
+.header-icon img {
+    width: 100%;
+}
+
+#container {
+    width: 100%;
+    background-color: #344770;
+    position: relative;
+}
+
+#footer {
+    width: 100%;
+    height: 150px;
+    background-color: #344770;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+}
+
+#footer a {
+    width: 40px;
+}
+
+#footer a img {
+    width: 100%;
+}
+
+/* main */
+
+.main-img {
+    /* width: 1440px; */
+    max-width: 1920px;
+}
+
+.main-img img {
+    width: 100%;
+}
+
+.boardmenu {
+    display: flex;
+    flex-direction: column;
+}
+.boardmenu a {
+    color: #fff;
+    font-size: 25px;
+}

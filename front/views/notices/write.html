@@ -1,62 +1,72 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
-    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-  </head>
-  <body style="background-image: url(/images/board_bg.jpg)">
-    <div id="wrap">
-      <div id="header"></div>
-      <div id="container">
-        <h1><a href="./noticeBoard.list.html">GameSync공지사항</a></h1>
-        <h2 class="board-title">글쓰기</h2>
-        <form
-          method="post"
-          enctype="multipart/form-data"
-          id="noticeBoardForm"
-          action="/notice/notices/write"
-        >
-          <ul class="board-write-form">
-            <li>
-              <span>제목</span>
-              <input type="text" name="title" />
-            </li>
-            <li>
-              <span>관리자</span>
-              <input type="text" name="author" />
-            </li>
-            <li>
-              <textarea name="content"></textarea>
-            </li>
-            <div class="fileUpload">
-              <p>썸네일 등록</p>
-              <label for="file">
-                <div class="uploadbtn">파일 선택하기</div>
-              </label>
-              <input type="file" name="upload" id="file" />
-              <div>
-                <img id="dataimg" src="" alt="" />
-              </div>
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Notice_Write</title>
+        <link type="text/css" rel="stylesheet" href="/css/index.css" />
+        <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    </head>
+    <body style="background-image: url(/images/board_bg.jpg)">
+        <div id="wrap">
+            <div id="header">
+                <div class="header-logo">
+                    <a href="/">GameSync</a>
+                </div>
+                <div class="header-icon">
+                    <a href="/">
+                        <img src="/images/my.png" alt="" />
+                    </a>
+                </div>
             </div>
-          </ul>
-          <button type="submit" class="btn">글작성</button>
-        </form>
-      </div>
-    </div>
-    <div id="footer">
-      <a href="https://github.com/HohyunKim-kr/GameSync-" target="_blank">
-        <img src="/images/git.png" alt="" />
-      </a>
-      <a
-        href="https://www.notion.so/6e7c5fa81141402d857da70dd2c867f1?v=e68659f259a04af98ace30ca01acede4"
-        target="_blank"
-      >
-        <img src="/images/notion.png" alt="" />
-      </a>
-    </div>
+            <div id="container">
+                <h1><a href="./noticeBoard.list.html">GameSync공지사항</a></h1>
+                <h2 class="board-title">글쓰기</h2>
+                <form
+                    method="post"
+                    enctype="multipart/form-data"
+                    id="noticeBoardForm"
+                    action="/notice/notices/write"
+                >
+                    <ul class="board-write-form">
+                        <li>
+                            <span>제목</span>
+                            <input type="text" name="title" />
+                        </li>
+                        <li>
+                            <span>관리자</span>
+                            <input type="text" name="author" />
+                        </li>
+                        <li>
+                            <textarea name="content"></textarea>
+                        </li>
+                        <div class="fileUpload">
+                            <p>썸네일 등록</p>
+                            <label for="file">
+                                <div class="uploadbtn">파일 선택하기</div>
+                            </label>
+                            <input type="file" name="upload" id="file" />
+                            <div>
+                                <img id="dataimg" src="" alt="" />
+                            </div>
+                        </div>
+                    </ul>
+                    <button type="submit" class="btn">글작성</button>
+                </form>
+            </div>
+        </div>
+        <div id="footer">
+            <a href="https://github.com/HohyunKim-kr/GameSync-" target="_blank">
+                <img src="/images/git.png" alt="" />
+            </a>
+            <a
+                href="https://www.notion.so/6e7c5fa81141402d857da70dd2c867f1?v=e68659f259a04af98ace30ca01acede4"
+                target="_blank"
+            >
+                <img src="/images/notion.png" alt="" />
+            </a>
+        </div>
 
-    <!-- <script src="/js/noticeBoard.js"></script> -->
-  </body>
+        <!-- <script src="/js/noticeBoard.js"></script> -->
+    </body>
 </html>
