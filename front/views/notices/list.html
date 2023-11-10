@@ -1,80 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-<<<<<<< Updated upstream
-    <head>
-        <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>GameSync_NOTICE</title>
-        <link type="text/css" rel="stylesheet" href="/css/index.css" />
-        <link
-            href="../../public/css/noticeBoard.css"
-            rel="stylesheet"
-            type="text/css"
-        />
-        <!-- <script type="module" src="../public/js/board/list.js"></script> -->
-    </head>
-    <body>
-        <div id="header">
-            <div class="header-wrap">
-                <div class="header-logo">
-                    <a href="/">GameSync</a>
-                </div>
-                <div class="header-icon">
-                    <a href="/users/login">
-                        <img src="/images/my.png" alt="" />
-                    </a>
-                </div>
-            </div>
-            <div class="full-drop">
-                <div class="drop-wrap">
-                    <div class="drop-down">
-                        <a href="/develop/developBoards/">게임 개발 게시판</a>
-                    </div>
-                    <div class="drop-down">
-                        <a href="/idea/ideaBoards/"
-                            >게임 기획, 아이디어 게시판</a
-                        >
-                    </div>
-                    <div class="drop-down">
-                        <a href="/notice/notices/">공지사항</a>
-                    </div>
-                    <div class="drop-down">
-                        <a href="/users/user">마이페이지</a>
-                    </div>
-                    <div class="drop-down">
-                        <a href="/users/admin">admin</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <h1>공지사항</h1>
-        <table class="board-table">
-            <thead>
-                <tr>
-                    <th>번호</th>
-                    <th>제목</th>
-                    <th>작성자</th>
-                    <th>작성일</th>
-                    <th>조회수</th>
-                </tr>
-            </thead>
-            {%for data in list%}
-            <tbody>
-                <tr>
-                    <td>{{data.id}}</td>
-                    <td>
-                        <a href="/notice/notices/view?id={{data.id}}"
-                            >{{data.title}}</a
-                        >
-                    </td>
-                    <td>{{data.author}}</td>
-                    <td>{{data.createdAt}}</td>
-                    <td>{{data.hit}}</td>
-                </tr>
-            </tbody>
-            {% endfor%}
-        </table>
-=======
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -89,13 +14,34 @@
   </head>
   <body>
     <div id="header">
-      <div class="header-logo">
-        <a href="/">GameSync</a>
+      <div class="header-wrap">
+        <div class="header-logo">
+          <a href="/">GameSync</a>
+        </div>
+        <div class="header-icon">
+          <a href="/users/login">
+            <img src="/images/my.png" alt="" />
+          </a>
+        </div>
       </div>
-      <div class="header-icon">
-        <a href="/">
-          <img src="/images/my.png" alt="" />
-        </a>
+      <div class="full-drop">
+        <div class="drop-wrap">
+          <div class="drop-down">
+            <a href="/develop/developBoards/">게임 개발 게시판</a>
+          </div>
+          <div class="drop-down">
+            <a href="/idea/ideaBoards/">게임 기획, 아이디어 게시판</a>
+          </div>
+          <div class="drop-down">
+            <a href="/notice/notices/">공지사항</a>
+          </div>
+          <div class="drop-down">
+            <a href="/users/user">마이페이지</a>
+          </div>
+          <div class="drop-down">
+            <a href="/users/admin">admin</a>
+          </div>
+        </div>
       </div>
     </div>
     <h1>공지사항</h1>
@@ -123,7 +69,6 @@
       </tbody>
       {% endfor%}
     </table>
->>>>>>> Stashed changes
 
     <a href="./noticeBoard.write.html" class="btn">글쓰기</a>
   </body>
