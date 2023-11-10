@@ -1,51 +1,3 @@
-/* 공통 사항  */
-
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
-a {
-    text-decoration: none;
-    color: #333;
-}
-ul {
-    list-style: none;
-}
-
-#wrap {
-    width: 100%;
-    position: relative;
-}
-
-#header {
-    position: sticky;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 50px;
-    display: flex;
-    justify-content: space-between;
-    padding: 5px 30px;
-    z-index: 99;
-    background-color: #344770;
-}
-
-.header-icon {
-    width: 35px;
-}
-
-.header-icon img {
-    width: 100%;
-}
-
-#container {
-    width: 100%;
-    background-color: #344770;
-    position: relative;
-}
-
 .ideaBoard-img {
     width: 100%;
     max-width: 1920px;
@@ -68,24 +20,6 @@ ul {
     opacity: 0.5;
 }
 
-#footer {
-    width: 100%;
-    height: 150px;
-    background-color: #344770;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 30px;
-}
-
-#footer a {
-    width: 40px;
-}
-
-#footer a img {
-    width: 100%;
-}
-
 /* list  */
 
 .write-btn-wrap {
@@ -105,6 +39,7 @@ ul {
 }
 
 .write-btn a {
+    font-family: "logo", sans-serif;
     color: #fff;
 }
 
@@ -252,7 +187,7 @@ ul {
 .tolist {
     background-color: #ff9b2f;
     font-size: 1.1rem;
-    width: 180px;
+    width: 120px;
     height: 35px;
     border-radius: 30px;
     text-align: center;
@@ -272,6 +207,7 @@ ul {
     text-align: center;
     color: white;
     cursor: pointer;
+    font-family: "logo", sans-serif;
 }
 
 /*  view  */
@@ -298,7 +234,7 @@ ul {
 .tomodify {
     background-color: #ff9b2f;
     font-size: 1.1rem;
-    width: 180px;
+    width: 120px;
     height: 35px;
     border-radius: 30px;
     text-align: center;
@@ -311,42 +247,11 @@ ul {
 .todelete {
     background-color: #ff9b2f;
     font-size: 1.1rem;
-    width: 180px;
+    width: 120px;
     height: 35px;
     border-radius: 30px;
     text-align: center;
     border: none;
     cursor: pointer;
     color: white;
-}
-
-/* 카카오 */
-.kakao {
-    width: 55px;
-    height: 55px;
-    border-radius: 50px;
-    overflow: hidden;
-}
-
-.kakao img {
-    width: 100%;
-}
-
-/* main */
-.main-img {
-    /* width: 1440px; */
-    max-width: 1920px;
-}
-
-.main-img img {
-    width: 100%;
-}
-
-.boardmenu {
-    display: flex;
-    flex-direction: column;
-}
-.boardmenu a {
-    color: #fff;
-    font-size: 25px;
 }

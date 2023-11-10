@@ -78,6 +78,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    font-family: "logo", sans-serif;
 }
 
 .menu a:after {
