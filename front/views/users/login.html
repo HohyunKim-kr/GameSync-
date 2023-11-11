@@ -1,111 +1,99 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>GameSync_LOGIN</title>
-        <link type="text/css" rel="stylesheet" href="/css/index.css" />
-        <link type="text/css" rel="stylesheet" href="/css/login.css" />
-    </head>
-    <body>
-        <div id="wrap">
-            <div id="header">
-                <div class="header-wrap">
-                    <div class="header-logo">
-                        <a href="/">GameSync</a>
-                    </div>
-                    <div class="header-icon">
-                        <a href="/users/login">
-                            <img src="/images/my.png" alt="" />
-                        </a>
-                    </div>
-                </div>
-                <div class="full-drop">
-                    <div class="drop-wrap">
-                        <div class="drop-down">
-                            <a href="/develop/developBoards/"
-                                >게임 개발 게시판</a
-                            >
-                        </div>
-                        <div class="drop-down">
-                            <a href="/idea/ideaBoards/"
-                                >게임 기획, 아이디어 게시판</a
-                            >
-                        </div>
-                        <div class="drop-down">
-                            <a href="/notice/notices/">공지사항</a>
-                        </div>
-                        <div class="drop-down">
-                            <a href="/users/user">마이페이지</a>
-                        </div>
-                        <div class="drop-down">
-                            <a href="/users/admin">admin</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div id="container">
-                <div class="login-img">
-                    <h2 class="login-text">LOGIN</h2>
-                    <img src="/images/login.png" alt="" />
-                </div>
-                <form id="loginForm" action="/users/login" method="post">
-                    <input
-                        type="text"
-                        name="userid"
-                        class="userid"
-                        placeholder="아이디"
-                    />
-                    <input
-                        type="password"
-                        name="userpw"
-                        class="userpw"
-                        placeholder="비밀번호"
-                    />
-                    <button type="submit" class="loginbtn">로그인</button>
-                </form>
-                <div class="sns-login">
-                    <div class="line-wrap">
-                        <div class="line"></div>
-                        <span class="linetxt">SNS LOGIN</span>
-                        <div class="line"></div>
-                    </div>
-                    <div class="sns-wrap">
-                        <div class="kakao">
-                            <a href="">
-                                <img src="/images/kakao.png" alt="" />
-                            </a>
-                        </div>
-                        <div class="web3auth">
-                            <a href="">
-                                <img src="/images/web3auth.png" alt="" />
-                            </a>
-                        </div>
-                        <div class="naver">
-                            <a href="">
-                                <img src="/images/naver.png" alt="" />
-                            </a>
-                        </div>
-                    </div>
-                </div>
-                <div class="createone">
-                    <p>
-                        No account?
-                        <a href="/users/signup">Create one</a>
-                    </p>
-                </div>
-            </div>
-        </div>
-        <div id="footer">
-            <a href="https://github.com/HohyunKim-kr/GameSync-" target="_blank">
-                <img src="/images/git.png" alt="" />
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>GameSync_LOGIN</title>
+    <link type="text/css" rel="stylesheet" href="/css/index.css" />
+    <link type="text/css" rel="stylesheet" href="/css/login.css" />
+    <link rel="stylesheet" href="/js/login.js" />
+  </head>
+  <body>
+    <div id="wrap">
+      <div id="header">
+        <div class="header-wrap">
+          <div class="header-logo">
+            <a href="/">GameSync</a>
+          </div>
+          <div class="header-icon">
+            <a href="/users/login">
+              <img src="/images/my.png" alt="" />
             </a>
-            <a
-                href="https://www.notion.so/6e7c5fa81141402d857da70dd2c867f1?v=e68659f259a04af98ace30ca01acede4"
-                target="_blank"
-            >
-                <img src="/images/notion.png" alt="" />
-            </a>
+          </div>
         </div>
-    </body>
+        <div class="full-drop">
+          <div class="drop-wrap">
+            <div class="drop-down">
+              <a href="/develop/developBoards/">게임 개발 게시판</a>
+            </div>
+            <div class="drop-down">
+              <a href="/idea/ideaBoards/">게임 기획, 아이디어 게시판</a>
+            </div>
+            <div class="drop-down">
+              <a href="/notice/notices/">공지사항</a>
+            </div>
+            <div class="drop-down">
+              <a href="/users/user">마이페이지</a>
+            </div>
+            <div class="drop-down">
+              <a href="/users/admin">admin</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div id="container">
+        <div class="login-img">
+          <h2 class="login-text">LOGIN</h2>
+          <img src="/images/login.png" alt="" />
+        </div>
+        <form id="loginForm" action="/users/login" method="post">
+          <input
+            type="text"
+            name="email"
+            class="userid"
+            id="email"
+            placeholder="아이디"
+          />
+          <input
+            type="password"
+            name="password"
+            class="userpw"
+            id="password"
+            placeholder="비밀번호"
+          />
+          <button type="submit" class="loginbtn">로그인</button>
+        </form>
+        <div class="sns-login">
+          <div class="line-wrap">
+            <div class="line"></div>
+            <span class="linetxt">SNS LOGIN</span>
+            <div class="line"></div>
+          </div>
+          <div class="sns-wrap">
+            <div class="kakao">
+              <a href="">
+                <img src="/images/kakao.png" alt="" />
+              </a>
+            </div>
+            <div class="web3auth">
+              <a href="">
+                <img src="/images/web3auth.png" alt="" />
+              </a>
+            </div>
+            <div class="naver">
+              <a href="">
+                <img src="/images/naver.png" alt="" />
+              </a>
+            </div>
+          </div>
+        </div>
+        <div class="createone">
+          <p>
+            No account?
+            <a href="/users/signup">Create one</a>
+          </p>
+        </div>
+      </div>
+    </div>
+  </body>
 </html>
