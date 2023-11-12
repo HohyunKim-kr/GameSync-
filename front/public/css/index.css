@@ -132,13 +132,42 @@ ul {
     width: 100%;
 }
 
-/* main */
-
-.main-img {
-    /* width: 1440px; */
+/* slide */
+.slideBox {
+    width: 100%;
     max-width: 1920px;
+    height: 400px;
 }
 
-.main-img img {
+.slide {
     width: 100%;
+    margin: auto;
+    transition: transform 0.5s ease;
+    display: block;
+}
+
+.slide img {
+    width: 100%;
+}
+
+.slideController {
+    margin-top: 80px;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+.ellipse.active {
+    background-color: #ffd520;
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+}
+
+.ellipse {
+    background: #fff;
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
 }
