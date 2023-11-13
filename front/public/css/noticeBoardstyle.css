@@ -1,0 +1,61 @@
+/* * {
+  margin: 0;
+  padding: 0;
+} */
+
+/* html {
+  font-size: 10px;
+} */
+
+ul,
+li {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+.board-wrap {
+  width: 1000px;
+  margin: 100px;
+}
+
+.board_title {
+  margin-bottom: 30px;
+}
+
+.board_title strong {
+  font-size: 3rem;
+}
+
+.board-title p {
+  margin-top: 5px;
+  font-size: 1.4rem;
+}
+
+.bt_wrap {
+  margin: 30px;
+  text-align: center;
+  font-size: 0;
+}
+
+.bt_wrap a {
+  display: inline-block;
+  min-width: 80px;
+  padding: 10px;
+  margin-left: 10px;
+  border: 1px solid #000;
+  border-radius: 2px;
+  font-size: 1.4rem;
+}
+
+.bt_wrap a:first-child {
+  margin-left: 0;
+}
+
+.bt_wrap a.on {
+  background: #000;
+  color: #fff;
+}
