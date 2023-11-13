@@ -29,77 +29,69 @@
             <div class="drop-down">
               <a href="/develop/developBoards/">게임 개발 게시판</a>
             </div>
-            <div id="container">
-                <div class="ideaBoard-title">
-                    <h1 class="view-text">
-                        {{data.category}} &nbsp {{data.title}}
-                    </h1>
-                    <div class="view-box">
-                        <div>{{data.author}}</div>
-                        <div>{{data.createdAt}}</div>
-                        <div class="hit">
-                            <span>
-                                <img src="/images/view_icon.png" alt="" />
-                            </span>
-                            {{data.hit}}
-                        </div>
-                        <div class="like">
-                            <span>
-                                <img src="/images/like_icon.png" alt="" />
-                            </span>
-                            {{data.like}}
-                        </div>
-                        <div class="comment_icon">
-                            <span>
-                                <img src="/images/comment_icon.png" alt="" />
-                            </span>
-                            11
-                        </div>
-                    </div>
-                </div>
-                <div class="view-wrap">
-                    <div class="dataimg">
-                        <img src="/{{data.image}}" />
-                    </div>
-                    <div class="data-content">{{data.content}}</div>
-
-                    <div class="btnmenu">
-                        <div class="tolist">
-                            <a href="/idea/ideaBoards/">목록가기</a>
-                        </div>
-                        <form method="post" action="">
-                            <button type="submit" class="likebtn">
-                                추천하기
-                            </button>
-                        </form>
-                        <div class="tomodify">
-                            <a href="/idea/ideaBoards/modify?id={{data.id}}">
-                                수정하기
-                            </a>
-                        </div>
-                        <form
-                            method="post"
-                            action="/idea/ideaBoards/delete?id={{data.id}}"
-                        >
-                            <button type="submit" class="todelete">
-                                삭제하기
-                            </button>
-                        </form>
-                    </div>
-                </div>
-                <div id="app"></div>
+          </div>
+        </div>
+      </div>
+      <div id="container">
+        <div class="ideaBoard-title">
+          <h1 class="view-text">{{data.category}} &nbsp {{data.title}}</h1>
+          <div class="view-box">
+            <div>{{data.author}}</div>
+            <div>{{data.createdAt}}</div>
+            <div class="hit">
+              <span>
+                <img src="/images/view_icon.png" alt="" />
+              </span>
+              {{data.hit}}
             </div>
+            <div class="like">
+              <span>
+                <img src="/images/like_icon.png" alt="" />
+              </span>
+              {{data.like}}
+            </div>
+            <div class="comment_icon">
+              <span>
+                <img src="/images/comment_icon.png" alt="" />
+              </span>
+              11
+            </div>
+          </div>
         </div>
-        <div id="footer">
-            <a href="https://github.com/HohyunKim-kr/GameSync-" target="_blank">
-                <img src="/images/git.png" alt="" />
-            </a>
-            <a
-                href="https://www.notion.so/6e7c5fa81141402d857da70dd2c867f1?v=e68659f259a04af98ace30ca01acede4"
-                target="_blank"
-            >
-                <img src="/images/notion.png" alt="" />
-            </a>
+        <div class="view-wrap">
+          <div class="dataimg">
+            <img src="/{{data.image}}" />
+          </div>
+          <div class="data-content">{{data.content}}</div>
+
+          <div class="btnmenu">
+            <div class="tolist">
+              <a href="/idea/ideaBoards/">목록가기</a>
+            </div>
+            <form method="post" action="">
+              <button type="submit" class="likebtn">추천하기</button>
+            </form>
+            <div class="tomodify">
+              <a href="/idea/ideaBoards/modify?id={{data.id}}"> 수정하기 </a>
+            </div>
+            <form method="post" action="/idea/ideaBoards/delete?id={{data.id}}">
+              <button type="submit" class="todelete">삭제하기</button>
+            </form>
+          </div>
         </div>
-    </body>
+        <div id="app"></div>
+      </div>
+      <div id="footer">
+        <a href="https://github.com/HohyunKim-kr/GameSync-" target="_blank">
+          <img src="/images/git.png" alt="" />
+        </a>
+        <a
+          href="https://www.notion.so/6e7c5fa81141402d857da70dd2c867f1?v=e68659f259a04af98ace30ca01acede4"
+          target="_blank"
+        >
+          <img src="/images/notion.png" alt="" />
+        </a>
+      </div>
+    </div>
+  </body>
 </html>
