@@ -1,4 +1,4 @@
-import Component from "../../core/component.js";
+import Component from "/js/comments/core/component.js";
 class CommentList extends Component {
   setup() {
     this.state = {

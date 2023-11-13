@@ -1,5 +1,5 @@
-import Component from "./core/component.js";
-import Comment from "./src/components/comment.js";
+import Component from "/js/comments/core/component.js";
+import Comment from "/js/comments/src/components/comment.js";
 
 class App extends Component {
   setup() {}
