@@ -1,81 +1,118 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>GameSync_NOTICE</title>
-    <link type="text/css" rel="stylesheet" href="/css/index.css" />
-    <link href="/css/noticeBoard.css" rel="stylesheet" type="text/css" />
-    <!-- <script type="module" src="../public/js/board/list.js"></script> -->
-  </head>
-  <body>
-    <div id="header">
-      <div class="header-wrap">
-        <div class="header-logo">
-          <a href="/">GameSync</a>
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>GameSync_NOTICE</title>
+        <link type="text/css" rel="stylesheet" href="/css/index.css" />
+        <link href="/css/noticeBoard.css" rel="stylesheet" type="text/css" />
+        <!-- <script type="module" src="../public/js/board/list.js"></script> -->
+    </head>
+    <body>
+        <div id="header">
+            <div class="header-wrap">
+                <div class="header-logo">
+                    <a href="/">GameSync</a>
+                </div>
+                <div class="header-icon">
+                    <a href="/users/login">
+                        <img src="/images/my.png" alt="" />
+                    </a>
+                </div>
+            </div>
+            <div class="full-drop">
+                <div class="drop-wrap">
+                    <div class="drop-down">
+                        <a href="/develop/developBoards/">게임 개발 게시판</a>
+                    </div>
+                    <div class="drop-down">
+                        <a href="/idea/ideaBoards/"
+                            >게임 기획, 아이디어 게시판</a
+                        >
+                    </div>
+                    <div class="drop-down">
+                        <a href="/notice/notices/">공지사항</a>
+                    </div>
+                    <div class="drop-down">
+                        <a href="/users/user">마이페이지</a>
+                    </div>
+                    <div class="drop-down">
+                        <a href="/users/admin">admin</a>
+                    </div>
+                </div>
+            </div>
         </div>
-        <div class="header-icon">
-          <a href="/users/login">
-            <img src="/images/my.png" alt="" />
-          </a>
-        </div>
-      </div>
-      <div class="full-drop">
-        <div class="drop-wrap">
-          <div class="drop-down">
-            <a href="/develop/developBoards/">게임 개발 게시판</a>
-          </div>
-          <div class="drop-down">
-            <a href="/idea/ideaBoards/">게임 기획, 아이디어 게시판</a>
-          </div>
-          <div class="drop-down">
-            <a href="/notice/notices/">공지사항</a>
-          </div>
-          <div class="drop-down">
-            <a href="/users/user">마이페이지</a>
-          </div>
-          <div class="drop-down">
-            <a href="/users/admin">admin</a>
-          </div>
-        </div>
-      </div>
-    </div>
 
-    <div class="board-wrap">
-      <div class="board_title">
-        <strong>공지사항</strong>
-        <p>공지사항을 빠르고 정확하게 안내해드립니다.</p>
-      </div>
-      <div class="board_list_wrap">
-        <div class="board_list">
-          <table>
-            <tr>
-              <th>번호</th>
-              <th>제목</th>
-              <th>작성자</th>
-              <th>작성일</th>
-              <th>조회수</th>
-            </tr>
-            {% for data in list %}
-            <tr>
-              <td>{{data.id}}</td>
-              <td>
-                <a href="/notice/notices/view?id={{data.id}}">{{data.title}}</a>
-              </td>
-              <td>{{data.author}}</td>
-              <td>{{data.createdAt}}</td>
-              <td>{{data.like}}</td>
-            </tr>
-            {% endfor %}
-          </table>
+        <div class="board-wrap">
+            <div class="board_title">
+                <strong>공지사항</strong>
+                <p>공지사항을 빠르고 정확하게 안내해드립니다.</p>
+            </div>
+            <div class="board_list_wrap">
+                <table class="board_list">
+                    <colgroup>
+                        <col class="number" />
+                        <col class="title" />
+                        <col class="author" />
+                        <col class="date" />
+                        <col class="hit" />
+                    </colgroup>
+                    <thead>
+                        <tr>
+                            <th>번호</th>
+                            <th>제목</th>
+                            <th>작성자</th>
+                            <th>작성일</th>
+                            <th>조회수</th>
+                        </tr>
+                    </thead>
+
+                    {% for data in list %}
+                    <tbody>
+                        <tr>
+                            <td>{{data.id}}</td>
+                            <td>
+                                <a href="/notice/notices/view?id={{data.id}}"
+                                    >{{data.title}}</a
+                                >
+                            </td>
+                            <td>{{data.author}}</td>
+                            <td>{{data.createdAt}}</td>
+                            <td>{{data.like}}</td>
+                        </tr>
+                    </tbody>
+                    {% endfor %}
+                </table>
+
+                <div class="board_page"></div>
+                <div class="bt_wrap">
+                    <a href="#" class="on">목록</a>
+                    <a href="#">수정</a>
+                    <a href="./write" class="btn">글쓰기</a>
+                </div>
+            </div>
         </div>
-        <div class="board_page"></div>
-        <div class="bt_wrap">
-          <a href="#" class="on">목록</a>
-          <a href="#">수정</a>
+        <div id="footer">
+            <div class="left-info">
+                <div class="header-logo">
+                    <a href="/">GameSync</a>
+                </div>
+                <span>&copy 2023 GameSync. All rights reserved.</span>
+            </div>
+            <div class="right-info">
+                <a
+                    href="https://github.com/HohyunKim-kr/GameSync-"
+                    target="_blank"
+                >
+                    <img src="/images/git.png" alt="" />
+                </a>
+                <a
+                    href="https://www.notion.so/6e7c5fa81141402d857da70dd2c867f1?v=e68659f259a04af98ace30ca01acede4"
+                    target="_blank"
+                >
+                    <img src="/images/notion.png" alt="" />
+                </a>
+            </div>
         </div>
-      </div>
-      <a href="./write" class="btn">글쓰기</a>
-    </div>
-  </body>
+    </body>
 </html>
