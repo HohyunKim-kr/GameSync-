@@ -119,26 +119,174 @@ ul {
     height: 150px;
     background-color: #344770;
     display: flex;
-    justify-content: center;
+    flex-direction: row;
+    justify-content: space-between;
     align-items: center;
+    gap: 30px;
+    padding: 0 170px;
+}
+
+.left-info span {
+    font-size: 18px;
+    color: #fff;
+    padding: 0 13px;
+}
+
+.right-info {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
     gap: 30px;
 }
 
-#footer a {
+.right-info a {
     width: 40px;
 }
 
-#footer a img {
+.right-info a img {
     width: 100%;
 }
 
-/* main */
-
-.main-img {
-    /* width: 1440px; */
+/* slide */
+.slideBox {
+    width: 100%;
     max-width: 1920px;
+    height: 450px;
 }
 
-.main-img img {
+.slide {
     width: 100%;
+    margin: auto;
+    transition: transform 0.5s ease;
+    display: block;
+}
+
+.slide img {
+    width: 100%;
+}
+
+.slideController {
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+.ellipse.active {
+    background-color: #ffd520;
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+}
+
+.ellipse {
+    background: #fff;
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+}
+
+.bestgame {
+    width: 100%;
+    background-color: #344770;
+    height: 500px;
+    margin: 40px auto 0;
+    padding: 30px 80px;
+}
+
+.bestgame h3 {
+    margin: 0 auto;
+    color: #fff;
+    padding: 15px 25px;
+    width: 90%;
+    margin: 0 auto;
+    font-size: 22px;
+}
+
+.game-wrap {
+    width: 90%;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+.game-box {
+    display: flex;
+    flex-direction: column;
+    /* width: 300px; */
+    width: 23%;
+    background-color: #b8c7e8;
+    border-radius: 20px;
+    overflow: hidden;
+    transition: box-shadow 0.3s ease-in-out;
+}
+
+.box-img {
+    width: 400px;
+    overflow: hidden;
+}
+
+.game-box:hover {
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.game-box:hover .box-img img {
+    transform: scale(1.2);
+    transition: transform 0.3s ease-in-out;
+}
+
+.box-img img {
+    width: 100%;
+    transition: transform 0.3s ease-in-out;
+}
+.box-txt {
+    padding: 10px 20px;
+}
+.box-title {
+    font-size: 20px;
+}
+
+.box-count {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    padding: 10px 0;
+    align-items: center;
+}
+
+.like-count,
+.view-count {
+    width: 50%;
+}
+
+.like-count img {
+    width: 20px;
+}
+
+.view-count img {
+    width: 25px;
+}
+
+.like-count span,
+.view-count span {
+    line-height: 25px;
+    font-weight: 900;
+}
+
+.newgame {
+    width: 100%;
+    background-color: #fff;
+    height: 500px;
+    margin: 40px auto 0;
+    padding: 30px 80px;
+}
+
+.newgame h3 {
+    margin: 0 auto;
+    padding: 15px 25px;
+    width: 90%;
+    margin: 0 auto;
+    font-size: 22px;
 }

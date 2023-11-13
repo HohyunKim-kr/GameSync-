@@ -46,7 +46,8 @@ exports.view = async (req, res, next) => {
         const { id } = req.query;
         // console.log(data);
         const { data } = await ideaBoardService.getView(id);
-        console.log(data.image);
+        // console.log(data.image);
+        data.content = data.content.replace(/\n/g, "<br>");
         console.log(data);
         res.render("ideaBoards/view.html", { data: data });
     } catch (e) {

@@ -1,96 +1,97 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>ideaBoard_View</title>
-        <link type="text/css" rel="stylesheet" href="/css/index.css" />
-        <link type="text/css" rel="stylesheet" href="/css/ideaBoard.css" />
-        <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-    </head>
-    <body>
-        <div id="wrap">
-            <div id="header">
-                <div class="header-wrap">
-                    <div class="header-logo">
-                        <a href="/">GameSync</a>
-                    </div>
-                    <div class="header-icon">
-                        <a href="/users/login">
-                            <img src="/images/my.png" alt="" />
-                        </a>
-                    </div>
-                </div>
-                <div class="full-drop">
-                    <div class="drop-wrap">
-                        <div class="drop-down">
-                            <a href="/develop/developBoards/"
-                                >게임 개발 게시판</a
-                            >
-                        </div>
-                        <div class="drop-down">
-                            <a href="/idea/ideaBoards/"
-                                >게임 기획, 아이디어 게시판</a
-                            >
-                        </div>
-                        <div class="drop-down">
-                            <a href="/notice/notices/">공지사항</a>
-                        </div>
-                        <div class="drop-down">
-                            <a href="/users/user">마이페이지</a>
-                        </div>
-                        <div class="drop-down">
-                            <a href="/users/admin">admin</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div id="container">
-                <div class="ideaBoard-img">
-                    <h2 class="ideaBoard-text">{{data.title}}</h2>
-                    <img src="/images/ideaBoard.jpg" alt="" />
-                </div>
-                <div class="view-wrap">
-                    <div>{{data.author}}</div>
-                    <div>{{data.content}}</div>
-                    <div>{{data.hit}}</div>
-                    <div>{{data.category}}</div>
-                    <div>{{data.like}}</div>
-                    <div>{{data.createdAt}}</div>
-                    <div class="dataimg">
-                        <img src="/{{data.image}}" />
-                    </div>
-                    <div class="btnmenu">
-                        <div class="tolist">
-                            <a href="/idea/ideaBoards/">목록가기</a>
-                        </div>
-                        <div class="tomodify">
-                            <a href="/idea/ideaBoards/modify?id={{data.id}}">
-                                수정하기
-                            </a>
-                        </div>
-                        <form
-                            method="post"
-                            action="/idea/ideaBoards/delete?id={{data.id}}"
-                        >
-                            <button type="submit" class="todelete">
-                                삭제하기
-                            </button>
-                        </form>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div id="footer">
-            <a href="https://github.com/HohyunKim-kr/GameSync-" target="_blank">
-                <img src="/images/git.png" alt="" />
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ideaBoard_View</title>
+    <link type="text/css" rel="stylesheet" href="/css/index.css" />
+    <link type="text/css" rel="stylesheet" href="/css/ideaBoard.css" />
+    <link rel="stylesheet" href="/css/commentIdx.css" type="text/css" />
+    <link rel="stylesheet" href="/css/comment.css" type="text/css" />
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="/js/comments/index.js" type="module"></script>
+  </head>
+  <body>
+    <div id="wrap">
+      <div id="header">
+        <div class="header-wrap">
+          <div class="header-logo">
+            <a href="/">GameSync</a>
+          </div>
+          <div class="header-icon">
+            <a href="/users/login">
+              <img src="/images/my.png" alt="" />
             </a>
-            <a
-                href="https://www.notion.so/6e7c5fa81141402d857da70dd2c867f1?v=e68659f259a04af98ace30ca01acede4"
-                target="_blank"
-            >
-                <img src="/images/notion.png" alt="" />
-            </a>
+          </div>
         </div>
-    </body>
+        <div class="full-drop">
+          <div class="drop-wrap">
+            <div class="drop-down">
+              <a href="/develop/developBoards/">게임 개발 게시판</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div id="container">
+        <div class="ideaBoard-title">
+          <h1 class="view-text">{{data.category}} &nbsp {{data.title}}</h1>
+          <div class="view-box">
+            <div>{{data.author}}</div>
+            <div>{{data.createdAt}}</div>
+            <div class="hit">
+              <span>
+                <img src="/images/view_icon.png" alt="" />
+              </span>
+              {{data.hit}}
+            </div>
+            <div class="like">
+              <span>
+                <img src="/images/like_icon.png" alt="" />
+              </span>
+              {{data.like}}
+            </div>
+            <div class="comment_icon">
+              <span>
+                <img src="/images/comment_icon.png" alt="" />
+              </span>
+              11
+            </div>
+          </div>
+        </div>
+        <div class="view-wrap">
+          <div class="dataimg">
+            <img src="/{{data.image}}" />
+          </div>
+          <div class="data-content">{{data.content}}</div>
+
+          <div class="btnmenu">
+            <div class="tolist">
+              <a href="/idea/ideaBoards/">목록가기</a>
+            </div>
+            <form method="post" action="">
+              <button type="submit" class="likebtn">추천하기</button>
+            </form>
+            <div class="tomodify">
+              <a href="/idea/ideaBoards/modify?id={{data.id}}"> 수정하기 </a>
+            </div>
+            <form method="post" action="/idea/ideaBoards/delete?id={{data.id}}">
+              <button type="submit" class="todelete">삭제하기</button>
+            </form>
+          </div>
+        </div>
+        <div id="app"></div>
+      </div>
+      <div id="footer">
+        <a href="https://github.com/HohyunKim-kr/GameSync-" target="_blank">
+          <img src="/images/git.png" alt="" />
+        </a>
+        <a
+          href="https://www.notion.so/6e7c5fa81141402d857da70dd2c867f1?v=e68659f259a04af98ace30ca01acede4"
+          target="_blank"
+        >
+          <img src="/images/notion.png" alt="" />
+        </a>
+      </div>
+    </div>
+  </body>
 </html>

@@ -1,78 +1,76 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>Notice_View</title>
-        <link type="text/css" rel="stylesheet" href="/css/index.css" />
-    </head>
-    <body>
-        <div id="header">
-            <div class="header-wrap">
-                <div class="header-logo">
-                    <a href="/">GameSync</a>
-                </div>
-                <div class="header-icon">
-                    <a href="/users/login">
-                        <img src="/images/my.png" alt="" />
-                    </a>
-                </div>
-            </div>
-            <div class="full-drop">
-                <div class="drop-wrap">
-                    <div class="drop-down">
-                        <a href="/develop/developBoards/">게임 개발 게시판</a>
-                    </div>
-                    <div class="drop-down">
-                        <a href="/idea/ideaBoards/"
-                            >게임 기획, 아이디어 게시판</a
-                        >
-                    </div>
-                    <div class="drop-down">
-                        <a href="/notice/notices/">공지사항</a>
-                    </div>
-                    <div class="drop-down">
-                        <a href="/users/user">마이페이지</a>
-                    </div>
-                    <div class="drop-down">
-                        <a href="/users/admin">admin</a>
-                    </div>
-                </div>
-            </div>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Notice_View</title>
+    <link type="text/css" rel="stylesheet" href="/css/index.css" />
+  </head>
+  <body>
+    <div id="header">
+      <div class="header-wrap">
+        <div class="header-logo">
+          <a href="/">GameSync</a>
         </div>
-        <h1><a href="./noticeBoard.list.html">공지사항</a></h1>
-
-        <h2>글보기</h2>
-
-        <ul>
-            <li>
-                <span>제목</span>
-                <span id="title">{{data.title}}</span>
-            </li>
-            <li>
-                <span>작성자</span>
-                <span id="writer">">{{data.author}}</span>
-            </li>
-            <li>
-                <span id="content">{{data.content}}</span>
-            </li>
-            <li>
-                <span id="img">{{data.img}}</span>
-            </li>
-            <li>
-                <span id="content">{{data.createdAt}}</span>
-            </li>
-        </ul>
-        <div class="btnmenu">
-            <div class="tolist">
-                <a href="/idea/ideaBoards/">목록가기</a>
-            </div>
-            <div class="tomodify">
-                <a href="/notice/notices/modify?id={{data.id}}"> 수정하기 </a>
-            </div>
-            <form method="post" action="/notice/notices/delete?id={{data.id}}">
-                <button type="submit" class="todelete">글삭제</button>
-            </form>
+        <div class="header-icon">
+          <a href="/users/login">
+            <img src="/images/my.png" alt="" />
+          </a>
         </div>
-    </body>
+      </div>
+      <div class="full-drop">
+        <div class="drop-wrap">
+          <div class="drop-down">
+            <a href="/develop/developBoards/">게임 개발 게시판</a>
+          </div>
+          <div class="drop-down">
+            <a href="/idea/ideaBoards/">게임 기획, 아이디어 게시판</a>
+          </div>
+          <div class="drop-down">
+            <a href="/notice/notices/">공지사항</a>
+          </div>
+          <div class="drop-down">
+            <a href="/users/user">마이페이지</a>
+          </div>
+          <div class="drop-down">
+            <a href="/users/admin">admin</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <h1><a href="./">공지사항</a></h1>
+
+    <h2>글보기</h2>
+
+    <ul>
+      <li>
+        <span>제목</span>
+        <span id="title">{{data.title}}</span>
+      </li>
+      <li>
+        <span>작성자</span>
+        <span id="author">">{{data.author}}</span>
+      </li>
+      <li>
+        <span id="content">{{data.content}}</span>
+      </li>
+      <li>
+        <span id="img">{{data.img}}</span>
+      </li>
+      <li>
+        <span id="content">{{data.createdAt}}</span>
+      </li>
+    </ul>
+    <div class="btnmenu">
+      <div class="tolist">
+        <a href="/notice/notices/">목록가기</a>
+      </div>
+      <div class="tomodify">
+        <a href="/notice/notices/modify?id={{data.id}}"> 수정하기 </a>
+      </div>
+      <form method="post" action="/notice/notices/delete?id={{data.id}}">
+        <button type="submit" class="todelete">글삭제</button>
+      </form>
+    </div>
+  </body>
 </html>
