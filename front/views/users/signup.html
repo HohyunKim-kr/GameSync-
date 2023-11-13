@@ -20,18 +20,23 @@
         </div>
       </div>
       <form
-        action="doJoin"
+        action="/users/signup"
         method="POST"
         class="joinForm"
         onsubmit="DoJoinForm__submit(this); return false;"
       >
         <h2>회원가입</h2>
         <div class="textForm">
-          <input name="loginId" type="text" class="id" placeholder="아이디" />
+          <input
+            name="user_email"
+            type="text"
+            class="email"
+            placeholder="이메일"
+          />
         </div>
         <div class="textForm">
           <input
-            name="loginPw"
+            name="user_pw"
             type="password"
             class="pw"
             placeholder="비밀번호"
@@ -46,14 +51,16 @@
           />
         </div>
         <div class="textForm">
-          <input name="name" type="password" class="name" placeholder="이름" />
-        </div>
-        <div class="textForm">
-          <input name="email" type="text" class="email" placeholder="이메일" />
+          <input
+            name="user_name"
+            type="password"
+            class="name"
+            placeholder="이름"
+          />
         </div>
         <div class="textForm">
           <input
-            name="nickname"
+            name="user_nickname"
             type="text"
             class="nickname"
             placeholder="닉네임"
@@ -61,7 +68,7 @@
         </div>
         <div class="textForm">
           <input
-            name="userDate"
+            name="user_birth"
             type="number"
             class="userDate"
             placeholder="생년월일"

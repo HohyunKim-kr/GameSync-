@@ -4,9 +4,9 @@ class BaseDTO {
     if (typeof props !== "object") throw new Error("Body 타입이 객체가 아님");
 
     // for (const key in props) {
-    //     if (!props[key]) {
-    //         throw new Error(`${key} 속성 비어있음`);
-    //     }
+    //   if (!props[key]) {
+    //     throw new Error(`${key} 속성 비어있음`);
+    //   }
     // }
   }
   toDate(d) {
