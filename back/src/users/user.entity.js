@@ -22,6 +22,10 @@ User.init(
       type: DataTypes.STRING,
       allowNull: false,
     },
+    user_nickname: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
     user_birth: {
       type: DataTypes.DATE,
       allowNull: false,
@@ -53,9 +57,12 @@ User.init(
   {
     sequelize,
     modelName: "User",
+    freezeTableName: true,
   }
 );
 
+console.log(User);
+console.log(sequelize.models);
 module.exports = {
   User,
 };

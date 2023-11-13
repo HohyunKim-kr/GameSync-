@@ -4,7 +4,7 @@ const userService = new UserService();
 
 exports.signup = async (req, res) => {
   try {
-    const { user_email, user_pw, user_name } = req.body;
+    const { user_email, user_pw, user_name, user_nickname } = req.body;
     const imagePath = req.file ? req.file.path : null;
     console.log(req.body);
 
@@ -13,6 +13,7 @@ exports.signup = async (req, res) => {
       user_email,
       user_pw,
       user_name,
+      user_nickname,
       user_img: imagePath,
     });
 
@@ -26,7 +27,9 @@ exports.login = async (req, res) => {
   try {
     const { user_email, user_pw } = req.body;
 
-    const { token } = await userService.loginUser({ user_email, user_pw });
+    const { token } = await userService.userLogin({ user_email, user_pw, res });
+
+    console.log({ success: true, token });
 
     res.json({ success: true, token });
   } catch (error) {

@@ -12,6 +12,6 @@ const userRouter = require("./users/user.router");
 router.use("/ideaBoards", ideaBoardsRouter);
 router.use("/developBoards", developBoardsRouter);
 router.use("/noticeBoards", noticesRouter);
-router.use("/auth", userRouter);
+router.use("/users", userRouter);
 
 module.exports = router;
