@@ -1,0 +1,13 @@
+.comment {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  padding: 30px;
+  width: 600px;
+  margin: 0 auto;
+}
+
+.comment-form {
+  display: flex;
+  flex-direction: column;
+}
