@@ -12,7 +12,8 @@
     left: 50%;
     transform: translate(-50%, -50%);
     color: #fff;
-    z-index: 99;
+    z-index: 9;
+    font-family: "Pretendard-Regular", sans-serif;
 }
 
 .developBoard-img img {
@@ -30,7 +31,7 @@
 }
 
 .write-btn {
-    background-color: #ff9b2f;
+    background-color: #ffd520;
     border-radius: 20px;
     width: 100px;
     height: 35px;
@@ -40,20 +41,23 @@
 
 .write-btn a {
     font-family: "logo", sans-serif;
-    color: #fff;
+    line-height: 35px;
 }
 
 .ideaBoard-wrap {
-    width: 70%;
+    width: 80%;
     display: flex;
     flex-wrap: wrap;
     margin: 0 auto;
     gap: 10px;
+    justify-content: flex-start;
+    align-items: flex-start;
     /* border: 1px solid floralwhite; */
+    font-family: "Pretendard-Regular", sans-serif;
 }
 
 .ideaBoard-box {
-    width: 28%;
+    width: 24%;
     color: #fff;
     /* border: 1px solid floralwhite; */
     display: flex;

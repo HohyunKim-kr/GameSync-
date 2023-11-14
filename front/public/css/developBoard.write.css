@@ -4,6 +4,7 @@
     height: 200px;
     overflow: hidden;
     position: relative;
+    font-family: "Pretendard-Regular", sans-serif;
 }
 
 .developBoard-text {
@@ -26,6 +27,7 @@
     flex-direction: column;
     gap: 10px;
     margin: 0 auto;
+    font-family: "Pretendard-Regular", sans-serif;
 }
 
 .firstLine {
@@ -84,17 +86,12 @@
     border-radius: 15px;
 }
 
-.fileUpload {
+/* 파일 업로드 컨테이너 스타일링 */
+.file-upload-container {
     width: 90%;
     margin-top: 15px;
     margin-left: 20px;
     color: #fff;
-}
-.btnbox {
-    width: 90%;
-    display: flex;
-    justify-content: space-between;
-    margin: 30px 0 30px 20px;
 }
 
 .uploadbtn {
@@ -109,15 +106,41 @@
     align-items: center;
     justify-content: center;
     &:hover {
-        background: #ff9b2f;
+        background: #ffd520;
         border: none;
+        color: #000;
     }
 }
-#file {
+
+/* 파일 업로드 input 숨기기 */
+.file-upload-container input[type="file"] {
     display: none;
 }
+
+/* 썸네일 미리보기 스타일링 */
+.thumbnail-preview {
+    margin-top: 10px;
+    max-width: 300px;
+    max-height: 200px;
+    overflow: hidden;
+    border-radius: 10px;
+}
+
+.thumbnail-preview img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+.btnbox {
+    width: 90%;
+    display: flex;
+    justify-content: space-between;
+    margin: 30px 0 30px 20px;
+}
+
 .tolist {
-    background-color: #ff9b2f;
+    background-color: #ffd520;
     font-size: 1.1rem;
     width: 120px;
     height: 35px;
@@ -125,20 +148,20 @@
     text-align: center;
 }
 .tolist a {
-    color: white;
     line-height: 30px;
+    font-family: "Pretendard-Regular", sans-serif;
 }
 
 .topost {
     border: none;
-    background-color: #ff9b2f;
+    background-color: #ffd520;
     font-size: 1.1rem;
     width: 100px;
     height: 35px;
     border-radius: 30px;
     text-align: center;
-    color: white;
     cursor: pointer;
+    font-family: "logo", sans-serif;
 }
 
 /* view */

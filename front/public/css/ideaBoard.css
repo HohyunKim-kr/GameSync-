@@ -12,7 +12,8 @@
     left: 50%;
     transform: translate(-50%, -50%);
     color: #fff;
-    z-index: 99;
+    z-index: 9;
+    font-family: "Pretendard-Regular", sans-serif;
 }
 
 .ideaBoard-img img {
@@ -30,7 +31,7 @@
 }
 
 .write-btn {
-    background-color: #ff9b2f;
+    background-color: #ffd520;
     border-radius: 20px;
     width: 100px;
     height: 35px;
@@ -40,20 +41,22 @@
 
 .write-btn a {
     font-family: "logo", sans-serif;
-    color: #fff;
+    line-height: 35px;
 }
 
 .ideaBoard-wrap {
-    width: 70%;
+    width: 80%;
     display: flex;
     flex-wrap: wrap;
     margin: 0 auto;
     gap: 10px;
+    justify-content: flex-start;
+    align-items: flex-start;
     /* border: 1px solid floralwhite; */
 }
 
 .ideaBoard-box {
-    width: 28%;
+    width: 24%;
     color: #fff;
     /* border: 1px solid floralwhite; */
     display: flex;
@@ -63,6 +66,7 @@
     gap: 10px;
     margin: 20px auto;
     /* padding: 50px 0; */
+    font-family: "Pretendard-Regular", sans-serif;
 }
 
 .box-img {
@@ -92,6 +96,7 @@
     flex-direction: column;
     gap: 10px;
     margin: 0 auto;
+    font-family: "Pretendard-Regular", sans-serif;
 }
 
 .firstLine {
@@ -150,17 +155,21 @@
     border-radius: 15px;
 }
 
-.fileUpload {
-    width: 90%;
-    margin-top: 15px;
-    margin-left: 20px;
-    color: #fff;
-}
 .btnbox {
     width: 90%;
     display: flex;
     justify-content: space-between;
     margin: 30px 0 30px 20px;
+    font-family: "Pretendard-Regular", sans-serif;
+}
+
+/* 파일 업로드 컨테이너 스타일링 */
+.file-upload-container {
+    width: 90%;
+    margin-top: 15px;
+    margin-left: 20px;
+    color: #fff;
+    font-family: "Pretendard-Regular", sans-serif;
 }
 
 .uploadbtn {
@@ -175,17 +184,34 @@
     align-items: center;
     justify-content: center;
     &:hover {
-        background: #ff9b2f;
+        background: #ffd520;
         border: none;
+        color: #000;
     }
 }
 
-#file {
+/* 파일 업로드 input 숨기기 */
+.file-upload-container input[type="file"] {
     display: none;
 }
 
+/* 썸네일 미리보기 스타일링 */
+.thumbnail-preview {
+    margin-top: 10px;
+    max-width: 300px;
+    max-height: 200px;
+    overflow: hidden;
+    border-radius: 10px;
+}
+
+.thumbnail-preview img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
 .tolist {
-    background-color: #ff9b2f;
+    background-color: #ffd520;
     font-size: 1.1rem;
     width: 120px;
     height: 35px;
@@ -193,19 +219,17 @@
     text-align: center;
 }
 .tolist a {
-    color: white;
-    line-height: 30px;
+    line-height: 35px;
 }
 
 .topost {
     border: none;
-    background-color: #ff9b2f;
+    background-color: #ffd520;
     font-size: 1.1rem;
     width: 100px;
     height: 35px;
     border-radius: 30px;
     text-align: center;
-    color: white;
     cursor: pointer;
     font-family: "logo", sans-serif;
 }
@@ -213,18 +237,18 @@
 /*  view  */
 
 .ideaBoard-title {
-    background-color: #5974ad;
+    background-color: #ffd520;
     width: 100%;
     max-width: 1920px;
-    height: 150px;
+    height: 160px;
     position: relative;
-    padding: 20px 0;
+    padding: 50px 0;
+    font-family: "Pretendard-Regular", sans-serif;
 }
 
 .view-text {
     width: 60%;
     margin: 0 auto;
-    color: #fff;
 }
 
 .view-box {
@@ -248,6 +272,7 @@
 
 .view-wrap {
     width: 100%;
+    font-family: "Pretendard-Regular", sans-serif;
 }
 
 .dataimg {
@@ -274,7 +299,7 @@
 }
 
 .tomodify {
-    background-color: #ff9b2f;
+    background-color: #ffd520;
     font-size: 1.1rem;
     width: 120px;
     height: 35px;
@@ -282,73 +307,17 @@
     text-align: center;
 }
 .tomodify a {
-    color: white;
     line-height: 30px;
 }
 
 .todelete,
 .likebtn {
-    background-color: #ff9b2f;
+    background-color: #ffd520;
     font-size: 1.1rem;
     width: 120px;
     height: 35px;
     border-radius: 30px;
     text-align: center;
     border: none;
-    cursor: pointer;
-    color: white;
-}
-
-/* comment */
-.comment {
-    background-color: #5974ad;
-    display: flex;
-    flex-direction: column;
-    flex-wrap: wrap;
-    width: 60%;
-    margin: 30px auto 0;
-    padding: 30px;
-    border-radius: 20px;
-}
-
-.comment-form {
-    display: flex;
-    flex-direction: column;
-    height: 70px;
-    justify-content: space-between;
-    width: 100%;
-}
-
-.commentForm {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    padding: 10px 14px;
-}
-
-.comment-author {
-    width: 15%;
-    border: none;
-    outline: none;
-    height: 45px;
-    background-color: #d7e2fc;
-    border-radius: 10px;
-}
-
-.comment-content {
-    width: 70%;
-    border: none;
-    outline: none;
-    height: 45px;
-    background-color: #d7e2fc;
-    border-radius: 10px;
-}
-.commentbtn {
-    width: 10%;
-    padding: 18px 0 16px;
-    background-color: #333;
-    font-size: 14px;
-    border: none;
-    color: #fff;
     cursor: pointer;
 }
