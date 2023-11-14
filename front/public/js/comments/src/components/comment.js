@@ -75,10 +75,11 @@ import CommentForm from "/js/comments/src/contents/form.js";
 import CommentList from "/js/comments/src/contents/item.js";
 
 class Comment extends Component {
-  setup() {
+  async setup() {
     this.state = {
       comments: [],
     };
+    await this.fetchComments();
   }
 
   template() {
@@ -110,10 +111,11 @@ class Comment extends Component {
       const response = await axios.delete(
         `http://localhost:4000/comments/${id}`
       );
-
-      if (response.data.success) {
-        await this.fetchComments();
-      }
+      // console.log(response.data.success);
+      // if (response.data.success) {
+      await this.fetchComments();
+      // }
+      return response;
     } catch (error) {
       console.error("Error deleting data on server:", error);
     }
@@ -121,13 +123,17 @@ class Comment extends Component {
 
   async updateItem(id, content) {
     try {
+      console.log("updateItem : ", id);
+      console.log("updateItem : ", content);
       const response = await axios.put(`http://localhost:4000/comments/${id}`, {
         content,
       });
-
-      if (response.data.success) {
-        await this.fetchComments();
-      }
+      await this.fetchComments();
+      // if (response.data.success) {
+      //   console.log("댓글대기중");
+      //   await this.fetchComments();
+      //   console.log("댓글 출력");
+      // }
     } catch (error) {
       console.error("Error updating data on server:", error);
     }
