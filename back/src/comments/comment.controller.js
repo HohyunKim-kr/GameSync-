@@ -60,8 +60,6 @@ exports.updateComment = async (req, res) => {
     };
 
     const commentRequestDTO = new CommentRequestDTO(body);
-
-    console.log(id);
     const response = await commentService.updateComment(id, commentRequestDTO);
     res.status(201).json(response);
   } catch (error) {
