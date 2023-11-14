@@ -54,27 +54,6 @@ exports.postSignup = async (req, res, next) => {
   try {
     const userData = req.body;
     const token = await postSignup(userData);
-<<<<<<< Updated upstream
-    return res
-      .status(201)
-      .redirect("http://localhost:3000/users/login?success=true");
-  } catch (error) {
-    next(error);
-  }
-
-  try {
-    const userData = req.body;
-    const token = await postSignup(userData);
-    return res.status(201).json({ token });
-  } catch (error) {
-    next(error);
-  }
-
-  try {
-    const userData = req.body;
-    const token = await postSignup(userData);
-=======
->>>>>>> Stashed changes
     return res.status(201).json({ token });
   } catch (error) {
     next(error);
