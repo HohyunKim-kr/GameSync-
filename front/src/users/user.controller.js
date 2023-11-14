@@ -43,7 +43,9 @@ exports.postSignup = async (req, res, next) => {
   try {
     const userData = req.body;
     const token = await postSignup(userData);
-    return res.status(201).json({ token });
+    return res
+      .status(201)
+      .redirect("http://localhost:3000/users/login?success=true");
   } catch (error) {
     next(error);
   }
