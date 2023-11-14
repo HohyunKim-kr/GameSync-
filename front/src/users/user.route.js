@@ -22,4 +22,8 @@ router.get("/user/modify", userController.getUsermodify);
 router.get("/kakao", userController.kakaoLogin);
 router.get("/kakao/callback", userController.kakaoCallback);
 
+// git login
+router.get("/git", userController.gitLogin);
+router.get("/git/callback", userController.gitCallback);
+
 module.exports = router;

@@ -1,8 +1,15 @@
-const { postLogin, postSignup, kakaoLogin } = require("./user.service");
+const {
+  postLogin,
+  postSignup,
+  kakaoLogin,
+  gitLogin,
+} = require("./user.service");
 require("dotenv").config();
 
 const REST_API_KEY = process.env.REST_API_KEY;
 const KAKAO_REDIRECT_URI = process.env.KAKAO_REDIRECT_URI;
+const GIT_REST_API_KEY = process.env.GIT_REST_API_KEY;
+const GIT_REDIRECT_URI = process.env.GIT_REDIRECT_URI;
 
 exports.getLogin = (req, res) => {
   res.render("users/login.html");
@@ -96,6 +103,34 @@ exports.kakaoCallback = async (req, res, next) => {
       // return res.status(200).json({ token });
     } else {
       return res.status(401).json({ message: "kakao Login failed" });
+    }
+  } catch (e) {
+    next(e);
+  }
+};
+
+exports.gitLogin = (req, res, next) => {
+  try {
+    const redirectURI = `https://github.com/login/oauth/authorize?client_id=${GIT_REST_API_KEY}`;
+    // const redirectURI = ` https://github.com/login/oauth/authorize?client_id=${GIT_REST_API_KEY}&redirect_uri=${GIT_REDIRECT_URI}&response_type=code`;
+    // const redirectURI = `https://kauth.kakao.com/oauth/authorize?client_id=${REST_API_KEY}&redirect_uri=${KAKAO_REDIRECT_URI}&response_type=code`;
+    res.redirect(redirectURI);
+  } catch (e) {
+    next(e);
+  }
+};
+
+exports.gitCallback = async (req, res, next) => {
+  try {
+    const { code } = req.query;
+
+    const result = await gitLogin(code);
+    const token = result;
+    if (token) {
+      res.cookie("cookie", token);
+      return res.redirect("/");
+    } else {
+      return res.status(401).json({ message: "git Login failed" });
     }
   } catch (e) {
     next(e);
