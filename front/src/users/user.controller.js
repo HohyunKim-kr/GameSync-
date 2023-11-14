@@ -44,13 +44,20 @@ exports.postLogin = async (req, res, next) => {
 };
 
 exports.postSignup = async (req, res, next) => {
-  D;
   try {
     const userData = req.body;
     const token = await postSignup(userData);
     return res
       .status(201)
       .redirect("http://localhost:3000/users/login?success=true");
+  } catch (error) {
+    next(error);
+  }
+
+  try {
+    const userData = req.body;
+    const token = await postSignup(userData);
+    return res.status(201).json({ token });
   } catch (error) {
     next(error);
   }
