@@ -16,11 +16,13 @@ app.use((error, req, res, next) => {
   res.status(500).send(error.message);
 });
 
+app.use(router);
+
 // 라우터 등록
-initDB().then(() => {
-  console.log("Database initialized and tables created");
-  console.log(sequelize.models);
-  app.use(router);
-});
+// initDB().then(() => {
+//   console.log("Database initialized and tables created");
+//   console.log(sequelize.models);
+//   app.use(router);
+// });
 
 module.exports = app;

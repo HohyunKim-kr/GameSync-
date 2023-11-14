@@ -7,7 +7,8 @@ const noticesRouter = require("./notices/noticeBoard.route");
 // const userDataRouter = require("./userData/userData.route");
 
 router.get("/", (req, res) => {
-  res.render("index.html");
+  console.log("res", req.user_nickname);
+  res.render("index.html", { user: req.user_nickname });
 });
 
 router.use("/users", usersRouter);

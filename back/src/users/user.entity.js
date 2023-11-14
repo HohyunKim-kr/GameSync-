@@ -61,8 +61,29 @@ User.init(
   }
 );
 
-console.log(User);
-console.log(sequelize.models);
+const developBoards = sequelize.models.DevelopBoards;
+const ideaBoards = sequelize.models.IdeaBoards;
+const noticeBoards = sequelize.models.noticeBoards;
+
+User.hasMany(developBoards, {
+  foreignKey: "author",
+});
+
+developBoards.belongsTo(User, {
+  foreignKey: "author",
+});
+User.hasMany(ideaBoards, {
+  foreignKey: "author",
+});
+ideaBoards.belongsTo(User, {
+  foreignKey: "author",
+});
+User.hasMany(noticeBoards, {
+  foreignKey: "author",
+});
+noticeBoards.belongsTo(User, {
+  foreignKey: "author",
+});
 module.exports = {
   User,
 };
