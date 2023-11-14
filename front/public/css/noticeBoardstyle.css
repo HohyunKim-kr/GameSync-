@@ -39,10 +39,15 @@ a {
     font-size: 1.4rem;
 }
 
+.board_title h2 {
+    text-align: center;
+}
+
 .bt_wrap {
     margin: 30px;
-    text-align: center;
-    font-size: 0;
+    text-align: end;
+    /* font-size: 0; */
+    padding: 0 50px;
 }
 
 .bt_wrap a {
@@ -52,7 +57,8 @@ a {
     margin-left: 10px;
     border: 1px solid #000;
     border-radius: 2px;
-    font-size: 1.4rem;
+    font-size: 1rem;
+    text-align: center;
 }
 
 .bt_wrap a:first-child {
@@ -62,6 +68,7 @@ a {
 .bt_wrap a.on {
     background: #000;
     color: #fff;
+    border-radius: 15px;
 }
 
 /* table */
@@ -80,7 +87,8 @@ td {
 }
 
 .board_list_wrap {
-    height: 700px;
+    height: 500px;
+    /* 나중에 게시글 갯수보고 높이 조정하기 */
 }
 
 thead > tr {
@@ -111,4 +119,215 @@ col.date {
 }
 col.hit {
     width: 8%;
+}
+
+/* write */
+
+#noticeBoardForm {
+    width: 60%;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin: 0 auto;
+}
+
+.firstLine {
+    width: 80%;
+    margin-top: 30px;
+    display: flex;
+    gap: 10px;
+    /* border: 1px solid floralwhite; */
+}
+
+.author {
+    font-size: 14px;
+    padding: 10px 15px;
+    width: 250px;
+    margin-left: 20px;
+    padding: 10px 14px;
+    border: none;
+    outline: none;
+    border-radius: 15px;
+}
+
+.secondLine {
+    width: 90%;
+    margin-top: 15px;
+    margin-left: 20px;
+}
+
+.title {
+    font-size: 14px;
+    padding: 10px 15px;
+    width: 100%;
+    border: none;
+    outline: none;
+    border-radius: 15px;
+}
+
+.thirdLine {
+    /* border: 1px solid #747373; */
+    width: 90%;
+    margin-left: 20px;
+}
+.content {
+    height: 400px;
+    width: 100%;
+    resize: none;
+    border: none;
+    padding: 10px 15px;
+    outline: none;
+    border-radius: 15px;
+}
+
+/* 파일 업로드 컨테이너 스타일링 */
+.file-upload-container {
+    width: 90%;
+    margin-top: 15px;
+    margin-left: 20px;
+    color: #fff;
+}
+
+.uploadbtn {
+    width: 150px;
+    height: 35px;
+    border: 1px solid #fff;
+    margin-top: 20px;
+    border-radius: 15px;
+    font-weight: 500;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    &:hover {
+        background: #ffd520;
+        border: none;
+        color: #000;
+    }
+}
+
+/* 파일 업로드 input 숨기기 */
+.file-upload-container input[type="file"] {
+    display: none;
+}
+
+/* 썸네일 미리보기 스타일링 */
+.thumbnail-preview {
+    margin-top: 10px;
+    max-width: 300px;
+    max-height: 200px;
+    overflow: hidden;
+    border-radius: 10px;
+}
+
+.thumbnail-preview img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+.btnbox {
+    width: 90%;
+    display: flex;
+    justify-content: space-between;
+    margin: 30px 0 30px 20px;
+}
+
+.tolist {
+    background-color: #ffd520;
+    font-size: 1.1rem;
+    width: 120px;
+    height: 35px;
+    border-radius: 30px;
+    text-align: center;
+}
+.tolist a {
+    line-height: 30px;
+}
+
+.topost {
+    border: none;
+    background-color: #ffd520;
+    font-size: 1.1rem;
+    width: 100px;
+    height: 35px;
+    border-radius: 30px;
+    text-align: center;
+    cursor: pointer;
+    font-family: "logo", sans-serif;
+}
+
+/*  view  */
+
+.view-text {
+    width: 60%;
+    margin: 0 auto;
+}
+
+.view-box {
+    width: 60%;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: row;
+    gap: 30px;
+    font-size: 18px;
+    align-items: center;
+}
+
+.hit {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 20px;
+}
+
+.view-wrap {
+    width: 100%;
+}
+
+.dataimg {
+    width: 500px;
+    margin: 30px auto;
+}
+
+.dataimg img {
+    width: 100%;
+}
+
+.data-content {
+    text-align: center;
+    font-size: 18px;
+    color: #fff;
+}
+
+.btnmenu {
+    width: 50%;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    margin-top: 30px;
+}
+
+.tomodify {
+    background-color: #ffd520;
+    font-size: 1.1rem;
+    width: 120px;
+    height: 35px;
+    border-radius: 30px;
+    text-align: center;
+}
+.tomodify a {
+    line-height: 30px;
+}
+
+.todelete,
+.likebtn {
+    background-color: #ffd520;
+    font-size: 1.1rem;
+    width: 120px;
+    height: 35px;
+    border-radius: 30px;
+    text-align: center;
+    border: none;
+    cursor: pointer;
 }
