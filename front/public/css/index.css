@@ -2,6 +2,13 @@
     font-family: "logo";
     src: url("/fonts/ttf/KaushanScript-Regular.ttf") format("truetype");
 }
+@font-face {
+    font-family: "Pretendard-Regular";
+    src: url("https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Regular.woff")
+        format("woff");
+    font-weight: 400;
+    font-style: normal;
+}
 
 * {
     margin: 0;
@@ -71,10 +78,11 @@ ul {
     transition: 0.5s;
     height: 0;
     background-color: #344770;
+    font-family: "Pretendard-Regular", sans-serif;
 }
 
 #header:hover .full-drop {
-    height: 45px;
+    height: 40px;
 }
 
 .drop-wrap {
@@ -130,6 +138,7 @@ ul {
     font-size: 18px;
     color: #fff;
     padding: 0 13px;
+    font-family: "Pretendard-Regular", sans-serif;
 }
 
 .right-info {
@@ -193,6 +202,7 @@ ul {
     height: 500px;
     margin: 40px auto 0;
     padding: 30px 80px;
+    font-family: "Pretendard-Regular", sans-serif;
 }
 
 .bestgame h3 {
@@ -281,6 +291,7 @@ ul {
     height: 500px;
     margin: 40px auto 0;
     padding: 30px 80px;
+    font-family: "Pretendard-Regular", sans-serif;
 }
 
 .newgame h3 {

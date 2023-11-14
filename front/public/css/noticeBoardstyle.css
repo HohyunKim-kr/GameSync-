@@ -22,12 +22,14 @@ a {
     margin: 100px; */
 
     width: 100%;
+    font-family: "Pretendard-Regular", sans-serif;
 }
 
 .board_title {
     margin-bottom: 30px;
     background-color: #ffd520;
     padding: 60px 100px;
+    font-family: "Pretendard-Regular", sans-serif;
 }
 
 .board_title strong {
@@ -129,6 +131,7 @@ col.hit {
     flex-direction: column;
     gap: 10px;
     margin: 0 auto;
+    font-family: "Pretendard-Regular", sans-serif;
 }
 
 .firstLine {
@@ -231,6 +234,7 @@ col.hit {
     display: flex;
     justify-content: space-between;
     margin: 30px 0 30px 20px;
+    font-family: "Pretendard-Regular", sans-serif;
 }
 
 .tolist {
@@ -242,7 +246,8 @@ col.hit {
     text-align: center;
 }
 .tolist a {
-    line-height: 30px;
+    line-height: 35px;
+    font-family: "Pretendard-Regular", sans-serif;
 }
 
 .topost {
@@ -283,6 +288,7 @@ col.hit {
 
 .view-wrap {
     width: 100%;
+    font-family: "Pretendard-Regular", sans-serif;
 }
 
 .dataimg {
@@ -330,4 +336,5 @@ col.hit {
     text-align: center;
     border: none;
     cursor: pointer;
+    font-family: "Pretendard-Regular", sans-serif;
 }
