@@ -29,7 +29,7 @@ class CommentList extends Component {
     const { id, content } = item;
     const isUpdated = id === parseInt(this.state.updated);
     if (isUpdated) {
-      return `<input type='text' class='comment-update-input' value='${content}' />`;
+      return `<input type='text' name='content' class='comment-update-input' value='${content}' />`;
     }
     return content;
   }
