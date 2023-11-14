@@ -1,4 +1,8 @@
-const { postLogin, postSignup } = require("./user.service");
+const { postLogin, postSignup, kakaoLogin } = require("./user.service");
+require("dotenv").config();
+
+const REST_API_KEY = process.env.REST_API_KEY;
+const KAKAO_REDIRECT_URI = process.env.KAKAO_REDIRECT_URI;
 
 exports.getLogin = (req, res) => {
   res.render("users/login.html");
@@ -40,6 +44,7 @@ exports.postLogin = async (req, res, next) => {
 };
 
 exports.postSignup = async (req, res, next) => {
+  D;
   try {
     const userData = req.body;
     const token = await postSignup(userData);
@@ -48,5 +53,44 @@ exports.postSignup = async (req, res, next) => {
       .redirect("http://localhost:3000/users/login?success=true");
   } catch (error) {
     next(error);
+  }
+
+  try {
+    const userData = req.body;
+    const token = await postSignup(userData);
+    return res.status(201).json({ token });
+  } catch (error) {
+    next(error);
+  }
+};
+
+exports.kakaoLogin = (req, res, next) => {
+  try {
+    const redirectURI = `https://kauth.kakao.com/oauth/authorize?client_id=${REST_API_KEY}&redirect_uri=${KAKAO_REDIRECT_URI}&response_type=code`;
+    res.redirect(redirectURI);
+  } catch (e) {
+    next(e);
+  }
+};
+
+exports.kakaoCallback = async (req, res, next) => {
+  try {
+    const { code } = req.query;
+    // console.log(`code:`, code);
+    const result = await kakaoLogin(code);
+    // console.log(`넘어와!!!:`, result.data.user);
+    // console.log(`넘어와!!!:`, result.data.token);
+    const { token } = result.data;
+    if (token) {
+      res.cookie("cookie", token);
+
+      return res.redirect("/");
+
+      // return res.status(200).json({ token });
+    } else {
+      return res.status(401).json({ message: "kakao Login failed" });
+    }
+  } catch (e) {
+    next(e);
   }
 };

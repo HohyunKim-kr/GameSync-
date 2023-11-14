@@ -18,4 +18,8 @@ router.get("/user/modify", userController.getUsermodify);
 // router.post("/user/modify", userController.postUsermodify);
 // router.get("/user/delete", userController.getUserdelete);
 
+// kakoa login
+router.get("/kakao", userController.kakaoLogin);
+router.get("/kakao/callback", userController.kakaoCallback);
+
 module.exports = router;
