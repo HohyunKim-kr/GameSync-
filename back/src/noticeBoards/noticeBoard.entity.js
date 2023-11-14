@@ -11,10 +11,6 @@ module.exports = (sequelize, DataTypes) => {
         type: DataTypes.STRING,
         allowNull: false,
       },
-      author: {
-        type: DataTypes.STRING,
-        allowNull: false,
-      },
       content: {
         type: DataTypes.TEXT,
         allowNull: false,
@@ -38,6 +34,6 @@ module.exports = (sequelize, DataTypes) => {
         defaultValue: 0,
       },
     },
-    { freezeTableName: true }
+    { sequelize, modelName: "noticeBoard", freezeTableName: true }
   );
 };

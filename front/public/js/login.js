@@ -3,6 +3,6 @@ window.onload = function () {
   const successMessage = urlParams.get("success");
 
   if (successMessage === "true") {
-    alert("회원가입이 성공했습니다!");
+    alert("회원가입이 성공했습니다");
   }
 };
