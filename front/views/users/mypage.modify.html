@@ -54,8 +54,9 @@
                                         <div class="uploadbtn">UPLOAD</div>
                                     </label>
                                     <input
+                                        required
                                         type="file"
-                                        name="upload"
+                                        name="upload_user"
                                         id="file"
                                     />
                                 </div>
@@ -69,6 +70,7 @@
                                     </p>
                                     <p class="user-text">
                                         <input
+                                            required
                                             type="text"
                                             name="usercontent"
                                             class="usercontent"
@@ -79,8 +81,8 @@
                             </div>
                             <div class="user-edit-edit">
                                 <button type="submit" class="mybtn">
-                                    저장하기
-                                    <img src="/images/edit.png" alt="" />
+                                    저장하기&nbsp
+                                    <img src="/images/edit_black.png" alt="" />
                                 </button>
                             </div>
                         </div>
@@ -96,6 +98,7 @@
                             <div>
                                 이름 :
                                 <input
+                                    required
                                     type="text"
                                     name="username"
                                     value="유저가 입력한 이름"
@@ -104,6 +107,7 @@
                             <div>
                                 닉네임 :
                                 <input
+                                    required
                                     type="text"
                                     name="usernickname"
                                     value="유저가 입력한 닉네임"
@@ -112,6 +116,7 @@
                             <div>
                                 이메일 :
                                 <input
+                                    required
                                     type="text"
                                     name="useremail"
                                     value="유저가 입력한 이메일"
@@ -120,6 +125,7 @@
                             <div>
                                 비밀번호 :
                                 <input
+                                    required
                                     type="text"
                                     name="userpw"
                                     value="유저가 입력한 비밀번호"
@@ -128,6 +134,7 @@
                             <div>
                                 생년월일 :
                                 <input
+                                    required
                                     type="text"
                                     name="userbirth"
                                     value="유저가 입력한 생년월일"
@@ -139,15 +146,26 @@
             </div>
         </div>
         <div id="footer">
-            <a href="https://github.com/HohyunKim-kr/GameSync-" target="_blank">
-                <img src="/images/git.png" alt="" />
-            </a>
-            <a
-                href="https://www.notion.so/6e7c5fa81141402d857da70dd2c867f1?v=e68659f259a04af98ace30ca01acede4"
-                target="_blank"
-            >
-                <img src="/images/notion.png" alt="" />
-            </a>
+            <div class="left-info">
+                <div class="header-logo">
+                    <a href="/">GameSync</a>
+                </div>
+                <span>&copy 2023 GameSync. All rights reserved.</span>
+            </div>
+            <div class="right-info">
+                <a
+                    href="https://github.com/HohyunKim-kr/GameSync-"
+                    target="_blank"
+                >
+                    <img src="/images/git.png" alt="" />
+                </a>
+                <a
+                    href="https://www.notion.so/6e7c5fa81141402d857da70dd2c867f1?v=e68659f259a04af98ace30ca01acede4"
+                    target="_blank"
+                >
+                    <img src="/images/notion.png" alt="" />
+                </a>
+            </div>
         </div>
     </body>
 </html>

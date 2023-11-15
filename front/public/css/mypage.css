@@ -1,16 +1,16 @@
 .myinfo-wrap {
     width: 100%;
     background-color: #fff;
-    height: 250px;
+    height: 260px;
 }
 
 .wrapper {
-    width: 60%;
+    width: 50%;
     margin: 0 auto;
     display: flex;
     flex-direction: row;
     align-items: center;
-    margin: 25px auto;
+    margin: 30px auto;
     justify-content: space-around;
 }
 
@@ -23,13 +23,14 @@
     align-items: center;
     margin: 30px auto;
     gap: 30px;
+    font-family: "Pretendard-Regular", sans-serif;
 }
 
 .user-img {
     width: 120px;
     height: 120px;
     border-radius: 50%;
-    background-color: #7e2533;
+    background-color: #ffd520;
 }
 
 .user-img img {
@@ -44,7 +45,7 @@
 }
 
 .user-edit {
-    background-color: #7e2533;
+    background-color: #ffd520;
     width: 150px;
     height: 40px;
     border-radius: 50px;
@@ -52,10 +53,10 @@
     flex-direction: row;
     justify-content: center;
     align-items: center;
+    font-family: "Pretendard-Regular", sans-serif;
 }
 
 .user-edit a {
-    color: #fff;
     font-size: 16px;
 }
 
@@ -66,12 +67,13 @@
 .menu {
     display: flex;
     flex-direction: row;
-    width: 60%;
+    width: 50%;
     margin: 0 auto;
 }
 
 .menu a {
     width: 25%;
+    height: 50px;
     font-size: 18px;
     text-align: center;
     position: relative;
@@ -81,26 +83,35 @@
     font-family: "logo", sans-serif;
 }
 
-.menu a:after {
+/* .menu a:after {
     content: "";
     position: absolute;
     width: 45%;
     height: 5px;
     bottom: -10px;
     background-color: #7e2533;
+} */
+
+.menu a:hover {
+    background-color: #5974ad;
+    color: #fff;
+    height: 50px;
 }
 
 .info-wrap {
     width: 100%;
     background-color: #5974ad;
+    height: 413px;
     padding: 50px 0;
+    font-family: "Pretendard-Regular", sans-serif;
 }
 
 .show-info {
     width: 50%;
+    height: 300px;
     background-color: #fff;
     margin: 0 auto;
-    padding: 10px 25px;
+    padding: 20px 35px;
     border-radius: 10px;
     display: flex;
     flex-direction: column;
@@ -123,22 +134,25 @@
     border: none;
     border-bottom: 1px solid #dedede;
     outline: none;
+    font-family: "Pretendard-Regular", sans-serif;
 }
 
 .uploadbtn {
     width: 120px;
     height: 120px;
     border-radius: 50%;
-    background-color: #7e2533;
+    background-color: #ffd520;
     display: flex;
     justify-content: center;
     align-items: center;
     font-weight: 500;
     cursor: pointer;
     &:hover {
-        background: #ff9b2f;
+        background: #5974ad;
         border: none;
+        color: #fff;
     }
+    font-family: "Pretendard-Regular", sans-serif;
 }
 
 #file {
@@ -146,7 +160,7 @@
 }
 
 .user-edit-edit {
-    background-color: #7e2533;
+    background-color: #ffd520;
     width: 150px;
     height: 40px;
     border-radius: 50px;
@@ -157,12 +171,12 @@
     text-align: center;
 }
 .mybtn {
-    background-color: #7e2533;
+    background-color: #ffd520;
     border: none;
     cursor: pointer;
-    color: #fff;
     font-size: 16px;
     text-align: center;
+    font-family: "Pretendard-Regular", sans-serif;
 }
 
 .user-edit-edit button img {
@@ -173,10 +187,12 @@
     display: flex;
     flex-direction: column;
     margin: 0 auto;
+    font-family: "Pretendard-Regular", sans-serif;
 }
 
 .show-info input {
     border: none;
     outline: none;
     width: 50%;
+    font-family: "Pretendard-Regular", sans-serif;
 }
