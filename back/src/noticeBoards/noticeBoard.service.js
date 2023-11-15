@@ -10,18 +10,18 @@ exports.createBoard = async (noticeBoardRequestDTO) => {
     if (!(noticeBoardRequestDTO instanceof NoticeBoardRequestDTO)) {
       throw new Error("Create Error");
     }
-    const { id, title, author, content, hit, category, img, like } =
+    // const { id, title, author, content, hit, category, img, like } =
+    //   noticeBoardRequestDTO;
+    const { title, author, content, category, image, original_filename } =
       noticeBoardRequestDTO;
 
     const noticeBoard = await noticeBoards.build({
-      id,
       title,
       author,
       content,
-      hit,
       category,
-      img,
-      like,
+      image,
+      original_filename,
     });
 
     const response = await noticeBoard.save();
