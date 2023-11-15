@@ -1,135 +1,124 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>ideaBoard_Modify</title>
-        <link type="text/css" rel="stylesheet" href="/css/index.css" />
-        <link type="text/css" rel="stylesheet" href="/css/ideaBoard.css" />
-    </head>
-    <body>
-        <div id="wrap">
-            <div id="header">
-                <div class="header-wrap">
-                    <div class="header-logo">
-                        <a href="/">GameSync</a>
-                    </div>
-                    <div class="header-icon">
-                        <a href="/users/login">
-                            <img src="/images/my.png" alt="" />
-                        </a>
-                    </div>
-                </div>
-                <div class="full-drop">
-                    <div class="drop-wrap">
-                        <div class="drop-down">
-                            <a href="/develop/developBoards/"
-                                >게임 개발 게시판</a
-                            >
-                        </div>
-                        <div class="drop-down">
-                            <a href="/idea/ideaBoards/"
-                                >게임 기획, 아이디어 게시판</a
-                            >
-                        </div>
-                        <div class="drop-down">
-                            <a href="/notice/notices/">공지사항</a>
-                        </div>
-                        <div class="drop-down">
-                            <a href="/users/user">마이페이지</a>
-                        </div>
-                        <div class="drop-down">
-                            <a href="/users/admin">admin</a>
-                        </div>
-                    </div>
-                </div>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ideaBoard_Modify</title>
+    <link type="text/css" rel="stylesheet" href="/css/index.css" />
+    <link type="text/css" rel="stylesheet" href="/css/ideaBoard.css" />
+  </head>
+  <body>
+    <div id="wrap">
+      <div id="header">
+        <div class="header-wrap">
+          <div class="header-logo">
+            <a href="/">GameSync</a>
+          </div>
+          <div class="header-icon">
+            <a href="/users/login">
+              <img src="/images/my.png" alt="" />
+            </a>
+          </div>
+        </div>
+        <div class="full-drop">
+          <div class="drop-wrap">
+            <div class="drop-down">
+              <a href="/develop/developBoards/">게임 개발 게시판</a>
             </div>
-            <div id="container">
-                <div class="ideaBoard-img">
-                    <h2 class="ideaBoard-text">게임 기획, 아이디어 수정하기</h2>
-                    <img src="/images/ideaBoard.jpg" alt="" />
-                </div>
-                <form
-                    action="/idea/ideaBoards/modify?id={{id}}"
-                    method="post"
-                    id="ideaBoardForm"
-                    enctype="multipart/form-data"
-                >
-                    <div class="firstLine">
-                        <select class="category" name="category">
-                            <option disabled selected>선택하세요</option>
-                            <option value="1">롤플레잉</option>
-                        </select>
-                        <input
+            <div class="drop-down">
+              <a href="/idea/ideaBoards/">게임 기획, 아이디어 게시판</a>
+            </div>
+            <div class="drop-down">
+              <a href="/notice/notices/">공지사항</a>
+            </div>
+            <div class="drop-down">
+              <a href="/users/user">마이페이지</a>
+            </div>
+            <div class="drop-down">
+              <a href="/users/admin">admin</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div id="container">
+        <div class="ideaBoard-img">
+          <h2 class="ideaBoard-text">게임 기획, 아이디어 수정하기</h2>
+          <img src="/images/ideaBoard.jpg" alt="" />
+        </div>
+        <form
+          action="/idea/ideaBoards/modify?id={{id}}"
+          method="post"
+          id="ideaBoardForm"
+          enctype="multipart/form-data"
+        >
+          <div class="firstLine">
+            <select class="category" name="category">
+              <option disabled selected>선택하세요</option>
+              <option value="1">롤플레잉</option>
+            </select>
+            <!-- <input
                             type="text"
                             class="author"
                             name="author"
                             placeholder="작성자"
                             value="{{data.author}}"
-                        />
-                    </div>
-                    <div class="secondLine">
-                        <input
-                            type="text"
-                            name="title"
-                            class="title"
-                            placeholder="제목을 입력해주세요"
-                            value="{{data.title}}"
-                        />
-                    </div>
-                    <div class="thirdLine">
-                        <textarea class="content" name="content">
-{{data.content}}</textarea
-                        >
-                    </div>
-                    <div class="file-upload-container">
-                        <p>썸네일 등록</p>
-                        <label for="file" class="uploadbtn"
-                            >파일 선택하기</label
-                        >
-                        <input
-                            required
-                            type="file"
-                            name="upload"
-                            id="file"
-                            accept="image/*"
-                            onchange="previewImage(this)"
-                        />
-                        <div class="thumbnail-preview" id="thumbnailPreview">
-                            <img id="dataimg" src="" />
-                        </div>
-                    </div>
-                    <div class="btnbox">
-                        <div class="tolist">
-                            <a href="/idea/ideaBoards/">목록가기</a>
-                        </div>
-                        <button type="submit" class="topost">POST</button>
-                    </div>
-                </form>
+                        /> -->
+          </div>
+          <div class="secondLine">
+            <input
+              type="text"
+              name="title"
+              class="title"
+              placeholder="제목을 입력해주세요"
+              value="{{data.title}}"
+            />
+          </div>
+          <div class="thirdLine">
+            <textarea class="content" name="content">{{data.content}}</textarea>
+          </div>
+          <div class="file-upload-container">
+            <p>썸네일 등록</p>
+            <label for="file" class="uploadbtn">파일 선택하기</label>
+            <input
+              required
+              type="file"
+              name="upload"
+              id="file"
+              accept="image/*"
+              onchange="previewImage(this)"
+            />
+            <div class="thumbnail-preview" id="thumbnailPreview">
+              <img id="dataimg" src="" />
             </div>
+          </div>
+          <div class="btnbox">
+            <div class="tolist">
+              <a href="/idea/ideaBoards/">목록가기</a>
+            </div>
+            <button type="submit" class="topost">POST</button>
+          </div>
+        </form>
+      </div>
+    </div>
+    <div id="footer">
+      <div class="left-info">
+        <div class="header-logo">
+          <a href="/">GameSync</a>
         </div>
-        <div id="footer">
-            <div class="left-info">
-                <div class="header-logo">
-                    <a href="/">GameSync</a>
-                </div>
-                <span>&copy 2023 GameSync. All rights reserved.</span>
-            </div>
-            <div class="right-info">
-                <a
-                    href="https://github.com/HohyunKim-kr/GameSync-"
-                    target="_blank"
-                >
-                    <img src="/images/git.png" alt="" />
-                </a>
-                <a
-                    href="https://www.notion.so/6e7c5fa81141402d857da70dd2c867f1?v=e68659f259a04af98ace30ca01acede4"
-                    target="_blank"
-                >
-                    <img src="/images/notion.png" alt="" />
-                </a>
-            </div>
-        </div>
-        <script src="/js/thumbnail.js"></script>
-    </body>
+        <span>&copy 2023 GameSync. All rights reserved.</span>
+      </div>
+      <div class="right-info">
+        <a href="https://github.com/HohyunKim-kr/GameSync-" target="_blank">
+          <img src="/images/git.png" alt="" />
+        </a>
+        <a
+          href="https://www.notion.so/6e7c5fa81141402d857da70dd2c867f1?v=e68659f259a04af98ace30ca01acede4"
+          target="_blank"
+        >
+          <img src="/images/notion.png" alt="" />
+        </a>
+      </div>
+    </div>
+    <script src="/js/thumbnail.js"></script>
+  </body>
 </html>
