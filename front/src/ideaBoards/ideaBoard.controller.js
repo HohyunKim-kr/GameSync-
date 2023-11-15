@@ -16,12 +16,8 @@ exports.getWrite = (req, res, next) => {
 
 exports.postWrite = async (req, res, next) => {
     try {
-        // console.log(req.body);
         const data = req.body;
-
-        console.log(req.file);
         const file = req.file;
-
         const boardData = {
             title: data.title,
             author: data.author,
@@ -30,8 +26,8 @@ exports.postWrite = async (req, res, next) => {
             image: file.filename,
             original_filename: file.originalname,
         };
-
-        const result = await ideaBoardService.postWrite(boardData);
+        const token = req.cookies.cookie;
+        const result = await ideaBoardService.postWrite(boardData, token);
         console.log(`postWrite controller result :`, result);
 
         const { id } = result.data;
@@ -44,11 +40,12 @@ exports.postWrite = async (req, res, next) => {
 exports.view = async (req, res, next) => {
     try {
         const { id } = req.query;
-        // console.log(data);
         const { data } = await ideaBoardService.getView(id);
-        // console.log(data.image);
-        data.content = data.content.replace(/\n/g, "<br>");
-        console.log(data);
+
+        if (data.result.content) {
+            data.result.content = data.result.content.replace(/\n/g, "<br>");
+        }
+        console.log(`front view---->`, data);
         res.render("ideaBoards/view.html", { data: data });
     } catch (e) {
         next(e);
@@ -59,6 +56,7 @@ exports.getModify = async (req, res, next) => {
     try {
         const { id } = req.query;
         const { data } = await ideaBoardService.getModify(id);
+        console.log(`front modify---->`, data);
 
         res.render("ideaBoards/modify.html", { data: data, id });
     } catch (e) {

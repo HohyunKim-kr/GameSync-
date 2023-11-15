@@ -51,22 +51,22 @@
             <div id="container">
                 <div class="ideaBoard-title">
                     <h1 class="view-text">
-                        {{data.category}} &nbsp {{data.title}}
+                        {{data.result.category}} &nbsp {{data.result.title}}
                     </h1>
                     <div class="view-box">
-                        <div>{{data.author}}</div>
-                        <div>{{data.createdAt}}</div>
+                        <div>{{data.userResult.user_nickname}}</div>
+                        <div>{{data.result.createdAt}}</div>
                         <div class="hit">
                             <span>
                                 <img src="/images/view_icon.png" alt="" />
                             </span>
-                            {{data.hit}}
+                            {{data.result.hit}}
                         </div>
                         <div class="like">
                             <span>
                                 <img src="/images/like_icon.png" alt="" />
                             </span>
-                            {{data.like}}
+                            {{data.result.like}}
                         </div>
                         <div class="comment_icon">
                             <span>
@@ -78,9 +78,11 @@
                 </div>
                 <div class="view-wrap">
                     <div class="dataimg">
-                        <img src="/{{data.image}}" />
+                        <img src="/{{data.result.image}}" />
                     </div>
-                    <div class="data-content">{{data.content | safe}}</div>
+                    <div class="data-content">
+                        {{data.result.content | safe}}
+                    </div>
 
                     <div class="btnmenu">
                         <div class="tolist">
@@ -92,13 +94,15 @@
                             </button>
                         </form>
                         <div class="tomodify">
-                            <a href="/idea/ideaBoards/modify?id={{data.id}}">
+                            <a
+                                href="/idea/ideaBoards/modify?id={{data.result.id}}"
+                            >
                                 수정하기
                             </a>
                         </div>
                         <form
                             method="post"
-                            action="/idea/ideaBoards/delete?id={{data.id}}"
+                            action="/idea/ideaBoards/delete?id={{data.result.id}}"
                         >
                             <button type="submit" class="todelete">
                                 삭제하기

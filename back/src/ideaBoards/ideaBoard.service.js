@@ -3,6 +3,7 @@ const {
     IdeaBoardsResponseDTO,
 } = require("./ideaBoard.dto");
 const { IdeaBoards } = require("../entity");
+const { User } = require("../users/user.entity");
 
 exports.createBoard = async (ideaBoardsRequestDTO) => {
     try {
@@ -22,7 +23,7 @@ exports.createBoard = async (ideaBoardsRequestDTO) => {
         });
 
         const response = await ideaBoard.save();
-        // console.log(`response service :`, response);
+        console.log(`response service :`, response);
 
         const result = new IdeaBoardsResponseDTO(response);
         console.log(`result service :`, result);
@@ -48,9 +49,19 @@ exports.findOneBoard = async (ideaBoardId) => {
                 id: ideaBoardId,
             },
         });
-
         console.log(`findOneBoard result :`, result);
-        return result;
+        if (!result) return result;
+        else {
+            const userResult = await User.findOne({
+                raw: true,
+                where: {
+                    uid: result.author,
+                },
+            });
+            const data = { userResult, result };
+            console.log("data값..............", data);
+            return data;
+        }
     } catch (e) {
         throw new Error(`SERVICE findOneBoard ERROR: ${e.message}`);
     }
