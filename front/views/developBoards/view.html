@@ -85,13 +85,13 @@
               <button type="submit" class="likebtn">추천하기</button>
             </form>
             <div class="tomodify">
-              <a href="/develop/developBoards/modify?id={{data.id}}">
+              <a href="/develop/developBoards/modify?id={{data.result.id}}">
                 수정하기
               </a>
             </div>
             <form
               method="post"
-              action="/develop/developBoards/delete?id={{data.id}}"
+              action="/develop/developBoards/delete?id={{data.result.id}}"
             >
               <button type="submit" class="todelete">삭제하기</button>
             </form>

@@ -50,10 +50,12 @@ exports.getModify = async (id) => {
 
 exports.putModify = async (id, boardData) => {
   try {
+    console.log(boardData);
     const result = await axios.put(
       `http://localhost:4000/developBoards/${id}`,
       boardData
     );
+    console.log(result);
     return result;
   } catch (e) {
     throw new Error(`SERVICE putModify ERROR: ${e.message}`);
