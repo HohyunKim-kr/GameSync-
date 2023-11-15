@@ -10,11 +10,17 @@ exports.getList = async () => {
     }
 };
 
-exports.postWrite = async (boardData) => {
+exports.postWrite = async (boardData, token) => {
     try {
+        const authorization = token;
         const result = await axios.post(
             "http://localhost:4000/ideaBoards/",
-            boardData
+            boardData,
+            {
+                headers: {
+                    Authorization: `Bearer ${authorization}`,
+                },
+            }
         );
         console.log(result);
         return result;

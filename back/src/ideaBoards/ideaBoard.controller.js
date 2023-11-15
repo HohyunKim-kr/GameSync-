@@ -1,19 +1,29 @@
 const { IdeaBoardsRequestDTO } = require("./ideaBoard.dto");
 const ideaBoardService = require("./ideaBoard.service");
+const jwt = require("jsonwebtoken");
+require("dotenv").config();
 
 exports.create = async (req, res, next) => {
     try {
-        // console.log(req.body);
+        const uid = req.headers.authorization;
+
+        console.log("uid===========", uid);
+        const token = uid.split("Bearer ")[1];
+
+        jwt.verify(token, process.env.JWT_SECRET_KEY, function (err, decoded) {
+            req.body.author = decoded.uid;
+        });
+
         const ideaBoardsRequestDTO = new IdeaBoardsRequestDTO(
             req.body,
+            req.headers,
             req.flie
         );
-        // res.send("create");
 
         const response = await ideaBoardService.createBoard(
             ideaBoardsRequestDTO
         );
-        // console.log(`response controller :`,response);
+
         res.status(201).json(response);
     } catch (e) {
         next(e);
