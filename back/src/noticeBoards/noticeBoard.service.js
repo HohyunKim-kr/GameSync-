@@ -3,6 +3,7 @@ const {
   NoticeBoardResponseDTO,
 } = require("./noticeBoard.dto");
 const { noticeBoards } = require("../entity");
+const { User } = require("../users/user.entity");
 const { where } = require("sequelize");
 
 exports.createBoard = async (noticeBoardRequestDTO) => {
@@ -52,8 +53,20 @@ exports.findOneBoard = async (noticeBoardId) => {
       },
     });
     console.log("findOne result :", result);
-    return result;
+    if (!result) return result;
+    else {
+      const userResult = await User.findOne({
+        // raw: true,
+        where: {
+          uid: result.author,
+        },
+      });
+      const data = { userResult, result };
+      console.log("data값..............", data);
+      return data;
+    }
   } catch (e) {
+    console.log(e);
     throw new Error(`SERVICE findOneBoard ERROR: ${e.message}`);
   }
 };
@@ -63,6 +76,8 @@ exports.updateBoard = async (noticeBoardId, noticeBoardRequestDTO) => {
       {
         title: noticeBoardRequestDTO.title,
         content: noticeBoardRequestDTO.content,
+        image: noticeBoardRequestDTO.image,
+        original_filename: noticeBoardRequestDTO.original_filename,
         // category: noticeBoardRequestDTO.category,
         // img: noticeBoardRequestDTO.img,
       },

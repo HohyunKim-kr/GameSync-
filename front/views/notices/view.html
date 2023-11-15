@@ -1,105 +1,100 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>Notice_View</title>
-        <link type="text/css" rel="stylesheet" href="/css/index.css" />
-        <link href="/css/noticeBoard.css" rel="stylesheet" type="text/css" />
-    </head>
-    <body>
-        <div id="header">
-            <div class="header-wrap">
-                <div class="header-logo">
-                    <a href="/">GameSync</a>
-                </div>
-                <div class="header-icon">
-                    <a href="/users/login">
-                        <img src="/images/my.png" alt="" />
-                    </a>
-                </div>
-            </div>
-            <div class="full-drop">
-                <div class="drop-wrap">
-                    <div class="drop-down">
-                        <a href="/develop/developBoards/">게임 개발 게시판</a>
-                    </div>
-                    <div class="drop-down">
-                        <a href="/idea/ideaBoards/"
-                            >게임 기획, 아이디어 게시판</a
-                        >
-                    </div>
-                    <div class="drop-down">
-                        <a href="/notice/notices/">공지사항</a>
-                    </div>
-                    <div class="drop-down">
-                        <a href="/users/user">마이페이지</a>
-                    </div>
-                    <div class="drop-down">
-                        <a href="/users/admin">admin</a>
-                    </div>
-                </div>
-            </div>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Notice_View</title>
+    <link type="text/css" rel="stylesheet" href="/css/index.css" />
+    <link href="/css/noticeBoard.css" rel="stylesheet" type="text/css" />
+  </head>
+  <body>
+    <div id="header">
+      <div class="header-wrap">
+        <div class="header-logo">
+          <a href="/">GameSync</a>
         </div>
-        <div id="container">
-            <div class="board_title">
-                <h1 class="view-text">{{data.title}}</h1>
-                <div class="view-box">
-                    <div>{{data.author}}</div>
-                    <div>{{data.createdAt}}</div>
-                    <div class="hit">
-                        <span>
-                            <img src="/images/view_icon.png" alt="" />
-                        </span>
-                        {{data.hit}}
-                    </div>
-                </div>
-            </div>
-            <div class="view-wrap">
-                <div class="dataimg">
-                    <img src="/{{data.image}}" />
-                </div>
-                <div class="data-content">{{data.content | safe}}</div>
+        <div class="header-icon">
+          <a href="/users/login">
+            <img src="/images/my.png" alt="" />
+          </a>
+        </div>
+      </div>
+      <div class="full-drop">
+        <div class="drop-wrap">
+          <div class="drop-down">
+            <a href="/develop/developBoards/">게임 개발 게시판</a>
+          </div>
+          <div class="drop-down">
+            <a href="/idea/ideaBoards/">게임 기획, 아이디어 게시판</a>
+          </div>
+          <div class="drop-down">
+            <a href="/notice/notices/">공지사항</a>
+          </div>
+          <div class="drop-down">
+            <a href="/users/user">마이페이지</a>
+          </div>
+          <div class="drop-down">
+            <a href="/users/admin">admin</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div id="container">
+      <div class="board_title">
+        <h1 class="view-text">{{data.result.title}}</h1>
+        <div class="view-box">
+          <div>{{data.userResult.user_nickname}}</div>
+          <div>{{data.result.createdAt}}</div>
+          <div class="hit">
+            <span>
+              <img src="/images/view_icon.png" alt="" />
+            </span>
+            {{data.result.hit}}
+          </div>
+        </div>
+      </div>
+      <div class="view-wrap">
+        <div class="dataimg">
+          <img src="/{{data.result.image}}" />
+        </div>
+        <div class="data-content">{{data.result.content | safe}}</div>
 
-                <div class="btnmenu">
-                    <div class="tolist">
-                        <a href="/notice/notices/">목록가기</a>
-                    </div>
-                    <div class="tomodify">
-                        <a href="/notice/notices/modify?id={{data.id}}">
-                            수정하기
-                        </a>
-                    </div>
-                    <form
-                        method="post"
-                        action="/notice/notices/delete?id={{data.id}}"
-                    >
-                        <button type="submit" class="todelete">삭제하기</button>
-                    </form>
-                </div>
-            </div>
+        <div class="btnmenu">
+          <div class="tolist">
+            <a href="/notice/notices/">목록가기</a>
+          </div>
+          <div class="tomodify">
+            <a href="/notice/notices/modify?id={{data.result.id}}">
+              수정하기
+            </a>
+          </div>
+          <form
+            method="post"
+            action="/notice/notices/delete?id={{data.result.id}}"
+          >
+            <button type="submit" class="todelete">삭제하기</button>
+          </form>
         </div>
-        <div id="footer">
-            <div class="left-info">
-                <div class="header-logo">
-                    <a href="/">GameSync</a>
-                </div>
-                <span>&copy 2023 GameSync. All rights reserved.</span>
-            </div>
-            <div class="right-info">
-                <a
-                    href="https://github.com/HohyunKim-kr/GameSync-"
-                    target="_blank"
-                >
-                    <img src="/images/git.png" alt="" />
-                </a>
-                <a
-                    href="https://www.notion.so/6e7c5fa81141402d857da70dd2c867f1?v=e68659f259a04af98ace30ca01acede4"
-                    target="_blank"
-                >
-                    <img src="/images/notion.png" alt="" />
-                </a>
-            </div>
+      </div>
+    </div>
+    <div id="footer">
+      <div class="left-info">
+        <div class="header-logo">
+          <a href="/">GameSync</a>
         </div>
-    </body>
+        <span>&copy 2023 GameSync. All rights reserved.</span>
+      </div>
+      <div class="right-info">
+        <a href="https://github.com/HohyunKim-kr/GameSync-" target="_blank">
+          <img src="/images/git.png" alt="" />
+        </a>
+        <a
+          href="https://www.notion.so/6e7c5fa81141402d857da70dd2c867f1?v=e68659f259a04af98ace30ca01acede4"
+          target="_blank"
+        >
+          <img src="/images/notion.png" alt="" />
+        </a>
+      </div>
+    </div>
+  </body>
 </html>
