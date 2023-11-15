@@ -1,0 +1,86 @@
+.board-wrap {
+    /* width: 1000px;
+    margin: 100px; */
+
+    width: 100%;
+    font-family: "Pretendard-Regular", sans-serif;
+}
+
+.board_title {
+    margin-bottom: 30px;
+    background-color: #ffd520;
+    padding: 60px 100px;
+    text-align: center;
+    font-family: "Pretendard-Regular", sans-serif;
+}
+
+.board_title strong {
+    font-size: 2rem;
+}
+
+/* table */
+
+.board_list {
+    width: 70%;
+    margin: 0 auto;
+    border-collapse: collapse;
+    font-family: "Pretendard-Regular", sans-serif;
+}
+th,
+td {
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    border-bottom: 1px solid #d2d2d2;
+}
+
+.board_list_wrap {
+    height: 515px;
+    /* 나중에 게시글 갯수보고 높이 조정하기 */
+}
+
+thead > tr {
+    height: 55px;
+    font-size: 1rem;
+}
+
+tbody > tr {
+    height: 70px;
+    text-align: center;
+}
+
+tbody > tr :nth-child(2) img {
+    width: 50px;
+    height: 50px;
+    border-radius: 50px;
+}
+
+col.number {
+    width: 5%;
+}
+col.user_img {
+    width: 15%;
+}
+col.user_name {
+    width: 15%;
+}
+col.user_email {
+    width: 40%;
+}
+col.user_provider {
+    width: 12%;
+}
+col.user_delete {
+    width: 12%;
+}
+
+.deletebtn {
+    border: none;
+    background-color: #000;
+    color: #fff;
+    width: 100px;
+    height: 40px;
+    font-size: 16px;
+    cursor: pointer;
+    font-family: "Pretendard-Regular", sans-serif;
+}
