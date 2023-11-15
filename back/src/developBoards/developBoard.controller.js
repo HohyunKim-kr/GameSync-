@@ -11,6 +11,7 @@ exports.create = async (req, res, next) => {
     // console.log("uid===========", uid.split("Bearer ")[1]);
     const token = uid.split("Bearer ")[1];
 
+    console.log(":11111111", token);
     jwt.verify(token, process.env.JWT_SECRET_KEY, function (err, decoded) {
       req.body.author = decoded.uid;
       console.log("jwt.verify===============", decoded.uid, req.body);
