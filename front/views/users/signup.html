@@ -39,24 +39,25 @@
             name="user_pw"
             type="password"
             class="pw"
+            id="password"
             placeholder="비밀번호"
+            oninput="validateOnInput()"
           />
         </div>
+
         <div class="textForm">
           <input
             name="loginPwConfirm"
             type="password"
+            id="repeatPassword"
             class="pw"
             placeholder="비밀번호 확인"
+            oninput="validateOnInput()"
           />
         </div>
+        <h5 id="error-message"></h5>
         <div class="textForm">
-          <input
-            name="user_name"
-            type="password"
-            class="name"
-            placeholder="이름"
-          />
+          <input name="user_name" type="text" class="name" placeholder="이름" />
         </div>
         <div class="textForm">
           <input
@@ -77,5 +78,6 @@
         <input type="submit" class="btn" value="J O I N" />
       </form>
     </div>
+    <script src="/js/signup.js"></script>
   </body>
 </html>

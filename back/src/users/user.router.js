@@ -22,5 +22,5 @@ router.post("/signup", upload.single("upload1"), userController.signup);
 router.post("/login", userController.login);
 router.post("/kakao", userController.kakaoLogin);
 router.post("/git", userController.gitLogin);
-
+// router.get("/info", userController.getUserInfo);
 module.exports = router;
