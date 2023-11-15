@@ -3,20 +3,27 @@ const axios = require("axios");
 exports.getList = async () => {
   try {
     const result = await axios.get("http://localhost:4000/developBoards/");
-    console.log(result);
+    // console.log("result ==================================", result);
     return result;
   } catch (e) {
     throw new Error(`SERVICE getList ERROR: ${e.message}`);
   }
 };
 
-exports.postWrite = async (boardData) => {
+exports.postWrite = async (boardData, token) => {
   try {
+    const authorization = token;
+    // console.log("어서==================", authorization);
     const result = await axios.post(
       "http://localhost:4000/developBoards/",
-      boardData
+      boardData,
+      {
+        headers: {
+          Authorization: `Bearer ${authorization}`,
+        },
+      }
     );
-    console.log(result);
+
     return result;
   } catch (e) {
     throw new Error(`SERVICE getList ERROR: ${e.message}`);

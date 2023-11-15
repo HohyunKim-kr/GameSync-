@@ -14,7 +14,7 @@ function generateToken(user) {
   const options = { expiresIn: "7d" };
 
   const token = jwt.sign(payload, JWT_SECRET_KEY, options);
-
+  jwt.decode;
   return token;
 }
 

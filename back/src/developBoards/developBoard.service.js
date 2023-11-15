@@ -3,6 +3,7 @@ const {
   DevelopBoardsResponseDTO,
 } = require("./developBoard.dto");
 const { DevelopBoards } = require("../entity");
+const { User } = require("../users/user.entity");
 
 exports.createBoard = async (developBoardsRequestDTO) => {
   try {
@@ -23,8 +24,8 @@ exports.createBoard = async (developBoardsRequestDTO) => {
 
     const response = await developBoard.save();
     const result = new DevelopBoardsResponseDTO(response);
-    console.log(`response server `, response);
-    console.log(`result server`, result);
+    // console.log(`response server `, response);
+    // console.log(`result server`, result);
     return result;
   } catch (e) {
     throw new Error(`SERVICE createBoard ERROR:`, e.message);
@@ -49,7 +50,21 @@ exports.findOneBoard = async (developBoards) => {
     });
 
     console.log(`findOneBoard result :`, result);
-    return result;
+    if (!result) return result;
+    else {
+      const userResult = await User.findOne({
+        raw: true,
+        where: {
+          uid: result.author,
+        },
+      });
+      console.log("userR==========================", userResult, result);
+      const a = { userResult, result };
+      console.log("a값..............", a);
+      return a;
+    }
+
+    // return result;
   } catch (e) {
     throw new Error(`SERVICE findOneBoard ERROR: ${e.message}`);
   }
@@ -70,7 +85,7 @@ exports.updateBoard = async (developBoardId, developBoardsRequestDTO) => {
         },
       }
     );
-    console.log(`updateBoard result:`, result);
+    // console.log(`updateBoard result:`, result);
   } catch (e) {
     throw new Error(`SERVICE updateBoard ERROR: ${e.message}`);
   }

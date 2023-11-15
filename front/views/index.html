@@ -16,9 +16,9 @@
             <a href="/">GameSync</a>
           </div>
           <div class="header-icon">
-            {% if user %}
+            {% if data %}
             <a href="">로그아웃</a>
-            <p>{{user.user_nickname}}님 환영합니다.</p>
+            <p id="userWelcome">{{data.userNickname}}님 환영합니다.</p>
             <a href="/users/mypage">
               <img src="/images/my.png" alt="" />
             </a>

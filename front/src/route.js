@@ -7,8 +7,10 @@ const noticesRouter = require("./notices/noticeBoard.route");
 // const userDataRouter = require("./userData/userData.route");
 
 router.get("/", (req, res) => {
-  console.log("res", req.user_nickname);
-  res.render("index.html", { user: req.user_nickname });
+  // console.log("res유저 닉네임", data.user_nickname);
+  console.log("유저 정보", req.user);
+  const userNickname = req.user ? req.data.user_nickname : null;
+  res.render("index.html", { userinfo: userNickname });
 });
 
 router.use("/users", usersRouter);
