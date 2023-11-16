@@ -25,10 +25,10 @@ router.get("/", async (req, res) => {
   );
 
   const develophitResponse = await axios.get(
-    "http://localhost:4000/ideaBoards/hit"
+    "http://localhost:4000/developBoards/hit"
   );
   const developlastResponse = await axios.get(
-    "http://localhost:4000/ideaBoards/last"
+    "http://localhost:4000/developBoards/last"
   );
 
   const ideahitdata = ideahitResponse.data;
