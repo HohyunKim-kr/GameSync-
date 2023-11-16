@@ -1,5 +1,6 @@
 const express = require("express");
 const router = express.Router();
+const axios = require("axios");
 const usersRouter = require("./users/user.route");
 const developBoardsRouter = require("./developBoards/developBoard.route");
 const ideaBoardsRouter = require("./ideaBoards/ideaBoard.route");
@@ -8,15 +9,18 @@ const { getUserInfo } = require("./users/user.service");
 // const userDataRouter = require("./userData/userData.route");
 
 router.get("/", async (req, res) => {
-  //   console.log("유저 정보", req.cookies.cookie);
+    //   console.log("유저 정보", req.cookies.cookie);
 
-  const token = req.cookies.cookie;
-  let userinfo;
-  if (token) {
-    userinfo = await getUserInfo(token);
-  }
+    const token = req.cookies.cookie;
+    let userinfo;
+    if (token) {
+        userinfo = await getUserInfo(token);
+    }
 
-  res.render("index.html", { userinfo });
+    const response = await axios.get("http://localhost:4000/ideaBoards/");
+    console.log(response);
+
+    res.render("index.html", { userinfo });
 });
 
 // router.get("/users/logout", (req, res) => {

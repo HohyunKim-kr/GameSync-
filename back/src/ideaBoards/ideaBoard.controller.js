@@ -41,12 +41,32 @@ exports.findAll = async (req, res, next) => {
         next(e);
     }
 };
+
+exports.findHitFour = async (req, res, next) => {
+    try {
+        const ideaBoardsRequestDTO = new IdeaBoardsRequestDTO(req.body);
+        const response = await ideaBoardService.findAllBoard(
+            ideaBoardsRequestDTO
+        );
+        res.status(201).json(response);
+        // res.send("find all!!!!!!");
+    } catch (e) {
+        next(e);
+    }
+};
+
 exports.findOne = async (req, res, next) => {
     try {
         const ideaBoardId = req.params.id;
-        console.log(ideaBoardId);
+        console.log(req.method);
+        const isWriting = req.method.toUpperCase() === "POST";
 
-        const response = await ideaBoardService.findOneBoard(ideaBoardId);
+        console.log(ideaBoardId);
+        console.log(`idea findone`, isWriting);
+        const response = await ideaBoardService.findOneBoard(
+            ideaBoardId,
+            isWriting
+        );
         res.status(201).json(response);
         // res.send("find one!");
     } catch (e) {
