@@ -6,8 +6,6 @@ require("dotenv").config();
 exports.create = async (req, res, next) => {
     try {
         const uid = req.headers.authorization;
-
-        console.log("uid===========", uid);
         const token = uid.split("Bearer ")[1];
 
         jwt.verify(token, process.env.JWT_SECRET_KEY, function (err, decoded) {
@@ -88,10 +86,17 @@ exports.findOne = async (req, res, next) => {
 exports.update = async (req, res, next) => {
     try {
         const ideaBoardId = req.params.id;
-        console.log(`back update boardid:`, ideaBoardId);
+        const uid = req.headers.authorization;
+        console.log(uid);
+        const token = uid.split("Bearer ")[1];
+
+        jwt.verify(token, process.env.JWT_SECRET_KEY, function (err, decoded) {
+            req.body.author = decoded.uid;
+        });
 
         const ideaBoardsRequestDTO = new IdeaBoardsRequestDTO(
             req.body,
+            req.headers,
             req.file
         );
         console.log(`back update ideaBoardsRequestDTO:`, ideaBoardsRequestDTO);
