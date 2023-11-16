@@ -3,7 +3,7 @@ const axios = require("axios");
 exports.getList = async () => {
   try {
     const result = await axios.get("http://localhost:4000/developBoards/");
-    // console.log("result ==================================", result);
+    console.log("result ==================================", result);
     return result;
   } catch (e) {
     throw new Error(`SERVICE getList ERROR: ${e.message}`);

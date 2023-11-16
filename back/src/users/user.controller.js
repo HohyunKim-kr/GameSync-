@@ -1,7 +1,8 @@
 const UserService = require("./user.service");
-
+const { User } = require("./user.entity");
+const jwt = require("jsonwebtoken");
 const userService = new UserService();
-
+require("dotenv").config();
 exports.signup = async (req, res) => {
   try {
     const { user_email, user_pw, user_name, user_nickname } = req.body;
@@ -83,5 +84,31 @@ exports.gitLogin = async (req, res, next) => {
     res.status(201).json({ user, token });
   } catch (e) {
     next(e);
+  }
+};
+exports.getUserInfo = async (req, res) => {
+  try {
+    const tokenInfo = req.headers.authorization;
+
+    const token = tokenInfo.split("Bearer ")[1];
+    jwt.verify(
+      token,
+      process.env.JWT_SECRET_KEY,
+      async function (err, decoded) {
+        const uid = decoded.uid;
+        const user = await User.findOne({
+          where: {
+            uid: uid,
+          },
+        });
+
+        console.log("user--------------", user);
+        // console.log("jwt.verify===============", decoded.uid, req.body);
+        delete user.dataValues.user_pw;
+        res.status(201).json(user.dataValues);
+      }
+    );
+  } catch (e) {
+    console.log(e);
   }
 };

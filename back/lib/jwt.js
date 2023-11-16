@@ -8,6 +8,7 @@ function generateToken(user) {
     uid: user.uid,
     user_email: user.user_email,
     user_name: user.user_name,
+    user_nickname: user.user_nickname,
     user_img: user.user_img,
   };
 

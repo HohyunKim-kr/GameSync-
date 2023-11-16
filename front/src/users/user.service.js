@@ -119,23 +119,25 @@ async function gitLogin(code) {
     throw new Error("userService gitLogin err", e.message);
   }
 }
-// async function getUserInfo(token) {
-//   try {
-//     const response = await axios.get(`${API_URL}/users/info`, {
-//       headers: {
-//         Authorization: `Bearer ${token}`,
-//       },
-//     });
-
-//     return response.data; // 서버로부터 받은 사용자 정보를 반환
-//   } catch (error) {
-//     throw error;
-//   }
-// }
+async function getUserInfo(token) {
+  try {
+    const response = await axios.get(`${API_URL}/users/info`, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    });
+    console.log("getUserInfo.....................", response.data);
+    console.log("getUserInfo.....................", response);
+    return response.data; // 서버로부터 받은 사용자 정보를 반환
+  } catch (error) {
+    throw error;
+  }
+}
 
 module.exports = {
   postLogin,
   postSignup,
   kakaoLogin,
   gitLogin,
+  getUserInfo,
 };

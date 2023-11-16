@@ -54,8 +54,8 @@ class UserService {
   }
   async userLogin(loginData) {
     try {
-      const { user_email, user_pw, res } = loginData;
-      console.log();
+      const { user_email, user_pw } = loginData;
+
       console.log(user_email, user_pw);
 
       const user = await User.findOne({

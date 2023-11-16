@@ -16,12 +16,14 @@
             <a href="/">GameSync</a>
           </div>
           <div class="header-icon">
-            {% if data %}
-            <a href="">로그아웃</a>
-            <p id="userWelcome">{{data.userNickname}}님 환영합니다.</p>
-            <a href="/users/mypage">
-              <img src="/images/my.png" alt="" />
-            </a>
+            {% if userinfo %}
+            <div class="userInfo">
+              <a href="">로그아웃</a>
+              <p id="userWelcome">{{userinfo.user_nickname}}님 환영합니다.</p>
+              <a href="/users/mypage">
+                <img src="/images/my.png" alt="" />
+              </a>
+            </div>
             {% else %}
             <a href="/users/login">
               <img src="/images/my.png" alt="" />
