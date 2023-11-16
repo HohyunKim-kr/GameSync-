@@ -70,9 +70,14 @@ exports.view = async (req, res, next) => {
 exports.getModify = async (req, res, next) => {
   try {
     const { id } = req.query;
-    const { data } = await developBoardService.getModify(id);
+    const token = req.cookies.cookie;
+    if (!token) {
+      res.redirect("/users/login");
+    } else {
+      const { data } = await developBoardService.getModify(id);
 
-    res.render("developBoards/modify.html", { data: data, id });
+      res.render("developBoards/modify.html", { data: data, id });
+    }
   } catch (e) {
     next(e);
   }
@@ -109,10 +114,15 @@ exports.postModify = async (req, res, next) => {
 
 exports.postDelete = async (req, res, next) => {
   try {
-    const { id } = req.query;
-    const { data } = await developBoardService.postDelete(id);
-    // console.log(`postDelete controller result :`, data);
-    res.redirect(`./`);
+    const token = req.cookies.cookie;
+    if (!token) {
+      res.redirect("/users/login");
+    } else {
+      const { id } = req.query;
+      const { data } = await developBoardService.postDelete(id);
+      // console.log(`postDelete controller result :`, data);
+      res.redirect(`./`);
+    }
   } catch (e) {
     next(e);
   }
