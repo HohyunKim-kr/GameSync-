@@ -31,7 +31,15 @@ async function postLogin(user_email, user_pw) {
   }
 }
 
-// 회원 가입 요청을 보내는 함수
+async function postUsermodify(uid, userData) {
+  try {
+    const result = await axios.put(`${API_URL}/users/${uid}`, userData);
+    return result.data;
+  } catch (error) {
+    throw new Error(`SERVICE putUsermodify ERROR: ${error.message}`);
+  }
+}
+
 async function postSignup(userData) {
   try {
     const response = await axios.post(`${API_URL}/users/signup`, userData, {
@@ -127,7 +135,7 @@ async function getUserInfo(token) {
       },
     });
     console.log("getUserInfo.....................", response.data);
-    console.log("getUserInfo.....................", response);
+    // console.log("getUserInfo.....................", response);
     return response.data; // 서버로부터 받은 사용자 정보를 반환
   } catch (error) {
     throw error;
@@ -140,4 +148,5 @@ module.exports = {
   kakaoLogin,
   gitLogin,
   getUserInfo,
+  postUsermodify,
 };

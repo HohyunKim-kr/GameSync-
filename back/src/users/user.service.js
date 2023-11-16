@@ -84,6 +84,24 @@ class UserService {
       return { success: false, message: e.message };
     }
   }
+  async updateUser(userId, updatedFields) {
+    try {
+      const user = await User.findByPk(userId);
+
+      if (!user) {
+        throw new Error("User not found");
+      }
+
+      const updatedUser = await user.update(updatedFields);
+
+      const userResponseDTO = new UserCreateResponseDTO(updatedUser);
+
+      return userResponseDTO;
+    } catch (error) {
+      console.error("Error updating user:", error);
+      throw error;
+    }
+  }
 }
 
 module.exports = UserService;

@@ -4,6 +4,7 @@ const {
   kakaoLogin,
   gitLogin,
   getUserInfo,
+  postUsermodify,
 } = require("./user.service");
 require("dotenv").config();
 
@@ -63,16 +64,22 @@ exports.postSignup = async (req, res, next) => {
 exports.getUserInfo = async (req, res, next) => {
   try {
     const token = req.cookies.cookie;
-
     if (!token) {
       return res.status(401).json({ message: "Token not found" });
     }
-
     const userInfo = await getUserInfo(token);
-
-    console.log("userInfo++++++++++++", userInfo);
-
     res.status(200).json(userInfo);
+  } catch (error) {
+    next(error);
+  }
+};
+
+exports.postUsermodify = async (req, res, next) => {
+  try {
+    const { uid } = req.params;
+    const userData = req.body;
+    const token = await postUsermodify(uid, userData);
+    return res.status(201).redirect("/", { token });
   } catch (error) {
     next(error);
   }

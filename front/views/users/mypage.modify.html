@@ -1,171 +1,158 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>MY PAGE_Modify</title>
-        <link type="text/css" rel="stylesheet" href="/css/index.css" />
-        <link type="text/css" rel="stylesheet" href="/css/mypage.css" />
-    </head>
-    <body>
-        <div id="wrap">
-            <div id="header">
-                <div class="header-wrap">
-                    <div class="header-logo">
-                        <a href="/">GameSync</a>
-                    </div>
-                    <div class="header-icon">
-                        <a href="/users/login">
-                            <img src="/images/my.png" alt="" />
-                        </a>
-                    </div>
-                </div>
-                <div class="full-drop">
-                    <div class="drop-wrap">
-                        <div class="drop-down">
-                            <a href="/develop/developBoards/"
-                                >게임 개발 게시판</a
-                            >
-                        </div>
-                        <div class="drop-down">
-                            <a href="/idea/ideaBoards/"
-                                >게임 기획, 아이디어 게시판</a
-                            >
-                        </div>
-                        <div class="drop-down">
-                            <a href="/notice/notices/">공지사항</a>
-                        </div>
-                        <div class="drop-down">
-                            <a href="/users/user">마이페이지</a>
-                        </div>
-                        <div class="drop-down">
-                            <a href="/users/admin">admin</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div id="container">
-                <form action="" method="post" enctype="multipart/form-data">
-                    <div class="myinfo-wrap">
-                        <div class="wrapper">
-                            <div class="user-info">
-                                <div class="user-img-edit">
-                                    <label for="file">
-                                        <div class="uploadbtn">UPLOAD</div>
-                                    </label>
-                                    <input
-                                        required
-                                        type="file"
-                                        name="upload_user"
-                                        id="file"
-                                    />
-                                </div>
-                                <div class="user-text-wrap">
-                                    <h2>user nickname</h2>
-                                    <p>
-                                        작성한 글
-                                        <span class="boardcount">0</span> &nbsp
-                                        작성한 댓글
-                                        <span class="commentcount">0</span>
-                                    </p>
-                                    <p class="user-text">
-                                        <input
-                                            required
-                                            type="text"
-                                            name="usercontent"
-                                            class="usercontent"
-                                            placeholder="간단한 자기소개 적어주세요"
-                                        />
-                                    </p>
-                                </div>
-                            </div>
-                            <div class="user-edit-edit">
-                                <button type="submit" class="mybtn">
-                                    저장하기&nbsp
-                                    <img src="/images/edit_black.png" alt="" />
-                                </button>
-                            </div>
-                        </div>
-                        <div class="menu">
-                            <a href="">MY info</a>
-                            <a href="">board</a>
-                            <a href="">comment</a>
-                            <a href="">chatting</a>
-                        </div>
-                    </div>
-                    <div class="info-wrap">
-                        <div class="show-info">
-                            <div>
-                                이름 :
-                                <input
-                                    required
-                                    type="text"
-                                    name="username"
-                                    value="유저가 입력한 이름"
-                                />
-                            </div>
-                            <div>
-                                닉네임 :
-                                <input
-                                    required
-                                    type="text"
-                                    name="usernickname"
-                                    value="유저가 입력한 닉네임"
-                                />
-                            </div>
-                            <div>
-                                이메일 :
-                                <input
-                                    required
-                                    type="text"
-                                    name="useremail"
-                                    value="유저가 입력한 이메일"
-                                />
-                            </div>
-                            <div>
-                                비밀번호 :
-                                <input
-                                    required
-                                    type="text"
-                                    name="userpw"
-                                    value="유저가 입력한 비밀번호"
-                                />
-                            </div>
-                            <div>
-                                생년월일 :
-                                <input
-                                    required
-                                    type="text"
-                                    name="userbirth"
-                                    value="유저가 입력한 생년월일"
-                                />
-                            </div>
-                        </div>
-                    </div>
-                </form>
-            </div>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>MY PAGE_Modify</title>
+    <link type="text/css" rel="stylesheet" href="/css/index.css" />
+    <link type="text/css" rel="stylesheet" href="/css/mypage.css" />
+  </head>
+  <body>
+    <div id="wrap">
+      <div id="header">
+        <div class="header-wrap">
+          <div class="header-logo">
+            <a href="/">GameSync</a>
+          </div>
+          <div class="header-icon">
+            <a href="/users/login">
+              <img src="/images/my.png" alt="" />
+            </a>
+          </div>
         </div>
-        <div id="footer">
-            <div class="left-info">
-                <div class="header-logo">
-                    <a href="/">GameSync</a>
-                </div>
-                <span>&copy 2023 GameSync. All rights reserved.</span>
+        <div class="full-drop">
+          <div class="drop-wrap">
+            <div class="drop-down">
+              <a href="/develop/developBoards/">게임 개발 게시판</a>
             </div>
-            <div class="right-info">
-                <a
-                    href="https://github.com/HohyunKim-kr/GameSync-"
-                    target="_blank"
-                >
-                    <img src="/images/git.png" alt="" />
-                </a>
-                <a
-                    href="https://www.notion.so/6e7c5fa81141402d857da70dd2c867f1?v=e68659f259a04af98ace30ca01acede4"
-                    target="_blank"
-                >
-                    <img src="/images/notion.png" alt="" />
-                </a>
+            <div class="drop-down">
+              <a href="/idea/ideaBoards/">게임 기획, 아이디어 게시판</a>
             </div>
+            <div class="drop-down">
+              <a href="/notice/notices/">공지사항</a>
+            </div>
+            <div class="drop-down">
+              <a href="/users/user">마이페이지</a>
+            </div>
+            <div class="drop-down">
+              <a href="/users/admin">admin</a>
+            </div>
+          </div>
         </div>
-    </body>
+      </div>
+      <div id="container">
+        <form action="" method="post" enctype="multipart/form-data">
+          <div class="myinfo-wrap">
+            <div class="wrapper">
+              <div class="user-info">
+                <div class="user-img-edit">
+                  <label for="file">
+                    <div class="uploadbtn">{{userinfo.user_img}}</div>
+                  </label>
+                  <input required type="file" name="upload_user" id="file" />
+                </div>
+                <div class="user-text-wrap">
+                  <h2>{{userinfo.user_nickname}}</h2>
+                  <p>
+                    작성한 글
+                    <span class="boardcount">0</span> &nbsp 작성한 댓글
+                    <span class="commentcount">0</span>
+                  </p>
+                  <p class="user-text">
+                    <input
+                      required
+                      type="text"
+                      name="user_content"
+                      class="usercontent"
+                      placeholder="간단한 자기소개 적어주세요"
+                    />
+                  </p>
+                </div>
+              </div>
+              <div class="user-edit-edit">
+                <button type="submit" class="mybtn">
+                  저장하기&nbsp
+                  <img src="/images/edit_black.png" alt="" name="user_img" />
+                </button>
+              </div>
+            </div>
+            <div class="menu">
+              <a href="">MY info</a>
+              <a href="">board</a>
+              <a href="">comment</a>
+              <a href="">chatting</a>
+            </div>
+          </div>
+          <div class="info-wrap">
+            <div class="show-info">
+              <div>
+                이름 :
+                <input
+                  required
+                  type="text"
+                  name="user_name"
+                  value="{{userinfo.user_name}}"
+                />
+              </div>
+              <div>
+                닉네임 :
+                <input
+                  required
+                  type="text"
+                  name="user_nickname"
+                  value="{{userinfo.user_nickname}}"
+                />
+              </div>
+              <div>
+                이메일 :
+                <input
+                  required
+                  type="text"
+                  name="user_email"
+                  value="{{userinfo.user_email}}"
+                />
+              </div>
+              <div>
+                새 비밀번호 :
+                <input
+                  required
+                  type="text"
+                  name="user_pw"
+                  placeholder="새 비밀번호를 입력하십시오"
+                />
+              </div>
+              <div>
+                생년월일 :
+                <input
+                  required
+                  type="text"
+                  name="user_birth"
+                  value="{{userinfo.user_birth}}"
+                />
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+    <div id="footer">
+      <div class="left-info">
+        <div class="header-logo">
+          <a href="/">GameSync</a>
+        </div>
+        <span>&copy 2023 GameSync. All rights reserved.</span>
+      </div>
+      <div class="right-info">
+        <a href="https://github.com/HohyunKim-kr/GameSync-" target="_blank">
+          <img src="/images/git.png" alt="" />
+        </a>
+        <a
+          href="https://www.notion.so/6e7c5fa81141402d857da70dd2c867f1?v=e68659f259a04af98ace30ca01acede4"
+          target="_blank"
+        >
+          <img src="/images/notion.png" alt="" />
+        </a>
+      </div>
+    </div>
+  </body>
 </html>

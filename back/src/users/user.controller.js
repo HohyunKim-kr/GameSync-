@@ -1,7 +1,8 @@
 const UserService = require("./user.service");
 const { User } = require("./user.entity");
-const jwt = require("jsonwebtoken");
 const userService = new UserService();
+const jwt = require("jsonwebtoken");
+// const { UserCreateRequestDTO } = require("../usersDTO/user.login.dto");
 require("dotenv").config();
 exports.signup = async (req, res) => {
   try {
@@ -36,11 +37,24 @@ exports.login = async (req, res) => {
       res,
     });
 
-    console.log({ success: true, token });
+    // console.log({ success: true, token });
 
     res.json({ success: true, token });
   } catch (error) {
     res.status(401).json({ success: false, message: error.message });
+  }
+};
+
+exports.updateUserInfo = async (req, res, next) => {
+  try {
+    const userId = req.params.userId;
+    const updatedFields = req.body;
+
+    const response = await userService.updateUser(userId, updatedFields);
+
+    res.status(200).json(response); // 업데이트된 사용자 정보를 반환
+  } catch (error) {
+    res.status(400).json({ error: error.message });
   }
 };
 
@@ -102,7 +116,7 @@ exports.getUserInfo = async (req, res) => {
           },
         });
 
-        console.log("user--------------", user);
+        // console.log("user--------------", user);
         // console.log("jwt.verify===============", decoded.uid, req.body);
         delete user.dataValues.user_pw;
         res.status(201).json(user.dataValues);
