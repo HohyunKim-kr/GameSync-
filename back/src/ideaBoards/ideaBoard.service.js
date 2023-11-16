@@ -41,7 +41,22 @@ exports.findAllBoard = async () => {
         throw new Error(`SERVICE findAllBoard ERROR: ${e.message}`);
     }
 };
-exports.findOneBoard = async (ideaBoardId) => {
+
+exports.findHitBoard = async () => {
+    try {
+        const result = await IdeaBoards.findAll({
+            order: [["hit", "DESC"]],
+            limit: 4,
+            raw: true,
+        });
+
+        console.log(`findAll findHitBoard :`, result);
+        return result;
+    } catch (e) {
+        throw new Error(`SERVICE findAllBoard ERROR: ${e.message}`);
+    }
+};
+exports.findOneBoard = async (ideaBoardId, isWriting) => {
     try {
         const result = await IdeaBoards.findOne({
             raw: true,
@@ -49,6 +64,13 @@ exports.findOneBoard = async (ideaBoardId) => {
                 id: ideaBoardId,
             },
         });
+
+        if (result && !isWriting) {
+            await IdeaBoards.update(
+                { hit: result.hit + 1 },
+                { where: { id: ideaBoardId } }
+            );
+        }
         console.log(`findOneBoard result :`, result);
         if (!result) return result;
         else {
