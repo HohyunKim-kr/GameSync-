@@ -1,7 +1,8 @@
 const UserService = require("./user.service");
 const { User } = require("./user.entity");
-const jwt = require("jsonwebtoken");
 const userService = new UserService();
+const jwt = require("jsonwebtoken");
+const { UserCreateRequestDTO } = require("../usersDTO/user.login.dto");
 require("dotenv").config();
 exports.signup = async (req, res) => {
   try {
@@ -36,11 +37,49 @@ exports.login = async (req, res) => {
       res,
     });
 
-    console.log({ success: true, token });
+    // console.log({ success: true, token });
 
     res.json({ success: true, token });
   } catch (error) {
     res.status(401).json({ success: false, message: error.message });
+  }
+};
+
+exports.getUserModify = async (req, res, next) => {
+  try {
+    const userId = req.params.id;
+    console.log("userId______________________", userId);
+    const userCreateRequestDTO = new UserCreateRequestDTO(req.body, req.file);
+
+    const response = await userService.updateUser(userId, userCreateRequestDTO);
+
+    console.log("Usercontroller---------------------", response);
+    res.status(200).json(response); // 업데이트된 사용자 정보를 반환
+  } catch (error) {
+    res.status(400).json({ error: error.message });
+  }
+};
+
+exports.postUserModify = async (req, res, next) => {
+  try {
+    console.log("@@@@@@@", req.body);
+    const uid = req.headers.authorization;
+    console.log(uid);
+    const token = uid.split("Bearer ")[1];
+
+    let userId;
+    jwt.verify(token, process.env.JWT_SECRET_KEY, function (err, decoded) {
+      userId = decoded.uid;
+    });
+
+    const userCreateRequestDTO = new UserCreateRequestDTO(
+      req.body,
+      req.headers
+    );
+    const response = await userService.updateUser(userId, userCreateRequestDTO);
+    res.status(201).json(response);
+  } catch (e) {
+    next(e);
   }
 };
 
@@ -102,7 +141,7 @@ exports.getUserInfo = async (req, res) => {
           },
         });
 
-        console.log("user--------------", user);
+        // console.log("user--------------", user);
         // console.log("jwt.verify===============", decoded.uid, req.body);
         delete user.dataValues.user_pw;
         res.status(201).json(user.dataValues);

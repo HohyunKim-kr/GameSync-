@@ -2,6 +2,7 @@ const bcrypt = require("bcryptjs");
 const { User } = require("./user.entity");
 const { generateToken } = require("../../lib/jwt");
 const jwt = require("jsonwebtoken");
+
 const {
   UserCreateRequestDTO,
   UserCreateResponseDTO,
@@ -82,6 +83,34 @@ class UserService {
     } catch (e) {
       console.log("unsuccess", e);
       return { success: false, message: e.message };
+    }
+  }
+  async updateUser(userId, userCreateRequestDTO) {
+    try {
+      console.log("# ", userCreateRequestDTO);
+      const { result } = await User.update(
+        {
+          uid: userCreateRequestDTO.uid,
+          user_email: userCreateRequestDTO.user_email,
+          user_name: userCreateRequestDTO.user_name,
+          user_nickname: userCreateRequestDTO.user_nickname,
+          user_pw: userCreateRequestDTO.user_pw,
+          user_birth: userCreateRequestDTO.user_birth,
+          user_img: userCreateRequestDTO.user_img,
+          original_filename: userCreateRequestDTO.original_filename,
+        },
+        {
+          where: {
+            uid: userId,
+          },
+        }
+      );
+      console.log(`upDate user---------- result:`, result);
+      return result;
+    } catch (error) {
+      console.log("%%% ", error);
+      console.error("Error updating user:", error);
+      throw error;
     }
   }
 }
