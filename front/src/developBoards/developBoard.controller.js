@@ -1,10 +1,9 @@
 const developBoardService = require("./developBoard.service");
+const { getUserInfo } = require("../users/user.service");
 
 exports.list = async (req, res, next) => {
   try {
     const { data } = await developBoardService.getList();
-    // console.log(`list controller result:`, data);
-    // console.log("req+++++++++++++++++++++++++++++++++++++++", req.user);
     res.render("developBoards/list.html", { list: data });
   } catch (e) {
     next(e, "developBoard 목록 조회에 실패했습니다.");
@@ -39,11 +38,8 @@ exports.postWrite = async (req, res, next) => {
       origina_filename: file.originalname,
     };
     const token = req.cookies.cookie;
-    // console.log("토큰 =====================", token);
-    // console.log(req.headers);
-    // console.log(req.file); // 객체 출력
     const result = await developBoardService.postWrite(boardData, token);
-    // console.log(`postWite controller result:`, result);
+
     const { id } = result.data;
     res.redirect(`./view?id=${id}`);
   } catch (e) {
@@ -55,9 +51,7 @@ exports.view = async (req, res, next) => {
   try {
     const { id } = req.query;
     const { data } = await developBoardService.getView(id);
-    // console.log(data.image);
-    console.log("daa값===============", data);
-    // data.content = data.content.replace(/\n/g, "<br>");
+
     if (data.result.content) {
       data.result.content = data.result.content.replace(/\n/g, "<br>");
     }
@@ -71,11 +65,17 @@ exports.getModify = async (req, res, next) => {
   try {
     const { id } = req.query;
     const token = req.cookies.cookie;
+
+    const { data } = await developBoardService.getModify(id, token);
+
     if (!token) {
       res.redirect("/users/login");
-    } else {
-      const { data } = await developBoardService.getModify(id);
+    }
 
+    const result = await getUserInfo(token);
+    if (result.uid !== data.result.author) {
+      res.redirect("/users/login");
+    } else {
       res.render("developBoards/modify.html", { data: data, id });
     }
   } catch (e) {
@@ -86,11 +86,7 @@ exports.getModify = async (req, res, next) => {
 exports.postModify = async (req, res, next) => {
   try {
     const { id } = req.query;
-    console.log(id);
-
     const data = req.body;
-
-    console.log(req.file);
     const file = req.file;
 
     const boardData = {
@@ -101,9 +97,13 @@ exports.postModify = async (req, res, next) => {
       image: file.filename,
       original_filename: file.originalname,
     };
+    const token = req.cookies.cookie;
 
-    console.log(`front modify`, boardData, id);
-    const { result } = await developBoardService.putModify(id, boardData);
+    const { result } = await developBoardService.putModify(
+      id,
+      boardData,
+      token
+    );
     console.log(`postWrite controller result :`, result);
 
     res.redirect(`./view?id=${id}`);
@@ -114,13 +114,20 @@ exports.postModify = async (req, res, next) => {
 
 exports.postDelete = async (req, res, next) => {
   try {
+    const { id } = req.query;
     const token = req.cookies.cookie;
+
     if (!token) {
       res.redirect("/users/login");
+    }
+    const result = await getUserInfo(token);
+
+    const boardData = await developBoardService.getView(id);
+
+    if (result.uid !== boardData.data.result.author) {
+      res.redirect("/users/login");
     } else {
-      const { id } = req.query;
       const { data } = await developBoardService.postDelete(id);
-      // console.log(`postDelete controller result :`, data);
       res.redirect(`./`);
     }
   } catch (e) {

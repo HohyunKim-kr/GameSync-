@@ -40,14 +40,52 @@ exports.findAllBoard = async () => {
     throw new Error(`SERVICE findAllBoard ERROR: ${e.message}`);
   }
 };
-exports.findOneBoard = async (developBoards) => {
+
+exports.findHitBoard = async () => {
+  try {
+    const result = await DevelopBoards.findAll({
+      order: [["hit", "DESC"]],
+      limit: 4,
+      raw: true,
+    });
+
+    console.log(`findAll findHitBoard :`, result);
+    return result;
+  } catch (e) {
+    throw new Error(`SERVICE findAllBoard ERROR: ${e.message}`);
+  }
+};
+
+exports.findLastFour = async () => {
+  try {
+    const result = await DevelopBoards.findAll({
+      order: [["createdAt", "DESC"]],
+      limit: 4,
+      raw: true,
+    });
+
+    console.log(`findAll findLastFour :`, result);
+    return result;
+  } catch (e) {
+    throw new Error(`SERVICE findAllBoard ERROR: ${e.message}`);
+  }
+};
+
+exports.findOneBoard = async (developBoardId, isWriting) => {
   try {
     const result = await DevelopBoards.findOne({
       raw: true,
       where: {
-        id: developBoards,
+        id: developBoardId,
       },
     });
+
+    if (result && !isWriting) {
+      await DevelopBoards.update(
+        { hit: result.hit + 1 },
+        { where: { id: developBoardId } }
+      );
+    }
 
     console.log(`findOneBoard result :`, result);
     if (!result) return result;
@@ -59,9 +97,9 @@ exports.findOneBoard = async (developBoards) => {
         },
       });
       console.log("userR==========================", userResult, result);
-      const a = { userResult, result };
-      console.log("a값..............", a);
-      return a;
+      const data = { userResult, result };
+      // console.log("a값..............", a);
+      return data;
     }
 
     // return result;
@@ -74,6 +112,7 @@ exports.updateBoard = async (developBoardId, developBoardsRequestDTO) => {
     const result = await DevelopBoards.update(
       {
         title: developBoardsRequestDTO.title,
+        author: developBoardsRequestDTO.author,
         content: developBoardsRequestDTO.content,
         category: developBoardsRequestDTO.category,
         image: developBoardsRequestDTO.image,
