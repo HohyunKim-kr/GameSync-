@@ -4,6 +4,9 @@ const developController = require("./developBoard.controller");
 
 router.get("/", developController.findAll);
 
+router.get("/hit", developController.findHitFour);
+router.get("/last", developController.findLastFour);
+
 router.post("/", developController.create);
 
 router.get("/:id", developController.findOne);

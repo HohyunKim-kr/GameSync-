@@ -39,33 +39,51 @@ exports.getView = async (id) => {
   }
 };
 
-exports.getModify = async (id) => {
+exports.getModify = async (id, token) => {
   try {
-    const result = await axios.get(`http://localhost:4000/developBoards/${id}`);
+    const authorization = token;
+    const result = await axios.get(
+      `http://localhost:4000/developBoards/${id}`,
+      {
+        headers: {
+          Authorization: `Bearer ${authorization}`,
+        },
+      }
+    );
     return result;
   } catch (e) {
     throw new Error(`SERVICE getModify ERROR: ${e.message}`);
   }
 };
 
-exports.putModify = async (id, boardData) => {
+exports.putModify = async (id, boardData, token) => {
   try {
-    console.log(boardData);
+    const authorization = token;
     const result = await axios.put(
       `http://localhost:4000/developBoards/${id}`,
-      boardData
+      boardData,
+      {
+        headers: {
+          Authorization: `Bearer ${authorization}`,
+        },
+      }
     );
-    console.log(result);
     return result;
   } catch (e) {
     throw new Error(`SERVICE putModify ERROR: ${e.message}`);
   }
 };
 
-exports.postDelete = async (id) => {
+exports.postDelete = async (id, token) => {
   try {
+    const authorization = token;
     const result = await axios.delete(
-      `http://localhost:4000/developBoards/${id}`
+      `http://localhost:4000/developBoards/${id}`,
+      {
+        headers: {
+          Authorization: `Bearer ${authorization}`,
+        },
+      }
     );
     return result;
   } catch (e) {
