@@ -8,22 +8,21 @@ const noticesRouter = require("./notices/noticeBoard.route");
 const { getUserInfo } = require("./users/user.service");
 
 router.get("/", async (req, res) => {
-
   const token = req.cookies.cookie;
   let userinfo;
   if (token) {
     userinfo = await getUserInfo(token);
   }
 
-  res.render("index.html", { userinfo });
+  // res.render("index.html", { userinfo });
 
   //   console.log("유저 정보", req.cookies.cookie);
 
-  const token = req.cookies.cookie;
-  let userinfo;
-  if (token) {
-    userinfo = await getUserInfo(token);
-  }
+  // const token = req.cookies.cookie;
+  // let userinfo;
+  // if (token) {
+  //   userinfo = await getUserInfo(token);
+  // }
 
   const ideahitResponse = await axios.get(
     "http://localhost:4000/ideaBoards/hit"

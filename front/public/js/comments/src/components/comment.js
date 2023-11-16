@@ -92,10 +92,15 @@ class Comment extends Component {
 
   async insertItem(content) {
     try {
-      console.log("insert data", data.result);
+      console.log("머냐?--------------", content);
+      // console.log("insert data", data.result);
+      // console.log("데이터 임", data);
+      // console.log("insert data", data.result.id);
+
       const response = await axios.post("http://localhost:4000/comments", {
         content,
-        userid: data.result.id,
+        // userid: data.result.id,
+        userid: "일단해봐",
         date: "20231120",
       });
 
