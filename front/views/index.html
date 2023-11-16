@@ -77,64 +77,61 @@
                 </div>
                 <div class="bestgame">
                     <h3>이번주 인기 아이디어</h3>
+
                     <div class="game-wrap">
+                        {% if hitdata %} {% for item in hitdata %}
                         <div class="game-box">
-                            <a href="">
+                            <a href="/idea/ideaBoards/view?id={{item.id}}">
                                 <div class="box-img">
-                                    <img src="/images/game2.jpg" alt="" />
+                                    <img src="/{{item.image}}" alt="" />
                                 </div>
                                 <div class="box-txt">
-                                    <div class="box-title">고양이 아케이드</div>
+                                    <div class="box-title">{{item.title}}</div>
                                     <div class="box-count">
                                         <div class="like-count">
-                                            <img
-                                                src="/images/like_icon.png"
-                                                alt=""
-                                            />
-                                            <span>509</span>
+                                            <img src="/images/like_icon.png" />
+                                            <span>{{item.like}}</span>
                                         </div>
                                         <div class="view-count">
-                                            <img
-                                                src="/images/view_icon.png"
-                                                alt=""
-                                            />
-                                            <span>509</span>
+                                            <img src="/images/view_icon.png" />
+                                            <span>{{item.hit}}</span>
                                         </div>
                                     </div>
                                 </div>
                             </a>
                         </div>
+                        {% endfor %} {% else %}
+                        <p>조회수가 높은 글이 없습니다.</p>
+                        {% endif %}
                     </div>
                 </div>
                 <div class="newgame">
                     <h3>새로운 아이디어</h3>
                     <div class="game-wrap">
+                        {% if lastdata %} {% for item in lastdata %}
                         <div class="game-box">
-                            <a href="">
+                            <a href="/idea/ideaBoards/view?id={{item.id}}">
                                 <div class="box-img">
-                                    <img src="/images/game3.jpg" alt="" />
+                                    <img src="/{{item.image}}" alt="" />
                                 </div>
                                 <div class="box-txt">
-                                    <div class="box-title">그랜드 체이스</div>
+                                    <div class="box-title">{{item.title}}</div>
                                     <div class="box-count">
                                         <div class="like-count">
-                                            <img
-                                                src="/images/like_icon.png"
-                                                alt=""
-                                            />
-                                            <span>358</span>
+                                            <img src="/images/like_icon.png" />
+                                            <span>{{item.like}}</span>
                                         </div>
                                         <div class="view-count">
-                                            <img
-                                                src="/images/view_icon.png"
-                                                alt=""
-                                            />
-                                            <span>259</span>
+                                            <img src="/images/view_icon.png" />
+                                            <span>{{item.hit}}</span>
                                         </div>
                                     </div>
                                 </div>
                             </a>
                         </div>
+                        {% endfor %} {% else %}
+                        <p>최신글이 없습니다.</p>
+                        {% endif %}
                     </div>
                 </div>
             </div>

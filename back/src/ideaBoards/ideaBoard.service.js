@@ -56,6 +56,21 @@ exports.findHitBoard = async () => {
         throw new Error(`SERVICE findAllBoard ERROR: ${e.message}`);
     }
 };
+
+exports.findLastFour = async () => {
+    try {
+        const result = await IdeaBoards.findAll({
+            order: [["createdAt", "DESC"]],
+            limit: 4,
+            raw: true,
+        });
+
+        console.log(`findAll findLastFour :`, result);
+        return result;
+    } catch (e) {
+        throw new Error(`SERVICE findAllBoard ERROR: ${e.message}`);
+    }
+};
 exports.findOneBoard = async (ideaBoardId, isWriting) => {
     try {
         const result = await IdeaBoards.findOne({
