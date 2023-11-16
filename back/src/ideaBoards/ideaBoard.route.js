@@ -5,6 +5,10 @@ const ideaController = require("./ideaBoard.controller");
 // list;
 router.get("/", ideaController.findAll);
 
+// hit list;
+router.get("/hit", ideaController.findHitFour);
+router.get("/last", ideaController.findLastFour);
+
 // write;
 router.post("/", ideaController.create);
 

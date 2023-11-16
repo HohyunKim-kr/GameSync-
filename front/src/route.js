@@ -17,10 +17,17 @@ router.get("/", async (req, res) => {
         userinfo = await getUserInfo(token);
     }
 
-    const response = await axios.get("http://localhost:4000/ideaBoards/");
-    console.log(response);
+    const hitResponse = await axios.get("http://localhost:4000/ideaBoards/hit");
+    const lastResponse = await axios.get(
+        "http://localhost:4000/ideaBoards/last"
+    );
 
-    res.render("index.html", { userinfo });
+    const hitdata = hitResponse.data;
+    const lastdata = lastResponse.data;
+
+    console.log(`list controller result :`, hitdata, lastdata);
+
+    res.render("index.html", { userinfo, hitdata, lastdata });
 });
 
 // router.get("/users/logout", (req, res) => {

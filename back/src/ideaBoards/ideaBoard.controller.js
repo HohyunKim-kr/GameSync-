@@ -45,7 +45,19 @@ exports.findAll = async (req, res, next) => {
 exports.findHitFour = async (req, res, next) => {
     try {
         const ideaBoardsRequestDTO = new IdeaBoardsRequestDTO(req.body);
-        const response = await ideaBoardService.findAllBoard(
+        const response = await ideaBoardService.findHitBoard(
+            ideaBoardsRequestDTO
+        );
+        res.status(201).json(response);
+        // res.send("find all!!!!!!");
+    } catch (e) {
+        next(e);
+    }
+};
+exports.findLastFour = async (req, res, next) => {
+    try {
+        const ideaBoardsRequestDTO = new IdeaBoardsRequestDTO(req.body);
+        const response = await ideaBoardService.findLastFour(
             ideaBoardsRequestDTO
         );
         res.status(201).json(response);
