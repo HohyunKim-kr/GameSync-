@@ -16,9 +16,14 @@
                         <a href="/">GameSync</a>
                     </div>
                     <div class="header-icon">
-                        <a href="/users/login">
+                        {% if userinfo %}
+                        <p>{{userinfo.user_nickname}}님</p>
+                        <a href="/">로그아웃</a>
+                        {% else %}
+                        <a class="icon" href="/users/login">
                             <img src="/images/my.png" alt="" />
                         </a>
+                        {% endif %}
                     </div>
                 </div>
                 <div class="full-drop">
