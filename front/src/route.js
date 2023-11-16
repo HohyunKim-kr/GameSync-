@@ -9,25 +9,43 @@ const { getUserInfo } = require("./users/user.service");
 // const userDataRouter = require("./userData/userData.route");
 
 router.get("/", async (req, res) => {
-    //   console.log("유저 정보", req.cookies.cookie);
+  //   console.log("유저 정보", req.cookies.cookie);
 
-    const token = req.cookies.cookie;
-    let userinfo;
-    if (token) {
-        userinfo = await getUserInfo(token);
-    }
+  const token = req.cookies.cookie;
+  let userinfo;
+  if (token) {
+    userinfo = await getUserInfo(token);
+  }
 
-    const hitResponse = await axios.get("http://localhost:4000/ideaBoards/hit");
-    const lastResponse = await axios.get(
-        "http://localhost:4000/ideaBoards/last"
-    );
+  const ideahitResponse = await axios.get(
+    "http://localhost:4000/ideaBoards/hit"
+  );
+  const idealastResponse = await axios.get(
+    "http://localhost:4000/ideaBoards/last"
+  );
 
-    const hitdata = hitResponse.data;
-    const lastdata = lastResponse.data;
+  const develophitResponse = await axios.get(
+    "http://localhost:4000/ideaBoards/hit"
+  );
+  const developlastResponse = await axios.get(
+    "http://localhost:4000/ideaBoards/last"
+  );
 
-    console.log(`list controller result :`, hitdata, lastdata);
+  const ideahitdata = ideahitResponse.data;
+  const idealastdata = idealastResponse.data;
 
-    res.render("index.html", { userinfo, hitdata, lastdata });
+  const develophitdata = develophitResponse.data;
+  const developlastdata = developlastResponse.data;
+
+  //   console.log(`list controller result :`, hitdata, lastdata);
+
+  res.render("index.html", {
+    userinfo,
+    ideahitdata,
+    idealastdata,
+    develophitdata,
+    developlastdata,
+  });
 });
 
 // router.get("/users/logout", (req, res) => {
