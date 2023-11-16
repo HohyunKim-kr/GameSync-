@@ -2,7 +2,7 @@ const UserService = require("./user.service");
 const { User } = require("./user.entity");
 const userService = new UserService();
 const jwt = require("jsonwebtoken");
-// const { UserCreateRequestDTO } = require("../usersDTO/user.login.dto");
+const { UserCreateRequestDTO } = require("../usersDTO/user.login.dto");
 require("dotenv").config();
 exports.signup = async (req, res) => {
   try {
@@ -45,16 +45,41 @@ exports.login = async (req, res) => {
   }
 };
 
-exports.updateUserInfo = async (req, res, next) => {
+exports.getUserModify = async (req, res, next) => {
   try {
-    const userId = req.params.userId;
-    const updatedFields = req.body;
+    const userId = req.params.id;
+    console.log("userId______________________", userId);
+    const userCreateRequestDTO = new UserCreateRequestDTO(req.body, req.file);
 
-    const response = await userService.updateUser(userId, updatedFields);
+    const response = await userService.updateUser(userId, userCreateRequestDTO);
 
+    console.log("Usercontroller---------------------", response);
     res.status(200).json(response); // 업데이트된 사용자 정보를 반환
   } catch (error) {
     res.status(400).json({ error: error.message });
+  }
+};
+
+exports.postUserModify = async (req, res, next) => {
+  try {
+    console.log("@@@@@@@", req.body);
+    const uid = req.headers.authorization;
+    console.log(uid);
+    const token = uid.split("Bearer ")[1];
+
+    let userId;
+    jwt.verify(token, process.env.JWT_SECRET_KEY, function (err, decoded) {
+      userId = decoded.uid;
+    });
+
+    const userCreateRequestDTO = new UserCreateRequestDTO(
+      req.body,
+      req.headers
+    );
+    const response = await userService.updateUser(userId, userCreateRequestDTO);
+    res.status(201).json(response);
+  } catch (e) {
+    next(e);
   }
 };
 

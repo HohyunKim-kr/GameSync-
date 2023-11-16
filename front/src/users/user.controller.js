@@ -4,6 +4,7 @@ const {
   kakaoLogin,
   gitLogin,
   getUserInfo,
+  getUsermodify,
   postUsermodify,
 } = require("./user.service");
 require("dotenv").config();
@@ -21,16 +22,41 @@ exports.getSignup = (req, res) => {
   res.render("users/signup.html");
 };
 
-exports.getUserPage = (req, res) => {
-  res.render("users/mypage.html");
+exports.getUserPage = async (req, res) => {
+  const token = req.cookies.cookie;
+  let userinfo;
+  if (token) {
+    userinfo = await getUserInfo(token);
+  }
+  res.render("users/mypage.html", { userinfo });
+  // res.render("users/mypage.html");
 };
 
 exports.getAdmin = (req, res) => {
   res.render("admin/adminpage.html");
 };
 
-exports.getUsermodify = (req, res) => {
-  res.render("users/mypage.modify.html");
+exports.getUsermodify = async (req, res) => {
+  const { uid } = req.query;
+  const token = req.cookies.cookie;
+  let userinfo;
+  if (token) {
+    userinfo = await getUserInfo(token);
+  }
+  const { data } = await getUsermodify(uid, token);
+
+  if (!token) {
+    res.redirect("/users/login");
+  }
+
+  // if (result.uid !== data.result.author) {
+  //   res.redirect("/users/login");
+  // } else {
+  //   res.render("/user/modify.html", { userinfo, data: data, uid });
+  // }
+  // console.log("userinfo-------", userinfo);
+  res.render("users/mypage.modify.html", { userinfo, data: data });
+  // res.render("users/mypage.modify.html", { userinfo });
 };
 
 exports.postLogin = async (req, res, next) => {
@@ -76,10 +102,24 @@ exports.getUserInfo = async (req, res, next) => {
 
 exports.postUsermodify = async (req, res, next) => {
   try {
-    const { uid } = req.params;
-    const userData = req.body;
-    const token = await postUsermodify(uid, userData);
-    return res.status(201).redirect("/", { token });
+    const { uid } = req.query;
+    const data = req.body;
+
+    const userData = {
+      user_email: data.user_email,
+      user_pw: data.user_pw,
+      user_name: data.user_name,
+      user_nickname: data.user_nickname,
+      user_birth: data.user_birth,
+      user_img: req.file.filename,
+    };
+
+    const token = req.cookies.cookie;
+
+    console.log("uid___________________________", uid);
+    console.log("udata___________________________", userData);
+    const result = await postUsermodify(uid, userData, token);
+    return res.status(201).redirect(`/users/user`);
   } catch (error) {
     next(error);
   }

@@ -1,9 +1,23 @@
 const express = require("express");
 const router = express.Router();
+const multer = require("multer");
+const path = require("path");
 const userController = require("./user.controller");
 
-// const { postLogin, postSignup } = require("./user.service");
-//login
+const upload = multer({
+  storage: multer.diskStorage({
+    destination: (req, file, done) => {
+      done(null, "./uploads");
+    },
+    filename: (req, file, done) => {
+      const ext = path.extname(file.originalname);
+      const filename =
+        path.basename(file.originalname) + "_" + Date.now() + ext;
+      done(null, filename);
+    },
+  }),
+});
+
 router.get("/login", userController.getLogin);
 router.post("/login", userController.postLogin);
 // sign-up
@@ -16,7 +30,11 @@ router.get("/user", userController.getUserPage);
 router.get("/user", userController.getUserInfo);
 router.get("/admin", userController.getAdmin);
 router.get("/user/modify", userController.getUsermodify);
-router.post("/user/modify", userController.postUsermodify);
+router.post(
+  "/user/modify",
+  upload.single("upload"),
+  userController.postUsermodify
+);
 // router.get("/user/delete", userController.getUserdelete);
 
 // kakoa login

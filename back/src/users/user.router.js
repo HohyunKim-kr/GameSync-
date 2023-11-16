@@ -23,5 +23,6 @@ router.post("/login", userController.login);
 router.post("/kakao", userController.kakaoLogin);
 router.post("/git", userController.gitLogin);
 router.get("/info", userController.getUserInfo);
-router.get("/update/:userId", userController.updateUserInfo);
+router.get("/modify", userController.getUserModify);
+router.post("/:uid", userController.postUserModify);
 module.exports = router;

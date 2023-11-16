@@ -42,6 +42,9 @@ User.init(
       type: DataTypes.STRING,
       allowNull: false,
     },
+    original_filename: {
+      type: DataTypes.STRING,
+    },
     user_provider: {
       type: DataTypes.STRING,
       allowNull: false,

@@ -2,6 +2,7 @@ const bcrypt = require("bcryptjs");
 const { User } = require("./user.entity");
 const { generateToken } = require("../../lib/jwt");
 const jwt = require("jsonwebtoken");
+
 const {
   UserCreateRequestDTO,
   UserCreateResponseDTO,
@@ -84,20 +85,30 @@ class UserService {
       return { success: false, message: e.message };
     }
   }
-  async updateUser(userId, updatedFields) {
+  async updateUser(userId, userCreateRequestDTO) {
     try {
-      const user = await User.findByPk(userId);
-
-      if (!user) {
-        throw new Error("User not found");
-      }
-
-      const updatedUser = await user.update(updatedFields);
-
-      const userResponseDTO = new UserCreateResponseDTO(updatedUser);
-
-      return userResponseDTO;
+      console.log("# ", userCreateRequestDTO);
+      const { result } = await User.update(
+        {
+          uid: userCreateRequestDTO.uid,
+          user_email: userCreateRequestDTO.user_email,
+          user_name: userCreateRequestDTO.user_name,
+          user_nickname: userCreateRequestDTO.user_nickname,
+          user_pw: userCreateRequestDTO.user_pw,
+          user_birth: userCreateRequestDTO.user_birth,
+          user_img: userCreateRequestDTO.user_img,
+          original_filename: userCreateRequestDTO.original_filename,
+        },
+        {
+          where: {
+            uid: userId,
+          },
+        }
+      );
+      console.log(`upDate user---------- result:`, result);
+      return result;
     } catch (error) {
+      console.log("%%% ", error);
       console.error("Error updating user:", error);
       throw error;
     }

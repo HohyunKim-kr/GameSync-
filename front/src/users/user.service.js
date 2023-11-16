@@ -20,21 +20,44 @@ async function postLogin(user_email, user_pw) {
       },
       {}
     );
-
     if (!response.success) {
       throw new Error("로그인에 실패했습니다.");
     }
-
     return response.token; // 로그인에 성공하면 백엔드로부터 토큰을 반환
   } catch (error) {
     throw error;
   }
 }
-
-async function postUsermodify(uid, userData) {
+async function getUsermodify(uid, userData) {
   try {
-    const result = await axios.put(`${API_URL}/users/${uid}`, userData);
-    return result.data;
+    const authorization = userData;
+    const result = await axios.get(`${API_URL}/users/modify?=${uid}`, {
+      headers: {
+        Authorization: `Bearer ${authorization}`,
+      },
+    });
+    // console.log("wwwwwwwwwwwwwwUID", uid);
+    // console.log("wwwwwwwwwwwwwwDAta", userData);
+    // console.log("wwwwwwwwwwwwwwresult.data", result);
+    return result;
+  } catch (error) {
+    console.log(error);
+    throw new Error(`SERVICE putUsermodify ERROR: ${error.message}`);
+  }
+}
+
+async function postUsermodify(uid, userData, token) {
+  try {
+    const authorization = token;
+
+    const result = await axios.post(`${API_URL}/users/${uid}`, userData, {
+      headers: {
+        Authorization: `Bearer ${authorization}`,
+      },
+    });
+    console.log("wwwwwwwwwwwwwwUID", uid);
+
+    return result;
   } catch (error) {
     throw new Error(`SERVICE putUsermodify ERROR: ${error.message}`);
   }
@@ -134,7 +157,7 @@ async function getUserInfo(token) {
         Authorization: `Bearer ${token}`,
       },
     });
-    console.log("getUserInfo.....................", response.data);
+    // console.log("getUserInfo.....................", response.data);
     // console.log("getUserInfo.....................", response);
     return response.data; // 서버로부터 받은 사용자 정보를 반환
   } catch (error) {
@@ -148,5 +171,6 @@ module.exports = {
   kakaoLogin,
   gitLogin,
   getUserInfo,
+  getUsermodify,
   postUsermodify,
 };
