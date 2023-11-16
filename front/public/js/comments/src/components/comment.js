@@ -92,12 +92,14 @@ class Comment extends Component {
 
   async insertItem(content) {
     try {
+      console.log("insert data", data.result);
       const response = await axios.post("http://localhost:4000/comments", {
         content,
-        userid: "kiamea",
+        userid: data.result.id,
         date: "20231120",
       });
 
+      console.log("comments 머가뜸?", response);
       if (response.data.success) {
         await this.fetchComments();
       }
