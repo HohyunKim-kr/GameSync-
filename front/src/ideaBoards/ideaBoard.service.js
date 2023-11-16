@@ -3,7 +3,6 @@ const axios = require("axios");
 exports.getList = async () => {
     try {
         const result = await axios.get("http://localhost:4000/ideaBoards/");
-        console.log(result);
         return result;
     } catch (e) {
         throw new Error(`SERVICE getList ERROR: ${e.message}`);
@@ -22,7 +21,6 @@ exports.postWrite = async (boardData, token) => {
                 },
             }
         );
-        console.log(result);
         return result;
     } catch (e) {
         throw new Error(`SERVICE postWrite ERROR: ${e.message}`);
@@ -40,10 +38,16 @@ exports.getView = async (id) => {
     }
 };
 
-exports.getModify = async (id) => {
+exports.getModify = async (id, token) => {
     try {
+        const authorization = token;
         const result = await axios.get(
-            `http://localhost:4000/ideaBoards/${id}`
+            `http://localhost:4000/ideaBoards/${id}`,
+            {
+                headers: {
+                    Authorization: `Bearer ${authorization}`,
+                },
+            }
         );
         return result;
     } catch (e) {
@@ -51,11 +55,35 @@ exports.getModify = async (id) => {
     }
 };
 
-exports.putModify = async (id, boardData) => {
+// exports.postWrite = async (boardData, token) => {
+//     try {
+//         const authorization = token;
+//         const result = await axios.post(
+//             "http://localhost:4000/ideaBoards/",
+//             boardData,
+//             {
+//                 headers: {
+//                     Authorization: `Bearer ${authorization}`,
+//                 },
+//             }
+//         );
+//         return result;
+//     } catch (e) {
+//         throw new Error(`SERVICE postWrite ERROR: ${e.message}`);
+//     }
+// };
+
+exports.putModify = async (id, boardData, token) => {
     try {
+        const authorization = token;
         const result = await axios.put(
             `http://localhost:4000/ideaBoards/${id}`,
-            boardData
+            boardData,
+            {
+                headers: {
+                    Authorization: `Bearer ${authorization}`,
+                },
+            }
         );
         return result;
     } catch (e) {
@@ -63,10 +91,16 @@ exports.putModify = async (id, boardData) => {
     }
 };
 
-exports.postDelete = async (id) => {
+exports.postDelete = async (id, token) => {
     try {
+        const authorization = token;
         const result = await axios.delete(
-            `http://localhost:4000/ideaBoards/${id}`
+            `http://localhost:4000/ideaBoards/${id}`,
+            {
+                headers: {
+                    Authorization: `Bearer ${authorization}`,
+                },
+            }
         );
         return result;
     } catch (e) {
