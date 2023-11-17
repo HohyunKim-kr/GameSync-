@@ -23,9 +23,14 @@
             <a href="/">GameSync</a>
           </div>
           <div class="header-icon">
-            <a href="/users/login">
+            {% if userinfo %}
+            <p>{{userinfo.user_nickname}}님</p>
+            <a href="/users/logout">로그아웃</a>
+            {% else %}
+            <a class="icon" href="/users/login">
               <img src="/images/my.png" alt="" />
             </a>
+            {% endif %}
           </div>
         </div>
         <div class="full-drop">
@@ -50,9 +55,7 @@
       </div>
       <div id="container">
         <div class="developBoard-img">
-          <h1 class="view-text">
-            {{data.result.category}} &nbsp {{data.result.title}}
-          </h1>
+          <h1 class="view-text">{{data.result.title}}</h1>
           <div class="view-box">
             <div>{{data.userResult.user_nickname}}</div>
             <div>{{data.result.createdAt}}</div>
@@ -61,18 +64,6 @@
                 <img src="/images/view_icon.png" alt="" />
               </span>
               {{data.result.hit}}
-            </div>
-            <div class="like">
-              <span>
-                <img src="/images/like_icon.png" alt="" />
-              </span>
-              {{data.result.like}}
-            </div>
-            <div class="comment_icon">
-              <span>
-                <img src="/images/comment_icon.png" alt="" />
-              </span>
-              11
             </div>
           </div>
         </div>
@@ -85,9 +76,6 @@
             <div class="tolist">
               <a href="/develop/developBoards/">목록가기</a>
             </div>
-            <form method="post" action="">
-              <button type="submit" class="likebtn">추천하기</button>
-            </form>
             <div class="tomodify">
               <a href="/develop/developBoards/modify?id={{data.result.id}}">
                 수정하기

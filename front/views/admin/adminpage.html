@@ -1,114 +1,112 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>GameSync_NOTICE</title>
-        <link type="text/css" rel="stylesheet" href="/css/index.css" />
-        <link type="text/css" rel="stylesheet" href="/css/admin.css" />
-    </head>
-    <body>
-        <div id="header">
-            <div class="header-wrap">
-                <div class="header-logo">
-                    <a href="/">GameSync</a>
-                </div>
-                <div class="header-icon">
-                    <a href="/users/login">
-                        <img src="/images/my.png" alt="" />
-                    </a>
-                </div>
-            </div>
-            <div class="full-drop">
-                <div class="drop-wrap">
-                    <div class="drop-down">
-                        <a href="/develop/developBoards/">게임 개발 게시판</a>
-                    </div>
-                    <div class="drop-down">
-                        <a href="/idea/ideaBoards/"
-                            >게임 기획, 아이디어 게시판</a
-                        >
-                    </div>
-                    <div class="drop-down">
-                        <a href="/notice/notices/">공지사항</a>
-                    </div>
-                    <div class="drop-down">
-                        <a href="/users/user">마이페이지</a>
-                    </div>
-                    <div class="drop-down">
-                        <a href="/users/admin">admin</a>
-                    </div>
-                </div>
-            </div>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>GameSync_NOTICE</title>
+    <link type="text/css" rel="stylesheet" href="/css/index.css" />
+    <link type="text/css" rel="stylesheet" href="/css/admin.css" />
+  </head>
+  <body>
+    <div id="header">
+      <div class="header-wrap">
+        <div class="header-logo">
+          <a href="/">GameSync</a>
         </div>
-        <div class="board-wrap">
-            <div class="board_title">
-                <strong>관리자 페이지</strong>
-            </div>
-            <div class="board_list_wrap">
-                <table class="board_list">
-                    <colgroup>
-                        <col class="number" />
-                        <col class="user_img" />
-                        <col class="user_name" />
-                        <col class="user_email" />
-                        <col class="user_provider" />
-                        <col class="user_delete" />
-                    </colgroup>
-                    <thead>
-                        <tr>
-                            <th>Num.</th>
-                            <th>User Img</th>
-                            <th>User Name</th>
-                            <th>User email</th>
-                            <th>User Provider</th>
-                            <th>Account Deletion</th>
-                        </tr>
-                    </thead>
-                    {% for data in list %}
-                    <tbody>
-                        <tr>
-                            <td>{{data.id}}</td>
-                            <td>
-                                <img src="/{{data.img}}" />
-                            </td>
-                            <td>{{data.name}}</td>
-                            <td>{{data.email}}</td>
-                            <td>{{data.provider}}</td>
-                            <td>
-                                <form action="" method="post">
-                                    <button type="submit" class="deletebtn">
-                                        계정삭제
-                                    </button>
-                                </form>
-                            </td>
-                        </tr>
-                    </tbody>
-                    {% endfor %}
-                </table>
-            </div>
+        <div class="header-icon">
+          {% if userinfo %}
+          <p>{{userinfo.user_nickname}}님</p>
+          <a href="/users/logout">로그아웃</a>
+          {% else %}
+          <a class="icon" href="/users/login">
+            <img src="/images/my.png" alt="" />
+          </a>
+          {% endif %}
         </div>
-        <div id="footer">
-            <div class="left-info">
-                <div class="header-logo">
-                    <a href="/">GameSync</a>
-                </div>
-                <span>&copy 2023 GameSync. All rights reserved.</span>
-            </div>
-            <div class="right-info">
-                <a
-                    href="https://github.com/HohyunKim-kr/GameSync-"
-                    target="_blank"
-                >
-                    <img src="/images/git.png" alt="" />
-                </a>
-                <a
-                    href="https://www.notion.so/6e7c5fa81141402d857da70dd2c867f1?v=e68659f259a04af98ace30ca01acede4"
-                    target="_blank"
-                >
-                    <img src="/images/notion.png" alt="" />
-                </a>
-            </div>
+      </div>
+      <div class="full-drop">
+        <div class="drop-wrap">
+          <div class="drop-down">
+            <a href="/develop/developBoards/">게임 개발 게시판</a>
+          </div>
+          <div class="drop-down">
+            <a href="/idea/ideaBoards/">게임 기획, 아이디어 게시판</a>
+          </div>
+          <div class="drop-down">
+            <a href="/notice/notices/">공지사항</a>
+          </div>
+          <div class="drop-down">
+            <a href="/users/user">마이페이지</a>
+          </div>
+          <div class="drop-down">
+            <a href="/users/admin">admin</a>
+          </div>
         </div>
-    </body>
+      </div>
+    </div>
+    <div class="board-wrap">
+      <div class="board_title">
+        <strong>관리자 페이지</strong>
+      </div>
+      <div class="board_list_wrap">
+        <table class="board_list">
+          <colgroup>
+            <col class="number" />
+            <col class="user_img" />
+            <col class="user_name" />
+            <col class="user_email" />
+            <col class="user_provider" />
+            <col class="user_delete" />
+          </colgroup>
+          <thead>
+            <tr>
+              <th>Num.</th>
+              <th>User Img</th>
+              <th>User Name</th>
+              <th>User email</th>
+              <th>User Provider</th>
+              <th>Account Deletion</th>
+            </tr>
+          </thead>
+          {% for data in list %}
+          <tbody>
+            <tr>
+              <td>{{data.id}}</td>
+              <td>
+                <img src="/{{data.img}}" />
+              </td>
+              <td>{{data.name}}</td>
+              <td>{{data.email}}</td>
+              <td>{{data.provider}}</td>
+              <td>
+                <form action="" method="post">
+                  <button type="submit" class="deletebtn">계정삭제</button>
+                </form>
+              </td>
+            </tr>
+          </tbody>
+          {% endfor %}
+        </table>
+      </div>
+    </div>
+    <div id="footer">
+      <div class="left-info">
+        <div class="header-logo">
+          <a href="/">GameSync</a>
+        </div>
+        <span>&copy 2023 GameSync. All rights reserved.</span>
+      </div>
+      <div class="right-info">
+        <a href="https://github.com/HohyunKim-kr/GameSync-" target="_blank">
+          <img src="/images/git.png" alt="" />
+        </a>
+        <a
+          href="https://www.notion.so/6e7c5fa81141402d857da70dd2c867f1?v=e68659f259a04af98ace30ca01acede4"
+          target="_blank"
+        >
+          <img src="/images/notion.png" alt="" />
+        </a>
+      </div>
+    </div>
+  </body>
 </html>
