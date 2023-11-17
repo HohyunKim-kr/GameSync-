@@ -17,9 +17,14 @@
             <a href="/">GameSync</a>
           </div>
           <div class="header-icon">
-            <a href="/users/login">
+            {% if userinfo %}
+            <p>{{userinfo.user_nickname}}님</p>
+            <a href="/users/logout">로그아웃</a>
+            {% else %}
+            <a class="icon" href="/users/login">
               <img src="/images/my.png" alt="" />
             </a>
+            {% endif %}
           </div>
         </div>
         <div class="full-drop">
@@ -53,18 +58,6 @@
           id="developBoardForm"
           enctype="multipart/form-data"
         >
-          <div class="firstLine">
-            <select class="category" name="category">
-              <option disabled selected>선택하세요</option>
-              <option value="1">롤플레잉</option>
-            </select>
-            <!-- <input
-                            type="text"
-                            class="author"
-                            name="author"
-                            placeholder="작성자"
-                        /> -->
-          </div>
           <div class="secondLine">
             <input
               required

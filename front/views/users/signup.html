@@ -4,79 +4,131 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
+    <link type="text/css" rel="stylesheet" href="/css/index.css" />
     <link rel="stylesheet" href="/css/signup.css" />
   </head>
   <body>
     <div>
       <div id="header">
-        <div class="header-logo">
-          <!-- <img src="" alt="" /> -->
-          GAME SYNC
+        <div class="header-wrap">
+          <div class="header-logo">
+            <a href="/">GameSync</a>
+          </div>
+          <div class="header-icon">
+            {% if userinfo %}
+            <p>{{userinfo.user_nickname}}님</p>
+            <a href="/users/logout">로그아웃</a>
+            {% else %}
+            <a class="icon" href="/users/login">
+              <img src="/images/my.png" alt="" />
+            </a>
+            {% endif %}
+          </div>
         </div>
-        <div class="header-icon">
-          <a href="/">
-            <img src="/images/my.png" alt="" />
-          </a>
+        <div class="full-drop">
+          <div class="drop-wrap">
+            <div class="drop-down">
+              <a href="/develop/developBoards/">게임 개발 게시판</a>
+            </div>
+            <div class="drop-down">
+              <a href="/idea/ideaBoards/">게임 기획, 아이디어 게시판</a>
+            </div>
+            <div class="drop-down">
+              <a href="/notice/notices/">공지사항</a>
+            </div>
+            <div class="drop-down">
+              <a href="/users/user">마이페이지</a>
+            </div>
+            <div class="drop-down">
+              <a href="/users/admin">admin</a>
+            </div>
+          </div>
         </div>
       </div>
-      <form
-        action="/users/signup"
-        method="POST"
-        class="joinForm"
-        onsubmit="DoJoinForm__submit(this); return false;"
-      >
-        <h2>회원가입</h2>
-        <div class="textForm">
-          <input
-            name="user_email"
-            type="text"
-            class="email"
-            placeholder="이메일"
-          />
-        </div>
-        <div class="textForm">
-          <input
-            name="user_pw"
-            type="password"
-            class="pw"
-            id="password"
-            placeholder="비밀번호"
-            oninput="validateOnInput()"
-          />
-        </div>
+      <div id="wrap">
+        <form
+          action="/users/signup"
+          method="POST"
+          class="joinForm"
+          onsubmit="DoJoinForm__submit(this); return false;"
+        >
+          <h2>회원가입</h2>
+          <div class="textForm">
+            <input
+              name="user_email"
+              type="text"
+              class="email"
+              placeholder="이메일"
+            />
+          </div>
+          <div class="textForm">
+            <input
+              name="user_pw"
+              type="password"
+              class="pw"
+              id="password"
+              placeholder="비밀번호"
+              oninput="validateOnInput()"
+            />
+          </div>
 
-        <div class="textForm">
-          <input
-            name="loginPwConfirm"
-            type="password"
-            id="repeatPassword"
-            class="pw"
-            placeholder="비밀번호 확인"
-            oninput="validateOnInput()"
-          />
+          <div class="textForm">
+            <input
+              name="loginPwConfirm"
+              type="password"
+              id="repeatPassword"
+              class="pw"
+              placeholder="비밀번호 확인"
+              oninput="validateOnInput()"
+            />
+          </div>
+          <h5 id="error-message"></h5>
+          <div class="textForm">
+            <input
+              name="user_name"
+              type="text"
+              class="name"
+              placeholder="이름"
+            />
+          </div>
+          <div class="textForm">
+            <input
+              name="user_nickname"
+              type="text"
+              class="nickname"
+              placeholder="닉네임"
+            />
+          </div>
+          <div class="textForm">
+            <input
+              name="user_birth"
+              type="number"
+              class="userDate"
+              placeholder="생년월일"
+            />
+          </div>
+          <input type="submit" class="btn" value="J O I N" />
+        </form>
+      </div>
+    </div>
+    <div id="footer">
+      <div class="left-info">
+        <div class="header-logo">
+          <a href="/">GameSync</a>
         </div>
-        <h5 id="error-message"></h5>
-        <div class="textForm">
-          <input name="user_name" type="text" class="name" placeholder="이름" />
-        </div>
-        <div class="textForm">
-          <input
-            name="user_nickname"
-            type="text"
-            class="nickname"
-            placeholder="닉네임"
-          />
-        </div>
-        <div class="textForm">
-          <input
-            name="user_birth"
-            type="number"
-            class="userDate"
-            placeholder="생년월일"
-          />
-        </div>
-        <input type="submit" class="btn" value="J O I N" />
-      </form>
+        <span>&copy 2023 GameSync. All rights reserved.</span>
+      </div>
+      <div class="right-info">
+        <a href="https://github.com/HohyunKim-kr/GameSync-" target="_blank">
+          <img src="/images/git.png" alt="" />
+        </a>
+        <a
+          href="https://www.notion.so/6e7c5fa81141402d857da70dd2c867f1?v=e68659f259a04af98ace30ca01acede4"
+          target="_blank"
+        >
+          <img src="/images/notion.png" alt="" />
+        </a>
+      </div>
     </div>
     <script src="/js/signup.js"></script>
   </body>

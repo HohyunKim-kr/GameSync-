@@ -16,9 +16,14 @@
                         <a href="/">GameSync</a>
                     </div>
                     <div class="header-icon">
-                        <a href="/users/login">
+                        {% if userinfo %}
+                        <p>{{userinfo.user_nickname}}님</p>
+                        <a href="/users/logout">로그아웃</a>
+                        {% else %}
+                        <a class="icon" href="/users/login">
                             <img src="/images/my.png" alt="" />
                         </a>
+                        {% endif %}
                     </div>
                 </div>
                 <div class="full-drop">
@@ -58,16 +63,16 @@
                 <div class="ideaBoard-wrap">
                     {% for data in list %}
                     <ul class="ideaBoard-box">
-                        <li class="box-img">
-                            <img src="/{{data.image}}" alt="" />
-                        </li>
-                        <li class="box-name">
-                            <a href="/idea/ideaBoards/view?id={{data.id}}">
-                                {{data.title}}
-                            </a>
-                        </li>
-                        <li class="box-category">{{data.category}}</li>
-                        <li class="box-hit">👍 {{data.hit}}</li>
+                        <a href="/idea/ideaBoards/view?id={{data.id}}">
+                            <li class="box-img">
+                                <img src="/{{data.image}}" alt="" />
+                            </li>
+                            <li class="box-name">{{data.title}}</li>
+                            <li class="box-hit">
+                                <img src="/images/eye.png" alt="" />
+                                &nbsp {{data.hit}}
+                            </li>
+                        </a>
                     </ul>
                     {% endfor %}
                 </div>
