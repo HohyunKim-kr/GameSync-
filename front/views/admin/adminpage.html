@@ -14,6 +14,7 @@
           <a href="/">GameSync</a>
         </div>
         <div class="header-icon">
+<<<<<<< HEAD
           {% if userinfo %}
           <p>{{userinfo.user_nickname}}님</p>
           <a href="/users/logout">로그아웃</a>
@@ -22,6 +23,11 @@
             <img src="/images/my.png" alt="" />
           </a>
           {% endif %}
+=======
+          <a href="/users/login">
+            <img src="/images/my.png" alt="" />
+          </a>
+>>>>>>> admin
         </div>
       </div>
       <div class="full-drop">
@@ -71,6 +77,7 @@
           {% for data in list %}
           <tbody>
             <tr>
+<<<<<<< HEAD
               <td>{{data.id}}</td>
               <td>
                 <img src="/{{data.img}}" />
@@ -78,6 +85,15 @@
               <td>{{data.name}}</td>
               <td>{{data.email}}</td>
               <td>{{data.provider}}</td>
+=======
+              <td>{{data.uid}}</td>
+              <td>
+                <img src="/images/my.png" />
+              </td>
+              <td>{{data.user_nickname}}</td>
+              <td>{{data.user_email}}</td>
+              <td>{{data. user_provider}}</td>
+>>>>>>> admin
               <td>
                 <form action="" method="post">
                   <button type="submit" class="deletebtn">계정삭제</button>
