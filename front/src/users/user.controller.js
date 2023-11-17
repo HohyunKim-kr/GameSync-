@@ -190,7 +190,18 @@ exports.gitCallback = async (req, res, next) => {
 exports.getLogout = async (req, res, next) => {
     try {
         const token = req.cookies.cookie;
-        const result = await getLogout(token);
+        let userinfo;
+        if (token) {
+            userinfo = await getUserInfo(token);
+        }
+        // const { uid } = req.query;
+        console.log(`uid내나--->`, userinfo.uid);
+        const uid = userinfo.uid;
+
+        const result = await getLogout(uid);
         console.log(result);
+        console.log(" 토큰삭제", token);
+        res.clearCookie("cookie", { httpOnly: true }).redirect("/"); // 수정: 로그아웃 성공 시 쿠키 삭제
+        // res.status(201).json("Logout successful");
     } catch (e) {}
 };
