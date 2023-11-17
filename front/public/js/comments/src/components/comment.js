@@ -135,6 +135,7 @@ class Comment extends Component {
       const response = await axios.put(`http://localhost:4000/comments/${id}`, {
         content,
       });
+      console.log(response);
       await this.fetchComments();
       // if (response.data.success) {
       //   console.log("댓글대기중");
