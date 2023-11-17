@@ -27,6 +27,9 @@ exports.postWrite = async (req, res, next) => {
       original_filename: file.originalname,
     };
     const token = req.cookies.cookie;
+    if (!token) {
+      res.redirect("/users/login");
+    }
     const result = await ideaBoardService.postWrite(boardData, token);
 
     const { id } = result.data;

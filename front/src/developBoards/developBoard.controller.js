@@ -38,6 +38,10 @@ exports.postWrite = async (req, res, next) => {
       origina_filename: file.originalname,
     };
     const token = req.cookies.cookie;
+    if (!token) {
+      res.redirect("/users/login");
+    }
+
     const result = await developBoardService.postWrite(boardData, token);
 
     const { id } = result.data;
