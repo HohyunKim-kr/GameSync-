@@ -1,213 +1,225 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>GAME SYNC</title>
-    <link type="text/css" rel="stylesheet" href="/css/index.css" />
-    <!-- <link rel="stylesheet" href="/css/boardSlide.css" /> -->
-    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-  </head>
-  <body>
-    <div id="wrap">
-      <div id="header">
-        <div class="header-wrap">
-          <div class="header-logo">
-            <a href="/">GameSync</a>
-          </div>
-          <div class="header-icon">
-            {% if userinfo %}
-            <p>{{userinfo.user_nickname}}님</p>
-            <a href="/">로그아웃</a>
-            {% else %}
-            <a class="icon" href="/users/login">
-              <img src="/images/my.png" alt="" />
-            </a>
-            {% endif %}
-          </div>
-        </div>
-        <div class="full-drop">
-          <div class="drop-wrap">
-            <div class="drop-down">
-              <a href="/develop/developBoards/">게임 개발 게시판</a>
-            </div>
-            <div class="drop-down">
-              <a href="/idea/ideaBoards/">게임 기획, 아이디어 게시판</a>
-            </div>
-            <div class="drop-down">
-              <a href="/notice/notices/">공지사항</a>
-            </div>
-            <div class="drop-down">
-              <a href="/users/user">마이페이지</a>
-            </div>
-            <div class="drop-down">
-              <a href="/users/admin">admin</a>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div id="container">
-        <div class="slideBox">
-          <div class="slide">
-            <img src="/images/main1.png" />
-          </div>
-          <div class="slide">
-            <img src="/images/main2.png" />
-          </div>
-          <div class="slide">
-            <img src="/images/main3.png" />
-          </div>
-          <div class="slide">
-            <img src="/images/main4.png" />
-          </div>
-          <div class="slide">
-            <img src="/images/main5.png" />
-          </div>
-          <div class="slideController">
-            <div class="ellipse active"></div>
-            <div class="ellipse"></div>
-            <div class="ellipse"></div>
-            <div class="ellipse"></div>
-            <div class="ellipse"></div>
-          </div>
-        </div>
-        <div class="bestgame">
-          <h3>이번주 기획 인기 아이디어</h3>
-          <div class="game-wrap">
-            {% if ideahitdata %} {% for item in ideahitdata %}
-            <div class="game-box">
-              <a href="/idea/ideaBoards/view?id={{item.id}}">
-                <div class="box-img">
-                  <img src="/{{item.image}}" alt="" />
-                </div>
-                <div class="box-txt">
-                  <div class="box-title">{{item.title}}</div>
-                  <div class="box-count">
-                    <div class="like-count">
-                      <img src="/images/like_icon.png" />
-                      <span>{{item.like}}</span>
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>GAME SYNC</title>
+        <link type="text/css" rel="stylesheet" href="/css/index.css" />
+        <!-- <link rel="stylesheet" href="/css/boardSlide.css" /> -->
+        <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    </head>
+    <body>
+        <div id="wrap">
+            <div id="header">
+                <div class="header-wrap">
+                    <div class="header-logo">
+                        <a href="/">GameSync</a>
                     </div>
-                    <div class="view-count">
-                      <img src="/images/view_icon.png" />
-                      <span>{{item.hit}}</span>
+                    <div class="header-icon">
+                        {% if userinfo %}
+                        <p>{{userinfo.user_nickname}}님</p>
+                        <a href="/users/logout">로그아웃</a>
+                        {% else %}
+                        <a class="icon" href="/users/login">
+                            <img src="/images/my.png" alt="" />
+                        </a>
+                        {% endif %}
                     </div>
-                  </div>
                 </div>
-              </a>
+                <div class="full-drop">
+                    <div class="drop-wrap">
+                        <div class="drop-down">
+                            <a href="/develop/developBoards/"
+                                >게임 개발 게시판</a
+                            >
+                        </div>
+                        <div class="drop-down">
+                            <a href="/idea/ideaBoards/"
+                                >게임 기획, 아이디어 게시판</a
+                            >
+                        </div>
+                        <div class="drop-down">
+                            <a href="/notice/notices/">공지사항</a>
+                        </div>
+                        <div class="drop-down">
+                            <a href="/users/user">마이페이지</a>
+                        </div>
+                        <div class="drop-down">
+                            <a href="/users/admin">admin</a>
+                        </div>
+                    </div>
+                </div>
             </div>
-            {% endfor %} {% else %}
-            <p>조회수가 높은 글이 없습니다.</p>
-            {% endif %}
-          </div>
-        </div>
-        <div class="newgame">
-          <h3>새로운 기획 아이디어</h3>
-          <div class="game-wrap">
-            {% if idealastdata %} {% for item in idealastdata %}
-            <div class="game-box">
-              <a href="/idea/ideaBoards/view?id={{item.id}}">
-                <div class="box-img">
-                  <img src="/{{item.image}}" alt="" />
-                </div>
-                <div class="box-txt">
-                  <div class="box-title">{{item.title}}</div>
-                  <div class="box-count">
-                    <div class="like-count">
-                      <img src="/images/like_icon.png" />
-                      <span>{{item.like}}</span>
+            <div id="container">
+                <div class="slideBox">
+                    <div class="slide">
+                        <img src="/images/main1.png" />
                     </div>
-                    <div class="view-count">
-                      <img src="/images/view_icon.png" />
-                      <span>{{item.hit}}</span>
+                    <div class="slide">
+                        <img src="/images/main2.png" />
                     </div>
-                  </div>
+                    <div class="slide">
+                        <img src="/images/main3.png" />
+                    </div>
+                    <div class="slide">
+                        <img src="/images/main4.png" />
+                    </div>
+                    <div class="slide">
+                        <img src="/images/main5.png" />
+                    </div>
+                    <div class="slideController">
+                        <div class="ellipse active"></div>
+                        <div class="ellipse"></div>
+                        <div class="ellipse"></div>
+                        <div class="ellipse"></div>
+                        <div class="ellipse"></div>
+                    </div>
                 </div>
-              </a>
+                <div class="bestgame">
+                    <h3>이번주 기획 인기 아이디어</h3>
+                    <div class="game-wrap">
+                        {% if ideahitdata %} {% for item in ideahitdata %}
+                        <div class="game-box">
+                            <a href="/idea/ideaBoards/view?id={{item.id}}">
+                                <div class="box-img">
+                                    <img src="/{{item.image}}" alt="" />
+                                </div>
+                                <div class="box-txt">
+                                    <div class="box-title">{{item.title}}</div>
+                                    <div class="box-count">
+                                        <div class="like-count">
+                                            <img src="/images/like_icon.png" />
+                                            <span>{{item.like}}</span>
+                                        </div>
+                                        <div class="view-count">
+                                            <img src="/images/view_icon.png" />
+                                            <span>{{item.hit}}</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                        {% endfor %} {% else %}
+                        <p>조회수가 높은 글이 없습니다.</p>
+                        {% endif %}
+                    </div>
+                </div>
+                <div class="newgame">
+                    <h3>새로운 기획 아이디어</h3>
+                    <div class="game-wrap">
+                        {% if idealastdata %} {% for item in idealastdata %}
+                        <div class="game-box">
+                            <a href="/idea/ideaBoards/view?id={{item.id}}">
+                                <div class="box-img">
+                                    <img src="/{{item.image}}" alt="" />
+                                </div>
+                                <div class="box-txt">
+                                    <div class="box-title">{{item.title}}</div>
+                                    <div class="box-count">
+                                        <div class="like-count">
+                                            <img src="/images/like_icon.png" />
+                                            <span>{{item.like}}</span>
+                                        </div>
+                                        <div class="view-count">
+                                            <img src="/images/view_icon.png" />
+                                            <span>{{item.hit}}</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                        {% endfor %} {% else %}
+                        <p>최신글이 없습니다.</p>
+                        {% endif %}
+                    </div>
+                </div>
+                <div class="bestgame">
+                    <h3>이번주 개발 인기 아이디어</h3>
+                    <div class="game-wrap">
+                        {% if develophitdata %} {% for item in develophitdata %}
+                        <div class="game-box">
+                            <a
+                                href="/develop/developBoards/view?id={{item.id}}"
+                            >
+                                <div class="box-img">
+                                    <img src="/{{item.image}}" alt="" />
+                                </div>
+                                <div class="box-txt">
+                                    <div class="box-title">{{item.title}}</div>
+                                    <div class="box-count">
+                                        <div class="like-count">
+                                            <img src="/images/like_icon.png" />
+                                            <span>{{item.like}}</span>
+                                        </div>
+                                        <div class="view-count">
+                                            <img src="/images/view_icon.png" />
+                                            <span>{{item.hit}}</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                        {% endfor %} {% else %}
+                        <p>조회수가 높은 글이 없습니다.</p>
+                        {% endif %}
+                    </div>
+                </div>
+                <div class="newgame">
+                    <h3>새로운 개발 아이디어</h3>
+                    <div class="game-wrap">
+                        {% if developlastdata %} {% for item in developlastdata
+                        %}
+                        <div class="game-box">
+                            <a
+                                href="/develop/developBoards/view?id={{item.id}}"
+                            >
+                                <div class="box-img">
+                                    <img src="/{{item.image}}" alt="" />
+                                </div>
+                                <div class="box-txt">
+                                    <div class="box-title">{{item.title}}</div>
+                                    <div class="box-count">
+                                        <div class="like-count">
+                                            <img src="/images/like_icon.png" />
+                                            <span>{{item.like}}</span>
+                                        </div>
+                                        <div class="view-count">
+                                            <img src="/images/view_icon.png" />
+                                            <span>{{item.hit}}</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                        {% endfor %} {% else %}
+                        <p>최신글이 없습니다.</p>
+                        {% endif %}
+                    </div>
+                </div>
             </div>
-            {% endfor %} {% else %}
-            <p>최신글이 없습니다.</p>
-            {% endif %}
-          </div>
         </div>
-        <div class="bestgame">
-          <h3>이번주 개발 인기 아이디어</h3>
-          <div class="game-wrap">
-            {% if develophitdata %} {% for item in develophitdata %}
-            <div class="game-box">
-              <a href="/develop/developBoards/view?id={{item.id}}">
-                <div class="box-img">
-                  <img src="/{{item.image}}" alt="" />
+        <div id="footer">
+            <div class="left-info">
+                <div class="header-logo">
+                    <a href="/">GameSync</a>
                 </div>
-                <div class="box-txt">
-                  <div class="box-title">{{item.title}}</div>
-                  <div class="box-count">
-                    <div class="like-count">
-                      <img src="/images/like_icon.png" />
-                      <span>{{item.like}}</span>
-                    </div>
-                    <div class="view-count">
-                      <img src="/images/view_icon.png" />
-                      <span>{{item.hit}}</span>
-                    </div>
-                  </div>
-                </div>
-              </a>
+                <span>&copy 2023 GameSync. All rights reserved.</span>
             </div>
-            {% endfor %} {% else %}
-            <p>조회수가 높은 글이 없습니다.</p>
-            {% endif %}
-          </div>
-        </div>
-        <div class="newgame">
-          <h3>새로운 개발 아이디어</h3>
-          <div class="game-wrap">
-            {% if developlastdata %} {% for item in developlastdata %}
-            <div class="game-box">
-              <a href="/develop/developBoards/view?id={{item.id}}">
-                <div class="box-img">
-                  <img src="/{{item.image}}" alt="" />
-                </div>
-                <div class="box-txt">
-                  <div class="box-title">{{item.title}}</div>
-                  <div class="box-count">
-                    <div class="like-count">
-                      <img src="/images/like_icon.png" />
-                      <span>{{item.like}}</span>
-                    </div>
-                    <div class="view-count">
-                      <img src="/images/view_icon.png" />
-                      <span>{{item.hit}}</span>
-                    </div>
-                  </div>
-                </div>
-              </a>
+            <div class="right-info">
+                <a
+                    href="https://github.com/HohyunKim-kr/GameSync-"
+                    target="_blank"
+                >
+                    <img src="/images/git.png" alt="" />
+                </a>
+                <a
+                    href="https://www.notion.so/6e7c5fa81141402d857da70dd2c867f1?v=e68659f259a04af98ace30ca01acede4"
+                    target="_blank"
+                >
+                    <img src="/images/notion.png" alt="" />
+                </a>
             </div>
-            {% endfor %} {% else %}
-            <p>최신글이 없습니다.</p>
-            {% endif %}
-          </div>
         </div>
-      </div>
-    </div>
-    <div id="footer">
-      <div class="left-info">
-        <div class="header-logo">
-          <a href="/">GameSync</a>
-        </div>
-        <span>&copy 2023 GameSync. All rights reserved.</span>
-      </div>
-      <div class="right-info">
-        <a href="https://github.com/HohyunKim-kr/GameSync-" target="_blank">
-          <img src="/images/git.png" alt="" />
-        </a>
-        <a
-          href="https://www.notion.so/6e7c5fa81141402d857da70dd2c867f1?v=e68659f259a04af98ace30ca01acede4"
-          target="_blank"
-        >
-          <img src="/images/notion.png" alt="" />
-        </a>
-      </div>
-    </div>
-    <script src="/js/mainSlide.js"></script>
-  </body>
+        <script src="/js/mainSlide.js"></script>
+    </body>
 </html>

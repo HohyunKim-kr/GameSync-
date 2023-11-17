@@ -5,17 +5,17 @@ const path = require("path");
 const userController = require("./user.controller");
 
 const upload = multer({
-  storage: multer.diskStorage({
-    destination: (req, file, done) => {
-      done(null, "./uploads");
-    },
-    filename: (req, file, done) => {
-      const ext = path.extname(file.originalname);
-      const filename =
-        path.basename(file.originalname) + "_" + Date.now() + ext;
-      done(null, filename);
-    },
-  }),
+    storage: multer.diskStorage({
+        destination: (req, file, done) => {
+            done(null, "./uploads");
+        },
+        filename: (req, file, done) => {
+            const ext = path.extname(file.originalname);
+            const filename =
+                path.basename(file.originalname) + "_" + Date.now() + ext;
+            done(null, filename);
+        },
+    }),
 });
 
 router.get("/login", userController.getLogin);
@@ -31,9 +31,9 @@ router.get("/user", userController.getUserInfo);
 router.get("/admin", userController.getAdmin);
 router.get("/user/modify", userController.getUsermodify);
 router.post(
-  "/user/modify",
-  upload.single("upload"),
-  userController.postUsermodify
+    "/user/modify",
+    upload.single("upload"),
+    userController.postUsermodify
 );
 // router.get("/user/delete", userController.getUserdelete);
 
@@ -45,4 +45,5 @@ router.get("/kakao/callback", userController.kakaoCallback);
 router.get("/git", userController.gitLogin);
 router.get("/git/callback", userController.gitCallback);
 
+router.get("/logout", userController.getLogout);
 module.exports = router;
