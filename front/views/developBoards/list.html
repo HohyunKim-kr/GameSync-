@@ -1,97 +1,104 @@
 <!DOCTYPE html>
 <html lang="ko">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>developBoard_List</title>
-    <link type="text/css" rel="stylesheet" href="/css/index.css" />
-    <link rel="stylesheet" href="/css/developBoard.list.css" />
-    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-  </head>
-  <body>
-    <div id="wrap">
-      <div id="header">
-        <div class="header-wrap">
-          <div class="header-logo">
-            <a href="/">GameSync</a>
-          </div>
-          <div class="header-icon">
-            {% if userinfo %}
-            <p>{{userinfo.user_nickname}}님</p>
-            <a href="/users/logout">로그아웃</a>
-            {% else %}
-            <a class="icon" href="/users/login">
-              <img src="/images/my.png" alt="" />
-            </a>
-            {% endif %}
-          </div>
-        </div>
-        <div class="full-drop">
-          <div class="drop-wrap">
-            <div class="drop-down">
-              <a href="/develop/developBoards/">게임 개발 게시판</a>
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>developBoard_List</title>
+        <link type="text/css" rel="stylesheet" href="/css/index.css" />
+        <link rel="stylesheet" href="/css/developBoard.list.css" />
+        <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    </head>
+    <body>
+        <div id="wrap">
+            <div id="header">
+                <div class="header-wrap">
+                    <div class="header-logo">
+                        <a href="/">GameSync</a>
+                    </div>
+                    <div class="header-icon">
+                        {% if userinfo %}
+                        <p>{{userinfo.user_nickname}}님</p>
+                        <a href="/users/logout">로그아웃</a>
+                        {% else %}
+                        <a class="icon" href="/users/login">
+                            <img src="/images/my.png" alt="" />
+                        </a>
+                        {% endif %}
+                    </div>
+                </div>
+                <div class="full-drop">
+                    <div class="drop-wrap">
+                        <div class="drop-down">
+                            <a href="/develop/developBoards/"
+                                >게임 개발 게시판</a
+                            >
+                        </div>
+                        <div class="drop-down">
+                            <a href="/idea/ideaBoards/"
+                                >게임 기획, 아이디어 게시판</a
+                            >
+                        </div>
+                        <div class="drop-down">
+                            <a href="/notice/notices/">공지사항</a>
+                        </div>
+                        <div class="drop-down">
+                            <a href="/users/user">마이페이지</a>
+                        </div>
+                        <div class="drop-down">
+                            <a href="/users/admin">admin</a>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <div class="drop-down">
-              <a href="/idea/ideaBoards/">게임 기획, 아이디어 게시판</a>
+            <div id="container">
+                <div class="developBoard-img">
+                    <h2 class="developBoard-text">게임 개발 게시판</h2>
+                    <img src="/images/developboard.jpg" alt="" />
+                </div>
+                <div class="write-btn-wrap">
+                    <div class="write-btn">
+                        <a href="/develop/developBoards/write">WRITE</a>
+                    </div>
+                </div>
+                <div class="ideaBoard-wrap">
+                    {% for data in list %}
+                    <ul class="ideaBoard-box">
+                        <a href="/develop/developBoards/view?id={{data.id}}">
+                            <li class="box-img">
+                                <img src="/{{data.image}}" alt="" />
+                            </li>
+                            <li class="box-name">{{data.title}}</li>
+                            <li class="box-hit">
+                                <img src="/images/eye.png" alt="" />
+                                &nbsp {{data.hit}}
+                            </li>
+                        </a>
+                    </ul>
+                    {% endfor %}
+                </div>
             </div>
-            <div class="drop-down">
-              <a href="/notice/notices/">공지사항</a>
+        </div>
+        <div id="footer">
+            <div class="left-info">
+                <div class="header-logo">
+                    <a href="/">GameSync</a>
+                </div>
+                <span>&copy 2023 GameSync. All rights reserved.</span>
             </div>
-            <div class="drop-down">
-              <a href="/users/user">마이페이지</a>
+            <div class="right-info">
+                <a
+                    href="https://github.com/HohyunKim-kr/GameSync-"
+                    target="_blank"
+                >
+                    <img src="/images/git.png" alt="" />
+                </a>
+                <a
+                    href="https://www.notion.so/6e7c5fa81141402d857da70dd2c867f1?v=e68659f259a04af98ace30ca01acede4"
+                    target="_blank"
+                >
+                    <img src="/images/notion.png" alt="" />
+                </a>
             </div>
-            <div class="drop-down">
-              <a href="/users/admin">admin</a>
-            </div>
-          </div>
         </div>
-      </div>
-      <div id="container">
-        <div class="developBoard-img">
-          <h2 class="developBoard-text">게임 개발 게시판</h2>
-          <img src="/images/developboard.jpg" alt="" />
-        </div>
-        <div class="write-btn-wrap">
-          <div class="write-btn">
-            <a href="/develop/developBoards/write">WRITE</a>
-          </div>
-        </div>
-        <div class="ideaBoard-wrap">
-          {% for data in list %}
-          <ul class="ideaBoard-box">
-            <a href="/develop/developBoards/view?id={{data.id}}">
-              <li class="box-img">
-                <img src="/{{data.image}}" alt="" />
-              </li>
-              <li class="box-name">{{data.title}}</li>
-              <li class="box-hit">
-                <img src="/images/view_icon.png" alt="" />
-                {{data.hit}}
-              </li>
-            </a>
-          </ul>
-          {% endfor %}
-        </div>
-      </div>
-    </div>
-    <div id="footer">
-      <div class="left-info">
-        <div class="header-logo">
-          <a href="/">GameSync</a>
-        </div>
-        <span>&copy 2023 GameSync. All rights reserved.</span>
-      </div>
-      <div class="right-info">
-        <a href="https://github.com/HohyunKim-kr/GameSync-" target="_blank">
-          <img src="/images/git.png" alt="" />
-        </a>
-        <a
-          href="https://www.notion.so/6e7c5fa81141402d857da70dd2c867f1?v=e68659f259a04af98ace30ca01acede4"
-          target="_blank"
-        >
-          <img src="/images/notion.png" alt="" />
-        </a>
-      </div>
-    </div>
-  </body>
+    </body>
 </html>
