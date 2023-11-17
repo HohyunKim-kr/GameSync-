@@ -170,16 +170,23 @@ async function getUserInfo(token) {
     }
 }
 
-async function getLogout(token) {
+async function getLogout(uid) {
     try {
-        const response = await axios.get(`${API_URL}/users/info`, {
-            headers: {
-                Authorization: `Bearer ${token}`,
-            },
+        const response = await axios.get(`${API_URL}/users/logout/${uid}`, {
+            withCredentials: true, // 쿠키를 전송하기 위한 옵션
         });
-        // console.log("getUserInfo.....................", response.data);
-        // console.log("getUserInfo.....................", response);
-        return response.data; // 서버로부터 받은 사용자 정보를 반환
+
+        console.log(`로그아웃---->`, response);
+        // if (response.status === 201) {
+        //     document.cookie =
+        //         "token=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+        //     console.log("쿠키 클리어 성공");
+        // } else {
+        //     console.error("쿠키 클리어 실패");
+        // }
+        // document.cookie =
+        //     "cookie=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+        return response;
     } catch (error) {
         throw error;
     }
