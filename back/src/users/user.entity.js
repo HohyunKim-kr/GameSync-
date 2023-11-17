@@ -88,12 +88,12 @@ User.hasMany(noticeBoards, {
 noticeBoards.belongsTo(User, {
   foreignKey: "author",
 });
-User.hasMany(comments, {
-  foreignKey: "author",
-});
-comments.belongsTo(User, {
-  foreignKey: "author",
-});
+// User.hasMany(comments, {
+//   foreignKey: "author",
+// });
+// comments.belongsTo(User, {
+//   foreignKey: "author",
+// });
 // User.hasMany(AdminBoards, {
 //   foreignKey: "author",
 // });
