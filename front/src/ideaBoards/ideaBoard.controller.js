@@ -3,15 +3,30 @@ const { getUserInfo } = require("../users/user.service");
 
 exports.list = async (req, res, next) => {
   try {
+    const token = req.cookies.cookie;
+    let userinfo;
+    if (token) {
+      userinfo = await getUserInfo(token);
+    }
     const { data } = await ideaBoardService.getList();
-    res.render("ideaBoards/list.html", { list: data });
+    res.render("ideaBoards/list.html", { userinfo, list: data });
   } catch (e) {
     next(e);
   }
 };
 
-exports.getWrite = (req, res, next) => {
-  res.render("ideaBoards/write.html");
+exports.getWrite = async (req, res, next) => {
+  try {
+    const token = req.cookies.cookie;
+    let userinfo;
+    if (token) {
+      userinfo = await getUserInfo(token);
+    }
+
+    res.render("ideaBoards/write.html", { userinfo });
+  } catch (e) {
+    next(e);
+  }
 };
 
 exports.postWrite = async (req, res, next) => {
@@ -22,7 +37,6 @@ exports.postWrite = async (req, res, next) => {
       title: data.title,
       author: data.author,
       content: data.content,
-      category: data.category,
       image: file.filename,
       original_filename: file.originalname,
     };
@@ -41,13 +55,18 @@ exports.postWrite = async (req, res, next) => {
 
 exports.view = async (req, res, next) => {
   try {
+    const token = req.cookies.cookie;
+    let userinfo;
+    if (token) {
+      userinfo = await getUserInfo(token);
+    }
     const { id } = req.query;
     const { data } = await ideaBoardService.getView(id);
 
     if (data.result.content) {
       data.result.content = data.result.content.replace(/\n/g, "<br>");
     }
-    res.render("ideaBoards/view.html", { data: data });
+    res.render("ideaBoards/view.html", { userinfo, data: data });
   } catch (e) {
     next(e);
   }
@@ -57,7 +76,10 @@ exports.getModify = async (req, res, next) => {
   try {
     const { id } = req.query;
     const token = req.cookies.cookie;
-
+    let userinfo;
+    if (token) {
+      userinfo = await getUserInfo(token);
+    }
     const { data } = await ideaBoardService.getModify(id, token);
 
     if (!token) {
@@ -69,7 +91,7 @@ exports.getModify = async (req, res, next) => {
     if (result.uid !== data.result.author) {
       res.redirect("/users/login");
     } else {
-      res.render("ideaBoards/modify.html", { data: data, id });
+      res.render("ideaBoards/modify.html", { userinfo, data: data, id });
     }
   } catch (e) {
     next(e);
@@ -86,7 +108,6 @@ exports.postModify = async (req, res, next) => {
       title: data.title,
       author: data.author,
       content: data.content,
-      category: data.category,
       image: file.filename,
       original_filename: file.originalname,
     };

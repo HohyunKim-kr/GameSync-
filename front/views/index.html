@@ -37,6 +37,7 @@
             <div class="drop-down">
               <a href="/notice/notices/">공지사항</a>
             </div>
+
             {% if userinfo %}
             <div class="drop-down">
               <a href="/users/user">마이페이지</a>
@@ -44,6 +45,7 @@
             {% else %}
             <div></div>
             {% endif %}
+
             <div class="drop-down">
               <a href="/users/admin">admin</a>
             </div>
@@ -87,10 +89,7 @@
                 <div class="box-txt">
                   <div class="box-title">{{item.title}}</div>
                   <div class="box-count">
-                    <div class="like-count">
-                      <img src="/images/like_icon.png" />
-                      <span>{{item.like}}</span>
-                    </div>
+
                     <div class="view-count">
                       <img src="/images/view_icon.png" />
                       <span>{{item.hit}}</span>
@@ -116,10 +115,7 @@
                 <div class="box-txt">
                   <div class="box-title">{{item.title}}</div>
                   <div class="box-count">
-                    <div class="like-count">
-                      <img src="/images/like_icon.png" />
-                      <span>{{item.like}}</span>
-                    </div>
+
                     <div class="view-count">
                       <img src="/images/view_icon.png" />
                       <span>{{item.hit}}</span>
@@ -145,10 +141,7 @@
                 <div class="box-txt">
                   <div class="box-title">{{item.title}}</div>
                   <div class="box-count">
-                    <div class="like-count">
-                      <img src="/images/like_icon.png" />
-                      <span>{{item.like}}</span>
-                    </div>
+
                     <div class="view-count">
                       <img src="/images/view_icon.png" />
                       <span>{{item.hit}}</span>
@@ -174,10 +167,7 @@
                 <div class="box-txt">
                   <div class="box-title">{{item.title}}</div>
                   <div class="box-count">
-                    <div class="like-count">
-                      <img src="/images/like_icon.png" />
-                      <span>{{item.like}}</span>
-                    </div>
+
                     <div class="view-count">
                       <img src="/images/view_icon.png" />
                       <span>{{item.hit}}</span>
