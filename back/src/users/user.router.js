@@ -25,4 +25,5 @@ router.post("/git", userController.gitLogin);
 router.get("/info", userController.getUserInfo);
 router.get("/modify", userController.getUserModify);
 router.post("/:uid", userController.postUserModify);
+router.get("/logout/:uid", userController.getLogout);
 module.exports = router;

@@ -160,3 +160,18 @@ exports.getUserInfo = async (req, res) => {
         console.log(e);
     }
 };
+
+exports.getLogout = async (req, res, next) => {
+    try {
+        const userId = req.params;
+        console.log(`22222222222`, req.params);
+        console.log(`userid 내나--->`, userId);
+        const result = await userService.logout(userId);
+        console.log(`back logout--->`, result);
+
+        // res.clearCookie("token");
+        res.status(201).json(result);
+    } catch (e) {
+        next(e);
+    }
+};
