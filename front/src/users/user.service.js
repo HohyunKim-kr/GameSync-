@@ -163,7 +163,7 @@ async function getUserInfo(token) {
     // } else if (userInfo.admin === 0) {
     //   return response.data;
     // }
-
+    return response.data;
     // 서버로부터 받은 사용자 정보를 반환
   } catch (error) {
     throw error;
