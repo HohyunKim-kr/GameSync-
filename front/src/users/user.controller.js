@@ -37,6 +37,7 @@ exports.getUserPage = async (req, res) => {
 exports.getAdmin = async (req, res, next) => {
   try {
     const token = req.cookies.cookie;
+
     const userinfo = await getUserInfo(token);
 
     if (!token || !userinfo) {
@@ -55,6 +56,7 @@ exports.getAdmin = async (req, res, next) => {
       </script>
     `);
     }
+
   } catch (e) {
     next(e);
   }
@@ -73,8 +75,16 @@ exports.getUsermodify = async (req, res) => {
     res.redirect("/users/login");
   }
 
+
+  // if (result.uid !== data.result.author) {
+  //   res.redirect("/users/login");
+  // } else {
+  //   res.render("/user/modify.html", { userinfo, data: data, uid });
+  // }
   // console.log("userinfo-------", userinfo);
   res.render("users/mypage.modify.html", { userinfo, data: data });
+  // res.render("users/mypage.modify.html", { userinfo });
+
 };
 
 exports.postLogin = async (req, res, next) => {
@@ -134,8 +144,6 @@ exports.postUsermodify = async (req, res, next) => {
 
     const token = req.cookies.cookie;
 
-    // console.log("uid___________________________", uid);
-    // console.log("udata___________________________", userData);
     const result = await postUsermodify(uid, userData, token);
     return res.status(201).redirect(`/users/user`);
   } catch (error) {
@@ -156,6 +164,7 @@ exports.kakaoCallback = async (req, res, next) => {
   try {
     const { code } = req.query;
 
+
     const result = await kakaoLogin(code);
 
     const { token } = result.data;
@@ -163,6 +172,7 @@ exports.kakaoCallback = async (req, res, next) => {
       res.cookie("cookie", token);
 
       return res.redirect("/");
+
     } else {
       return res.status(401).json({ message: "kakao Login failed" });
     }
@@ -209,6 +219,7 @@ exports.getLogout = async (req, res, next) => {
       userinfo = await getUserInfo(token);
     }
     // const { uid } = req.query;
+
     // console.log(`uid내나--->`, userinfo.uid);
     const uid = userinfo.uid;
 
@@ -216,6 +227,7 @@ exports.getLogout = async (req, res, next) => {
     // console.log(result);
     console.log(" 토큰삭제", token);
     res.clearCookie("cookie", { httpOnly: true }).redirect("/");
+
     // res.status(201).json("Logout successful");
   } catch (e) {
     next(e);
