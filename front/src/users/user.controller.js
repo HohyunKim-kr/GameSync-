@@ -37,14 +37,24 @@ exports.getUserPage = async (req, res) => {
 exports.getAdmin = async (req, res, next) => {
   try {
     const token = req.cookies.cookie;
-    let userinfo;
-    if (token) {
-      userinfo = await getUserInfo(token);
+    const userinfo = await getUserInfo(token);
+
+    if (!token || !userinfo) {
+      return res.redirect("/login");
     }
 
-    const { data } = await admin();
-    console.log(`내나---->`, data);
-    res.render("admin/adminpage.html", { userinfo, list: data });
+    if (userinfo.admin === 1) {
+      const { data } = await admin();
+      // console.log(`내나---->`, data);
+      return res.render("admin/adminpage.html", { userinfo, list: data });
+    } else {
+      return res.status(403).send(`
+      <script>
+        alert('접근 권한이 없습니다.');
+        window.location.href = "/";
+      </script>
+    `);
+    }
   } catch (e) {
     next(e);
   }
@@ -63,14 +73,8 @@ exports.getUsermodify = async (req, res) => {
     res.redirect("/users/login");
   }
 
-  // if (result.uid !== data.result.author) {
-  //   res.redirect("/users/login");
-  // } else {
-  //   res.render("/user/modify.html", { userinfo, data: data, uid });
-  // }
   // console.log("userinfo-------", userinfo);
   res.render("users/mypage.modify.html", { userinfo, data: data });
-  // res.render("users/mypage.modify.html", { userinfo });
 };
 
 exports.postLogin = async (req, res, next) => {
@@ -130,8 +134,8 @@ exports.postUsermodify = async (req, res, next) => {
 
     const token = req.cookies.cookie;
 
-    console.log("uid___________________________", uid);
-    console.log("udata___________________________", userData);
+    // console.log("uid___________________________", uid);
+    // console.log("udata___________________________", userData);
     const result = await postUsermodify(uid, userData, token);
     return res.status(201).redirect(`/users/user`);
   } catch (error) {
@@ -151,17 +155,14 @@ exports.kakaoLogin = (req, res, next) => {
 exports.kakaoCallback = async (req, res, next) => {
   try {
     const { code } = req.query;
-    // console.log(`code:`, code);
+
     const result = await kakaoLogin(code);
-    // console.log(`넘어와!!!:`, result.data.user);
-    // console.log(`넘어와!!!:`, result.data.token);
+
     const { token } = result.data;
     if (token) {
       res.cookie("cookie", token);
 
       return res.redirect("/");
-
-      // return res.status(200).json({ token });
     } else {
       return res.status(401).json({ message: "kakao Login failed" });
     }
@@ -208,13 +209,13 @@ exports.getLogout = async (req, res, next) => {
       userinfo = await getUserInfo(token);
     }
     // const { uid } = req.query;
-    console.log(`uid내나--->`, userinfo.uid);
+    // console.log(`uid내나--->`, userinfo.uid);
     const uid = userinfo.uid;
 
     const result = await getLogout(uid);
-    console.log(result);
+    // console.log(result);
     console.log(" 토큰삭제", token);
-    res.clearCookie("cookie", { httpOnly: true }).redirect("/"); // 수정: 로그아웃 성공 시 쿠키 삭제
+    res.clearCookie("cookie", { httpOnly: true }).redirect("/");
     // res.status(201).json("Logout successful");
   } catch (e) {
     next(e);

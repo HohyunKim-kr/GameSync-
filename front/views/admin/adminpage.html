@@ -22,11 +22,7 @@
             <img src="/images/my.png" alt="" />
           </a>
           {% endif %}
-
-          <a href="/users/login">
-            <img src="/images/my.png" alt="" />
-          </a>
-
+        </div>
       </div>
       <div class="full-drop">
         <div class="drop-wrap">
@@ -39,12 +35,16 @@
           <div class="drop-down">
             <a href="/notice/notices/">공지사항</a>
           </div>
+          {% if userinfo %}
           <div class="drop-down">
             <a href="/users/user">마이페이지</a>
           </div>
           <div class="drop-down">
             <a href="/users/admin">admin</a>
           </div>
+          {% else %}
+          <div></div>
+          {% endif %}
         </div>
       </div>
     </div>
@@ -75,24 +75,13 @@
           {% for data in list %}
           <tbody>
             <tr>
-
-              <td>{{data.id}}</td>
-              <td>
-                <img src="/{{data.img}}" />
-              </td>
-              <td>{{data.name}}</td>
-              <td>{{data.email}}</td>
-              <td>{{data.provider}}</td>
-
-
-
               <td>{{data.uid}}</td>
               <td>
                 <img src="/images/my.png" />
               </td>
               <td>{{data.user_nickname}}</td>
               <td>{{data.user_email}}</td>
-              <td>{{data. user_provider}}</td>
+              <td>{{data.user_provider}}</td>
 
               <td>
                 <form action="" method="post">

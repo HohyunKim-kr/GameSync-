@@ -37,12 +37,15 @@
             <div class="drop-down">
               <a href="/notice/notices/">공지사항</a>
             </div>
+            {% if userinfo.admin === 0 %}
             <div class="drop-down">
               <a href="/users/user">마이페이지</a>
             </div>
+            {% endif %} {% if userinfo.admin === 1 %}
             <div class="drop-down">
               <a href="/users/admin">admin</a>
             </div>
+            {% endif %}
           </div>
         </div>
       </div>

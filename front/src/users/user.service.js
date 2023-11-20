@@ -9,7 +9,6 @@ const GIT_REST_API_KEY = process.env.GIT_REST_API_KEY;
 const GIT_REDIRECT_URI = process.env.GIT_REDIRECT_URI;
 const GIT_SECRET_KEY = process.env.GIT_SECRET_KEY;
 
-// 로그인 요청을 보내는 함수
 async function postLogin(user_email, user_pw) {
   try {
     const { data: response } = await axios.post(
@@ -23,7 +22,7 @@ async function postLogin(user_email, user_pw) {
     if (!response.success) {
       throw new Error("로그인에 실패했습니다.");
     }
-    return response.token; // 로그인에 성공하면 백엔드로부터 토큰을 반환
+    return response.token;
   } catch (error) {
     throw error;
   }
@@ -36,9 +35,7 @@ async function getUsermodify(uid, userData) {
         Authorization: `Bearer ${authorization}`,
       },
     });
-    // console.log("wwwwwwwwwwwwwwUID", uid);
-    // console.log("wwwwwwwwwwwwwwDAta", userData);
-    // console.log("wwwwwwwwwwwwwwresult.data", result);
+
     return result;
   } catch (error) {
     console.log(error);
@@ -55,7 +52,6 @@ async function postUsermodify(uid, userData, token) {
         Authorization: `Bearer ${authorization}`,
       },
     });
-    console.log("wwwwwwwwwwwwwwUID", uid);
 
     return result;
   } catch (error) {
@@ -157,14 +153,8 @@ async function getUserInfo(token) {
         Authorization: `Bearer ${token}`,
       },
     });
-    // if (userInfo.admin === 1) {
-    //   console.log("response...............................", response.data, user);
-    //   return response.data;
-    // } else if (userInfo.admin === 0) {
-    //   return response.data;
-    // }
-
-    // 서버로부터 받은 사용자 정보를 반환
+    console.log(response.data);
+    return response.data;
   } catch (error) {
     throw error;
   }
@@ -173,19 +163,9 @@ async function getUserInfo(token) {
 async function getLogout(uid) {
   try {
     const response = await axios.get(`${API_URL}/users/logout/${uid}`, {
-      withCredentials: true, // 쿠키를 전송하기 위한 옵션
+      withCredentials: true,
     });
-
     console.log(`로그아웃---->`, response);
-    // if (response.status === 201) {
-    //     document.cookie =
-    //         "token=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
-    //     console.log("쿠키 클리어 성공");
-    // } else {
-    //     console.error("쿠키 클리어 실패");
-    // }
-    // document.cookie =
-    //     "cookie=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
     return response;
   } catch (error) {
     throw error;
@@ -195,9 +175,6 @@ async function getLogout(uid) {
 async function admin() {
   try {
     const response = await axios.get(`${API_URL}/admin/admin`, {});
-
-    console.log(`admin내나---->`, response);
-
     return response;
   } catch (error) {
     throw error;
