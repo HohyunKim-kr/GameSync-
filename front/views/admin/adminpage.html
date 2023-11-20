@@ -14,7 +14,6 @@
           <a href="/">GameSync</a>
         </div>
         <div class="header-icon">
-
           {% if userinfo %}
           <p>{{userinfo.user_nickname}}님</p>
           <a href="/users/logout">로그아웃</a>
@@ -23,7 +22,6 @@
             <img src="/images/my.png" alt="" />
           </a>
           {% endif %}
-
         </div>
       </div>
       <div class="full-drop">
@@ -37,12 +35,16 @@
           <div class="drop-down">
             <a href="/notice/notices/">공지사항</a>
           </div>
+          {% if userinfo %}
           <div class="drop-down">
             <a href="/users/user">마이페이지</a>
           </div>
           <div class="drop-down">
             <a href="/users/admin">admin</a>
           </div>
+          {% else %}
+          <div></div>
+          {% endif %}
         </div>
       </div>
     </div>
@@ -73,14 +75,13 @@
           {% for data in list %}
           <tbody>
             <tr>
-
               <td>{{data.uid}}</td>
               <td>
                 <img src="/images/my.png" />
               </td>
               <td>{{data.user_nickname}}</td>
               <td>{{data.user_email}}</td>
-              <td>{{data. user_provider}}</td>
+              <td>{{data.user_provider}}</td>
 
               <td>
                 <form action="" method="post">
@@ -114,3 +115,4 @@
     </div>
   </body>
 </html>
+
