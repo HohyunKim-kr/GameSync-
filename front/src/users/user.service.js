@@ -192,4 +192,3 @@ module.exports = {
   getLogout,
   admin,
 };
-
